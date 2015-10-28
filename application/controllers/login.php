@@ -11,6 +11,7 @@ class login extends CI_Controller {
 	$this->load->library('form_validation');
 
 	$data['title'] = 'Login!'; 
+	$data['path'] = 'home/login';
 
 	$this->form_validation->set_rules('username', 'Username', 'required');
 	$this->form_validation->set_rules('password', 'Password', 'required',

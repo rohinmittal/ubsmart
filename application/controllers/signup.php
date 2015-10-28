@@ -11,6 +11,7 @@ class signup extends CI_Controller {
 	$this->load->library('form_validation');
 
 	$data['title'] = 'Sign up as a new user!'; 
+	$data['path'] = 'home/signup';
 
 	$this->form_validation->set_rules('username', 'Username', 'required');
 	$this->form_validation->set_rules('password', 'Password', 'required',

@@ -5,3 +5,4 @@
 
 <body> 
 Welcome to UB sMart<br>
+<?php echo $path; ?>
