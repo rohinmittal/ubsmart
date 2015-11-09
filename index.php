@@ -98,7 +98,7 @@ switch (ENVIRONMENT)
  * Include the path if the folder is not in the same directory
  * as this file.
  */
-	$system_path = '/Users/rohinmittal/Sites/ubsmart/system';
+	$system_path = 'system';
 
 /*
  *---------------------------------------------------------------
@@ -113,7 +113,7 @@ switch (ENVIRONMENT)
  *
  * NO TRAILING SLASH!
  */
-	$application_folder = '/Users/rohinmittal/Sites/ubsmart/application';
+	$application_folder = 'application';
 
 /*
  *---------------------------------------------------------------
@@ -128,7 +128,7 @@ switch (ENVIRONMENT)
  *
  * NO TRAILING SLASH!
  */
-	$view_folder = '/Users/rohinmittal/Sites/ubsmart/application/views';
+	$view_folder = '';
 
 
 /*
