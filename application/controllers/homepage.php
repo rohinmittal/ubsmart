@@ -9,8 +9,8 @@ class homepage extends CI_Controller {
 	$data['title'] = ucfirst('navigation bar'); // Capitalize the first letter
 	$data['path'] = 'home';
 
-	$data['login'] = ('login');
-	$data['signup'] = ('signup');
+	$data['login'] = ('../login');
+	$data['signup'] = ('../signup');
 	$this->load->view('templates/header', $data);
 	$this->load->view('homepage/homepage', $data);
 
