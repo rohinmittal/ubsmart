@@ -21,8 +21,7 @@
 		echo form_fieldset_close();
 		
 		echo "<br />";//br();
-		echo form_submit('submit', 'Create Account');
-		
+		echo form_submit('submit', 'Create Account');		
 		?>
 		<?php echo validation_errors('<p class="error">'); ?>
 </div> 

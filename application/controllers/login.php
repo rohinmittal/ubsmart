@@ -134,17 +134,5 @@ class Login extends CI_Controller {
 	  {    $role_chosen=TRUE;     }       
       if ($role_chosen) { return TRUE; } else { return FALSE; }
 	}  
-    public function set_session($email){
-    	 $sql = "SELECT username FROM users WHERE email = '" . $email . "' LIMIT 1";
-    	 $result=$this->db->query($sql);
-    	 $row = $result->row(); 
-         
-         $sess_data = array(
-         	'username' => $row->username,
-         	'email' => $email,
-         	'logged_in'=> 0 
-         ); 
-         $this->session->set_userdata($sess_data); 
-	}
 }
 ?>
