@@ -29,15 +29,14 @@ class Login extends CI_Controller {
 		$this->load->library('form_validation');
 		
 		//rules
-		$this->form_validation->set_rules('email', 'Email Address', 'trim|required|valid_email|callback_check_if_email_ub|callback_check_if_email_exists');
-		$this->form_validation->set_rules('username', 'Username', 'trim|required|callback_check_if_username_exists');
-		$this->form_validation->set_rules('password', 'Password', 'trim|required|min_length[8]');
+		$this->form_validation->set_rules('username', 'Username', 'trim|required|callback_check_if_blank_usrname');
+		$this->form_validation->set_rules('password', 'Password', 'trim|required');
 		
 		if ($this->form_validation->run() == FALSE) // didn't validate
 		{ 
-         // $this->load->view('includes/header');
-         // $this->load->view('signup_form');
-         // $this->load->view('includes/footer'); 
+         $this->load->view('includes/header');
+         $this->load->view('login_form');
+         $this->load->view('includes/footer'); 
         } 
         else
         {	
@@ -79,12 +78,12 @@ class Login extends CI_Controller {
 		$this->load->library('form_validation');
 		
 		//rules		
-		$this->form_validation->set_rules('email', 'Email Address', 'trim|required|valid_email|callback_check_if_email_ub|callback_check_if_email_exists');
-		$this->form_validation->set_rules('username', 'Username', 'trim|required|callback_check_if_username_exists');
+		$this->form_validation->set_rules('email', 'Email Address', 'trim|required|callback_check_if_blank_email|valid_email|callback_check_if_email_ub|callback_check_if_email_exists');
+		$this->form_validation->set_rules('username', 'Username', 'trim|required|callback_check_if_blank_usrname|callback_check_if_username_exists');
 		$this->form_validation->set_rules('password', 'Password', 'trim|required|min_length[8]');
 		$this->form_validation->set_rules('password_confirm', 'Password Confirmation', 'trim|required|matches[password]');
 		$this->form_validation->set_rules('roles[]', 'roles', 'callback_check_if_role_chosen'); 
-		$this->form_validation->set_rules('telephone', 'Cellphone Number', 'trim|required|exact_length[10]|numeric');
+		$this->form_validation->set_rules('telephone', 'Cellphone Number', 'trim|required|check_if_blank_tel|exact_length[10]|numeric');
 
 		if ($this->form_validation->run() == FALSE) // didn't validate
 		{ 
@@ -147,6 +146,36 @@ class Login extends CI_Controller {
       if(isset($_POST['roles']))
 	  {    $role_chosen=TRUE;     }       
       if ($role_chosen) { return TRUE; } else { return FALSE; }
-	}  
+	}
+	function check_if_blank_usrname($username)
+    {
+    	$usr=strcmp($username,"Username");
+		$usrname_entered=TRUE;
+        if($usr==0)
+		{
+			$usrname_entered=FALSE;
+		}
+        return $usrname_entered;
+	}
+	function check_if_blank_email($email)
+    {
+    	$em=strcmp($email,"Email Address");
+		$em_entered=TRUE;
+        if($em==0)
+		{
+			$em_entered=FALSE;
+		}
+        return $em_entered;
+	}
+	function check_if_blank_tel($tel)
+    {
+    	$tcomp=strcmp($tel,"Cellphone Number");
+		$tel_entered=TRUE;
+        if($tcomp==0)
+		{
+			$tel_entered=FALSE;
+		}
+        return $tel_entered;
+	}     
 }
 ?>
