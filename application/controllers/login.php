@@ -83,7 +83,7 @@ class Login extends CI_Controller {
 		$this->form_validation->set_rules('password', 'Password', 'trim|required|min_length[8]');
 		$this->form_validation->set_rules('password_confirm', 'Password Confirmation', 'trim|required|matches[password]');
 		$this->form_validation->set_rules('roles[]', 'roles', 'callback_check_if_role_chosen'); 
-		$this->form_validation->set_rules('telephone', 'Cellphone Number', 'trim|required|check_if_blank_tel|exact_length[10]|numeric');
+		$this->form_validation->set_rules('telephone', 'Cellphone Number', 'trim|required|callback_check_if_blank_tel|exact_length[10]|numeric');
 
 		if ($this->form_validation->run() == FALSE) // didn't validate
 		{ 
