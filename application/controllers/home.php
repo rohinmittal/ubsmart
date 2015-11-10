@@ -9,6 +9,7 @@ class Home extends CI_Controller {
 	}
 	public function home1()
 	{
+		//trying changes
 		$data['title']='Welcome to UBsMart!';
 		$this->load->view('home_view',$data);		
 	}
