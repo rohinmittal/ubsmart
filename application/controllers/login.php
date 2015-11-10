@@ -26,27 +26,41 @@ class Login extends CI_Controller {
 	}
 	public function validate_credentials()
 	{
-		//$data['title']='Welcome to UBsMart!';
-		$this->load->model('membership_model');
-		$query=$this->membership_model->validate();
+		$this->load->library('form_validation');
 		
-		if($query)//credentials validated!
-		{
-			echo "<script type='text/javascript'>alert('login successful!')</script>";
-			$data=array(
+		//rules
+		$this->form_validation->set_rules('email', 'Email Address', 'trim|required|valid_email|callback_check_if_email_ub|callback_check_if_email_exists');
+		$this->form_validation->set_rules('username', 'Username', 'trim|required|callback_check_if_username_exists');
+		$this->form_validation->set_rules('password', 'Password', 'trim|required|min_length[8]');
+		
+		if ($this->form_validation->run() == FALSE) // didn't validate
+		{ 
+         // $this->load->view('includes/header');
+         // $this->load->view('signup_form');
+         // $this->load->view('includes/footer'); 
+        } 
+        else
+        {	
+			$this->load->model('membership_model');
+			$query=$this->membership_model->validate();
+		
+			if($query)//credentials validated!
+			{
+		     echo "<script type='text/javascript'>alert('login successful!')</script>";
+			 $data=array(
 			      'username'=>$this->input->post('username'),
 			      'is_logged_in'=>true
-			);
-			$this->session->set_userdata($data);
-			redirect('home');		
-		}
-		else
-		{
-			//echo "<script type='text/javascript'>alert('submitted successfully!')</script>";
-			$this->index();
-		}
+			 );
+			 $this->session->set_userdata($data);
+			 redirect('home');		
+		    }
+	    	else
+		    {
+			 //echo "<script type='text/javascript'>alert('submitted successfully!')</script>";
+			 $this->index();
+		    }
+	    }
 	}
-    
     function signup()
 	{
 		$this->load->view('includes/header');
