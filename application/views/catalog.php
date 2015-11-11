@@ -13,7 +13,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 	<div id="body">
 		<p>The page you are looking at is the homepage for UBsMart!!!!</p>
-		<?php echo anchor('login/logout','Logout!');?>
+		<?php echo anchor('home/myaccount','My account');?>
+		<?php echo anchor('home/logout','Logout!');?>
 	</div>
 	
 		

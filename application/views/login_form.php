@@ -1,3 +1,4 @@
+<title> UB sMart </title>
 <div id=login_page>	
 <div id="adbanner_on_loginpage">
 	<p style="font-size: 15" >"Content....."</p>
@@ -10,11 +11,11 @@
 	<?php } ?>
 	
 	<?php
-    echo form_open('login/validate_credentials');
-	echo form_input('username', 'Username');
-	echo form_password('password', '', 'placeholder="Password" class="password"');
+    echo form_open('home/validate_credentials');
+	echo form_input('username', 'Username *');
+	echo form_password('password', '', 'placeholder="Password *" class="password"');
 	echo form_submit('submit','Login');
-	echo anchor('login/signup','Create Account');
+	echo anchor('home/signup','Create Account');
 	echo form_close(); 				
 	?>
 	<?php echo validation_errors('<p class="error">'); ?>
