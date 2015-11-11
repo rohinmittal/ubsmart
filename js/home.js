@@ -22,4 +22,8 @@ $(document).ready(function() {
 	$(':password.password_confirm').focusout(function(){
 		$(this).attr('placeholder','Confirm Password');
 	});
+	//do not delete the foll lines!	
+	//var height_of_form = document.getElementById('login_form').clientHeight;
+	//alert(height_of_form);
+	//document.getElementById('adbanner_on_loginpage').style.height=height_of_form+'px';
 });
