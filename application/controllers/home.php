@@ -24,6 +24,20 @@ class Home extends CI_Controller {
 		$this->load->view('login_form');
 		$this->load->view('includes/footer');
 	}
+	
+	public function signup()
+	{
+		$this->load->view('includes/header');
+		$this->load->view('signup_form');
+		$this->load->view('includes/footer');
+	}
+
+	public function logout()
+	{
+	    $this->session->sess_destroy();
+	    $this->index();
+	}
+
 	public function validate_credentials()
 	{
 		$this->load->library('form_validation');
@@ -61,18 +75,7 @@ class Home extends CI_Controller {
 		    }
 	    }
 	}
-    function signup()
-	{
-		$this->load->view('includes/header');
-		$this->load->view('signup_form');
-		$this->load->view('includes/footer');
-	}
 	
-	function logout()
-    {
-    	$this->session->sess_destroy();
-    	$this->index();
-    }
 
     function create_member()
 	{

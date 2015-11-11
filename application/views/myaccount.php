@@ -4,7 +4,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<title>Welcome to UBsMart</title>
+<title>My Account - UBsMart</title>
 </head>
 
 <body>
@@ -12,8 +12,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	<h1>Welcome to UBsMart</h1>
 
 	<div id="body">
-		<p>The page you are looking at is the homepage for UBsMart!!!!</p>
-		<?php echo anchor('myaccount','My account');?>
+		<p>This is the page where user can view his account details.</p>
 		<?php echo anchor('home/logout','Logout!');?>
 	</div>
 	
