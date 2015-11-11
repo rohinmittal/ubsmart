@@ -21,7 +21,7 @@ class myaccount extends CI_Controller {
 	 */
 	public function index()
 	{
-		$this->load->view('includes/header');
+		$this->load->view('includes/header_loggedin');
 		$this->load->view('myaccount');
 		$this->load->view('includes/footer');
 	}

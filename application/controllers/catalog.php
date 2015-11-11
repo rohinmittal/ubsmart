@@ -11,7 +11,7 @@ class Catalog extends CI_Controller {
 	{
 		//trying changes
 		$data['title']='Welcome to UBsMart!';
-		$this->load->view('includes/header');
+		$this->load->view('includes/header_loggedin');
 		$this->load->view('catalog',$data);
 		$this->load->view('includes/footer');				
 	}

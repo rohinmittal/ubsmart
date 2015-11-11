@@ -13,7 +13,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 	<div id="body">
 		<p>This is the page where user can view his account details.</p>
-		<?php echo anchor('home/logout','Logout!');?>
 	</div>
 	
 		
