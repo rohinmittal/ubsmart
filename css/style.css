@@ -12,15 +12,16 @@ body{
     }
 #login_page{
 	width: 80%; 
-    background:#000000;
+    /*background:#000000;    helps in setting relative widths. do not delete!*/
 	position:relative;
 	margin:auto;
 	padding: 3%;	
 }    
         
 #adbanner_on_loginpage{
-	background: #AAC4C5;	
-	width: 65%;
+	background: #AAC4C5;
+	position: absolute;     	
+	width: 61%;
 	height:237px;
 	border: 1px solid white;
 	float:left;
@@ -31,13 +32,16 @@ body{
 }
 #login_form{ 	
 	background: #AAC4C5;
-	width:auto;
+	position: absolute;
+	width:25.4%;
+	margin-left:64.65%;	
 	float:right;
 	border: 1px solid white;
 	padding: 1em;
 	-moz-border-radius: 4px;
 	-webkit-border-radius: 4px;
 	border-radius: 4px;
+	z-index: 1;
 }
 #register_form{
 	background: #AAC4C5;
