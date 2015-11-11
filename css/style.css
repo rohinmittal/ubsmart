@@ -32,6 +32,7 @@ body{
 #login_form{ 	
 	background: #AAC4C5;
 	width:auto;
+	float:right;
 	border: 1px solid white;
 	padding: 1em;
 	-moz-border-radius: 4px;
