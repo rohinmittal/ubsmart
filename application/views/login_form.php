@@ -12,8 +12,8 @@
 	
 	<?php
     echo form_open('home/validate_credentials');
-	echo form_input('username', 'Username *');
-	echo form_password('password', '', 'placeholder="Password *" class="password"');
+	echo form_input('username', 'Username');
+	echo form_password('password', '', 'placeholder="Password" class="password"');
 	echo form_submit('submit','Login');
 	echo anchor('home/signup','Create Account');
 	echo form_close(); 				

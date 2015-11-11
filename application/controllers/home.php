@@ -43,7 +43,6 @@ class Home extends CI_Controller {
         {	
 			$this->load->model('membership_model');
 			$query=$this->membership_model->validate();
-		
 			if($query)//credentials validated!
 			{
 		     echo "<script type='text/javascript'>alert('login successful!')</script>";
@@ -52,11 +51,12 @@ class Home extends CI_Controller {
 			      'is_logged_in'=>true
 			 );
 			 $this->session->set_userdata($data);
-			 redirect('home');		
+			 redirect('catalog');		
 		    }
 	    	else
 		    {
-			 //echo "<script type='text/javascript'>alert('submitted successfully!')</script>";
+			 echo "<script type='text/javascript'>alert('Incorrect credentials!')</script>";
+	print $query;	
 			 $this->index();
 		    }
 	    }
