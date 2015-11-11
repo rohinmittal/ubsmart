@@ -37,6 +37,7 @@ class Login extends CI_Controller {
          $this->load->view('includes/header');
          $this->load->view('login_form');
          $this->load->view('includes/footer'); 
+		 //just checking for issues with git
         } 
         else
         {	
