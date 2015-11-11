@@ -2,7 +2,7 @@
 <div id="adbanner_on_loginpage">
 	<p style="font-size: 15" >"Content....."</p>
 </div>
-<div id="login_form" style="float:right">
+<div id="login_form">
 	<?php if (isset($account_created)) {?>
 		<h3><?php echo $account_created; ?></h3>
 	<?php } else { ?>
