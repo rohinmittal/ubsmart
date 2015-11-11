@@ -11,6 +11,8 @@ class Home extends CI_Controller {
 	{
 		//trying changes
 		$data['title']='Welcome to UBsMart!';
-		$this->load->view('home_view',$data);		
+		$this->load->view('includes/header');
+		$this->load->view('home_view',$data);
+		$this->load->view('includes/footer');				
 	}
 }

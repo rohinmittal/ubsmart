@@ -1,4 +1,5 @@
-<div id="register_form">
+<div style="padding: 1.1%; width:300px;margin:auto">
+	<div id="register_form">
 	<hl>Create an Account!</h1>
 		<?php
 		echo form_open('login/create_member');
@@ -26,3 +27,4 @@
 		?>
 		<?php echo validation_errors('<p class="error">'); ?>
 </div> 
+</div>

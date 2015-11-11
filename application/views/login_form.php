@@ -1,4 +1,8 @@
-<div id="login_form">
+<div id=login_page>	
+<div id="adbanner_on_loginpage">
+	<p style="font-size: 15" >"Content....."</p>
+</div>
+<div id="login_form" style="float:right">
 	<?php if (isset($account_created)) {?>
 		<h3><?php echo $account_created; ?></h3>
 	<?php } else { ?>
@@ -14,4 +18,5 @@
 	echo form_close(); 				
 	?>
 	<?php echo validation_errors('<p class="error">'); ?>
+</div>
 </div>
