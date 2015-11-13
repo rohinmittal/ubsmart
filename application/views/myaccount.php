@@ -1,22 +1,19 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 ?><!DOCTYPE html>
-<html lang="en">
 <head>
 <meta charset="utf-8">
 <title>My Account - UBsMart</title>
 </head>
 
-<body>
-<div id="container">
-	<h1>Welcome to UBsMart</h1>
 
-	<div id="body">
-		<p>This is the page where user can view his account details.</p>
-	</div>
-	
-		
-</div>
-
-</body>
-</html>
+<p><b> Your Account </b></p>
+<b>Orders:</b><br>
+Order History<br>
+<br>
+<b>UB sMart Wallet:</b><br>
+Check Wallet Balance <br>
+Add money to wallet <br>
+<br>
+<b>Settings:</b><br>
+Change Account Details<br>
