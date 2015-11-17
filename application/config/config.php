@@ -17,8 +17,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | environments.
 |
 */
-#$config['base_url'] = 'http://localhost/ubsmart';
-$config['base_url'] = 'http://localhost/~rohinmittal/ubsmart';
+$config['base_url'] = 'http://localhost/ubsmart';
+#$config['base_url'] = 'http://localhost/~rohinmittal/ubsmart';
 
 /*
 |--------------------------------------------------------------------------
@@ -30,8 +30,8 @@ $config['base_url'] = 'http://localhost/~rohinmittal/ubsmart';
 | variable so that it is blank.
 |
 */
-$config['index_page'] = 'index.php';
-
+#$config['index_page'] = 'index.php';
+$config['index_page'] = '';
 /*
 |--------------------------------------------------------------------------
 | URI PROTOCOL

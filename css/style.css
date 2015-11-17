@@ -1,6 +1,6 @@
 body{
 	background:#FFFFFF;
-	width: 80%; 
+	width: 90%; 
 	margin: auto;
 	padding: 0;
 	font-family:"Comic Sans MS",serif;
@@ -24,7 +24,7 @@ body{
 #adbanner_on_loginpage{
 	background: #AAC4C5;
 	position: absolute;     	
-	width: 61%;
+	width: 62.5%;
 	height:237px;
 	border: 1px solid white;
 	float:left;
@@ -36,8 +36,8 @@ body{
 #login_form{ 	
 	background: #AAC4C5;
 	position: absolute;
-	width:25.4%;
-	margin-left:64.65%;	
+	width:24.4%;
+	margin-left:66.15%;	
 	float:right;
 	border: 1px solid white;
 	padding: 1em;
@@ -126,7 +126,7 @@ input[type=submit]:hover, form a:hover{
 
 
 /* rohin */
-p {
+#your_acc {
     color: red;
     text-align: justify;
 }
