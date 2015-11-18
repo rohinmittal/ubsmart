@@ -13,6 +13,7 @@ class Catalog extends CI_Controller {
 		$data['title']='Welcome to UBsMart!';
 		$this->load->view('includes/header_loggedin');
 		$this->load->view('catalog',$data);
-		$this->load->view('includes/footer');				
+		$this->load->view('includes/footer');
+		print_r($this->session->userdata());//temporary. Feel free to remove once development of seller only/buyer only pages gets going!				
 	}
 }

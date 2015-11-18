@@ -4,6 +4,14 @@ class Membership_model extends CI_Model {
 	function validate() {
 		$this->db->where('username', $this->input->post('username'));
 		$this->db->where('password', md5($this->input->post('password')));
+		if($this->input->post('login_type')=='s')
+		{
+			$this->db->where('is_seller', 1);
+		}
+		if($this->input->post('login_type')=='b')
+		{
+			$this->db->where('is_buyer', 1);
+		}
 		$query = $this->db->get('users');
 		
 		if($query->num_rows() == 1) {
