@@ -71,7 +71,10 @@ class Home extends CI_Controller {
 			 );
 			 $this->session->set_userdata($data);
 			 print_r($_POST);
-			 redirect('catalog');		
+			 if($lt=='buyer')
+			  {redirect('catalog');}
+			 else
+			  {redirect('seller_info');}	//seller_info is to be created by Suramrit	
 		    }
 	    	else
 		    {
