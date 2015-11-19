@@ -23,6 +23,7 @@ class Catalog extends CI_Controller {
 		$this->load->view('includes/header_loggedin');
 		$this->load->view('catalog_v',$data);
 		$this->load->view('includes/footer');
+		print_r($this->session->userdata());
 		
 	}
 	

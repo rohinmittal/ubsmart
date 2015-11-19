@@ -17,19 +17,8 @@
     			<div id="SB" style="background:#393939; padding: 1px;">
     			<?php echo form_input('search_query', 'Search', 'id="search_bar" style="margin: 0 0 0 0; 
     			border: none; height: 16px ;width:40%; display: inline; margin-left:25%; margin-top:-25%"');
-				
-				 $btn_search = array(
-                    'type'=>'image',
-                    'src'=>base_url().'images/MG.png',
-                    'id'=>"search_submit",
-                    'name'=>'image',
-                    'width'=>'26',
-                    'height'=>'26',
-                    'value'=> ''                    
-                );
-                echo form_input($btn_search);
-				?>		
-				
+				?>
+				<button type="submit" id="search_submit"><img src="<?php echo base_url("/images/MG.png"); ?>"/></button>				
 				</div><?php
    			}?>
 		</div>
