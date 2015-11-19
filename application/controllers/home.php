@@ -45,6 +45,7 @@ class Home extends CI_Controller {
 		//rules
 		$this->form_validation->set_rules('username', 'Username', 'trim|required|callback_check_if_blank_usrname');
 		$this->form_validation->set_rules('password', 'Password', 'trim|required');
+		$this->form_validation->set_rules('login_type', 'login_type', 'callback_check_if_signintype_chosen');
 		
 		if ($this->form_validation->run() == FALSE) // didn't validate
 		{ 
@@ -59,18 +60,25 @@ class Home extends CI_Controller {
 			$query=$this->membership_model->validate();
 			if($query)//credentials validated!
 			{
-		     echo "<script type='text/javascript'>alert('login successful!')</script>";
+		     //echo "<script type='text/javascript'>alert('login successful!')</script>";
+			 $lt='buyer';
+			 if($this->input->post('login_type')=='s')
+		     {$lt='seller';}		     			 
 			 $data=array(
 			      'username'=>$this->input->post('username'),
-			      'is_logged_in'=>true
+			      'is_logged_in'=>true,
+			      'logintype'=>$lt
 			 );
 			 $this->session->set_userdata($data);
-			 redirect('catalog');		
+			 print_r($_POST);
+			 if($lt=='buyer')
+			  {redirect('catalog');}
+			 else
+			  {redirect('seller_info');}	//seller_info is to be created by Suramrit	
 		    }
 	    	else
 		    {
 			 echo "<script type='text/javascript'>alert('Incorrect credentials!')</script>";
-	print $query;	
 			 $this->index();
 		    }
 	    }
@@ -106,7 +114,7 @@ class Home extends CI_Controller {
 			$this->load->view('includes/header');
             $this->load->view('login_form',$data);
             $this->load->view('includes/footer');
-			print_r($this->session->userdata());
+			//print_r($this->session->userdata());
 		  }
 		  else
 		  {
@@ -144,11 +152,19 @@ class Home extends CI_Controller {
        {$email_is_ub = FALSE;}       
       if ($email_is_ub) { return TRUE; } else { return FALSE; }
 	}
+    function check_if_signintype_chosen($login_type)
+    {
+      $lt_chosen=FALSE;
+	  if(isset($_POST['login_type']))
+	  {    $lt_chosen=TRUE;     }       
+      if ($lt_chosen) { return TRUE; } else { return FALSE; }    	
+	}
 	function check_if_role_chosen($roles)
     {
-      $role_chosen=FALSE;      
-      if(isset($_POST['roles']))
-	  {    $role_chosen=TRUE;     }       
+      $role_chosen=TRUE;
+	  $rolevals=$_POST['roles'];      
+      if($rolevals[0]==NULL and $rolevals[1]==NULL)
+	  {    $role_chosen=FALSE;     }       
       if ($role_chosen) { return TRUE; } else { return FALSE; }
 	}
 	function check_if_blank_usrname($username)

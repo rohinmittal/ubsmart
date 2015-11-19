@@ -5,7 +5,7 @@ body{
 	padding: 0;
 	font-family:"Comic Sans MS",serif;
 }
-.header {
+.main_bar {
     text-align:right;
     background: #AAC4C5;
 }
@@ -71,7 +71,8 @@ h1 {
 } 
 h3 { 
 	font-size: 1.1em;
-} 
+}
+ 
 input[type=text], input[type=password] { 
 	font-family: 'Comic Sans MS', serif;
 	font-size: 14px;

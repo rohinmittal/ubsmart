@@ -3,7 +3,8 @@
 	<div id="register_form">
 	<hl>Create an Account!</h1>
 		<?php
-		echo form_open('home/create_member');
+		$hidden = array('roles[0]' => NULL, 'roles[1]' => NULL);
+		echo form_open('home/create_member','',$hidden);
 		//echo form_input('first_name', set_value('first_name', 'First Name'));
 		//echo form_input('last_name', set_value('last_name', 'Last Name'));
 		
@@ -17,9 +18,9 @@
 		
 		echo form_fieldset('Select your role(s)');
 		echo form_label('Buyer','is_buyer');
-		echo form_checkbox('roles[]','1',TRUE);
+		echo form_checkbox('roles[0]','1',TRUE);
 		echo form_label('Seller','is_seller');
-		echo form_checkbox('roles[]','1',TRUE);
+		echo form_checkbox('roles[1]','1',TRUE);
 		echo form_fieldset_close();
 		
 		echo "<br />";//br();

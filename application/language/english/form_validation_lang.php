@@ -70,6 +70,7 @@ $lang['check_if_username_exists']		= 'Sorry, that username is already taken.';
 $lang['check_if_email_exists']		= 'Sorry, that e-mail ID has already been registered.';
 $lang['check_if_email_ub']		= 'Sorry, only users with a buffalo.edu domain are allowed to sign up.';
 $lang['check_if_role_chosen']		= 'You must select atleast one role.';
+$lang['check_if_signintype_chosen']		= 'You must select a login type.';
 $lang['check_if_blank_usrname']		= 'The Username field is required.';
 $lang['check_if_blank_email']		= 'The Email Address field is required.';
 $lang['check_if_blank_tel']		= 'The Cellphone Number field is required.';
