@@ -5,7 +5,7 @@
 </div>
 <div id="login_form">
 	<?php if (isset($account_created)) {?>
-		<h3><?php echo $account_created; ?></h3>
+		<h1><?php echo $account_created; ?></h1>
 	<?php } else { ?>
 		<h1>Login, please.</h1>
 	<?php } ?>

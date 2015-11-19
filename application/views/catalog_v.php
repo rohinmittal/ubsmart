@@ -9,7 +9,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <div id="container">
 
 	<div id="body">
-	The page you are looking at is the homepage for UBsMart!!!!
+	The page you are looking at is the homepage for UBsMart!!!!<?php echo($searchval) ?>
 	</div>
 	
 		
