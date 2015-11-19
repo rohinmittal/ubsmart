@@ -32,6 +32,26 @@ class Membership_model extends CI_Model {
 		return $insert;
     }
 	
+	function check_password() {
+		$this->db->where('username', $this->session->userdata('username'));
+		$this->db->where('password', md5($this->input->post('current_password')));
+
+		$query = $this->db->get('users');
+		
+		if($query->num_rows() == 1) {
+			return true;
+		}
+		return false;
+	}
+	
+	function updateDetails() {
+		$request = array(
+			'password' => md5($this->input->post('newPassword'))	
+		);
+		$this->db->where('username', $this->session->userdata('username'));
+		$this->db->update('users', $request);
+	}
+	
 	function check_if_username_exists($username)
 	{
 		$this->db->where('username', $username);

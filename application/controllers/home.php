@@ -180,6 +180,6 @@ class Home extends CI_Controller {
 			$tel_entered=FALSE;
 		}
         return $tel_entered;
-	}     
+	}    
 }
 ?>
