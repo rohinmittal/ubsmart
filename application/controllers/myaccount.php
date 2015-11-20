@@ -21,8 +21,17 @@ class myaccount extends CI_Controller {
 	 */
 	public function index()
 	{
+		$this->load->model('membership_model');
+		$query = $this->membership_model->retreiveUserDetails();
+		$data = array();
+		if ($query->num_rows() > 0) {
+			foreach ($query->result() as $row) {
+				$data['vwBalance'] = $row->vw_balance;
+				$data['username'] = $row->username;
+			}
+		}
 		$this->load->view('includes/header_loggedin');
-		$this->load->view('myaccount/myaccount_v');
+		$this->load->view('myaccount/myaccount_v', $data);
 		$this->load->view('includes/footer');
 	}
 	
@@ -78,6 +87,16 @@ class myaccount extends CI_Controller {
 			$this->membership_model->updateDetails();
 			redirect('myaccount');		
 	    }	
+	}
+	
+	function topupVWBalance() {
+		$this->load->view('includes/header_loggedin');
+		$this->load->view('myaccount/topupVWBalance_v');
+		$this->load->view('includes/footer');
+	}
+	
+	function validateCreditCardDetails() {
+		
 	}
 	
 	function check_if_blank_password($password)

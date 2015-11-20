@@ -52,6 +52,12 @@ class Membership_model extends CI_Model {
 		return false;
 	}
 	
+	function retreiveUserDetails() {
+		$this->db->where('username', $this->session->userdata('username'));
+		$query = $this->db->get('users');		
+		return $query;
+	}
+	
 	function updateDetails() {
 		$request = array(
 			'password' => md5($this->input->post('newPassword'))	

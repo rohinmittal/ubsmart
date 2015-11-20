@@ -7,16 +7,18 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 </head>
 
 
-<p id=your_acc><b> Your Account </b></p>
+<p id=your_acc>
+	<b> Hello <?php echo $username?>! Welcome to your UB sMart Account. </b>
+</p>
+
 <b>Orders:</b><br>
 Order History<br>
 <br>
 <b>UB sMart Wallet:</b><br>
-Check Wallet Balance <br>
-Add money to wallet <br>
+Your wallet balance is: <b><?php echo $vwBalance ?> INR </b><br>
+<?php echo anchor('myaccount/topupVWBalance', 'Add money to wallet'); ?><br>
 <br>
 <b>Settings:</b><br>
-<br>
 <?php
 echo anchor('myaccount/getPassword','Change Account Details');
 ?>
