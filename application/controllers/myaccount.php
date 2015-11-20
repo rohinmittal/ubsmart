@@ -54,15 +54,8 @@ class myaccount extends CI_Controller {
         else
         {	
 			$this->load->model('membership_model');
-			$query=$this->membership_model->check_password();
-			if($query)//credentials validated!
-			{
-			 redirect('myaccount/getNewDetails');		
-		    }
-	    	else
-		    {
-				$this->getPassword();
-		    }
+			$this->membership_model->check_password();
+			redirect('myaccount/getNewDetails');		
 	    }
 	}
 	
