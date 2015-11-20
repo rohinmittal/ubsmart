@@ -16,10 +16,11 @@
     			
     			<div id="SB" style="background:#393939; padding: 1px;">
     			<?php echo form_input('search_query', 'Search', 'id="search_bar" style="margin: 0 0 0 0; 
-    			border: none; height: 1px ;width:40%; display: inline; margin-left:25%;"');
+    			border: none; height: 1px;width:40%; display: inline; margin-left:25%;"');
 				?>
-				<button type="submit" style="display: inline;" id="search_submit"><img src="<?php echo base_url("/images/MG.png"); ?>"/></button>				
+				<button type="submit" style="display: inline; margin-left: -0.5%; margin-top: -20%";" alignment-baseline:   id="search_submit"><img id="MG"src="<?php echo base_url("/images/MG.png"); ?>"/></button>				
 				</div><?php
+				echo form_close();
    			}?>
 		</div>
 		<div class="main_bar">

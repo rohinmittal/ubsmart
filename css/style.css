@@ -120,6 +120,12 @@ input[type=submit]:hover, form a:hover{
 	background: #0070b8;
 	cursor: pointer;
 }
+#MG{
+	height:20px;
+}
+#MG:hover{
+	cursor: pointer;
+}
 	
 .error{
 	color:#393939;
