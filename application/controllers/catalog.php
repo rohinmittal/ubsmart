@@ -15,7 +15,7 @@ class Catalog extends CI_Controller {
 		$this->load->view('includes/header_loggedin');
 		$this->load->view('catalog_v',$data);
 		$this->load->view('includes/footer');
-		print_r($this->session->userdata());//temporary. Feel free to remove once development of seller only/buyer only pages gets going!				
+		//print_r($this->session->userdata());//temporary. Feel free to remove once development of seller only/buyer only pages gets going!				
 	}
 	public function execute_search()
 	{
@@ -23,6 +23,7 @@ class Catalog extends CI_Controller {
 		$this->load->view('includes/header_loggedin');
 		$this->load->view('catalog_v',$data);
 		$this->load->view('includes/footer');
+		//print_r($this->session->userdata());
 		
 	}
 	

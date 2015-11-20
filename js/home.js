@@ -30,6 +30,8 @@ $(document).ready(function() {
 	
 	if(document.getElementById("search_bar"))
 	{
+		document.getElementById("search_submit").style.background = "gray";
+	 	document.getElementById("search_submit").disabled=true;
 		$( "#search_bar" ).keyup(checkvalidsq);
 		$( "#search_bar" ).focusin(checkvalidsq);
 		function checkvalidsq() {
