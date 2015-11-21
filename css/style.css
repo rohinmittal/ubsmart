@@ -19,8 +19,10 @@ body{
 #dropdowns{
 	position: relative;
 }	
+
 #dropdowns ul{
 	position: absolute;
+	/*border: 1px*/
 	list-style-type:none;
 	margin:0px 10px 0px 0px;
 	padding:0px 10px 0px 0px;
