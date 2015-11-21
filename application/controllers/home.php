@@ -70,7 +70,7 @@ class Home extends CI_Controller {
 			      'logintype'=>$lt
 			 );
 			 $this->session->set_userdata($data);
-			 print_r($_POST);
+			 //print_r($_POST);
 			 if($lt=='buyer')
 			  {redirect('catalog');}
 			 else
@@ -95,7 +95,7 @@ class Home extends CI_Controller {
 		$this->form_validation->set_rules('password', 'Password', 'trim|required|min_length[8]');
 		$this->form_validation->set_rules('password_confirm', 'Password Confirmation', 'trim|required|matches[password]');
 		$this->form_validation->set_rules('roles[]', 'roles', 'callback_check_if_role_chosen'); 
-		$this->form_validation->set_rules('telephone', 'Cellphone Number', 'trim|required|callback_check_if_blank_tel|exact_length[10]|numeric');
+		$this->form_validation->set_rules('telephone', 'Cellphone Number', 'trim|required|callback_check_if_blank_tel|exact_length[10]|integer|callback_check_if_positive');
 
 		if ($this->form_validation->run() == FALSE) // didn't validate
 		{ 
@@ -196,6 +196,17 @@ class Home extends CI_Controller {
 			$tel_entered=FALSE;
 		}
         return $tel_entered;
-	}    
+	}
+	function check_if_positive($tel)
+    {
+    	$tcomp=$tel[0];
+		$tel_positive=TRUE;
+        if($tcomp=='-')
+		{
+			$tel_positive=FALSE;
+		}
+        return $tel_positive;
+	}
+	
 }
 ?>
