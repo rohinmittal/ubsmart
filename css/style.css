@@ -182,3 +182,21 @@ input[type=submit]:hover, form a:hover{
 	margin-right: auto;
 	margin-top: 20px
 }
+#left_side {
+    float: left;
+	width:35%;
+	text-align:center;
+}
+
+#center_s {
+    margin-left: auto;
+    margin-right: auto;
+    width: 28%;
+	text-align:center;
+}
+
+#right_side {
+    float: right;
+	width:35%;
+	text-align:center;
+}
