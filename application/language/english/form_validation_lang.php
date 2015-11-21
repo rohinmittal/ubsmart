@@ -75,4 +75,4 @@ $lang['check_if_blank_usrname']		= 'The Username field is required.';
 $lang['check_if_blank_email']		= 'The Email Address field is required.';
 $lang['check_if_blank_tel']		= 'The Cellphone Number field is required.';
 $lang['check_if_blank_password'] = 'The Password field is required.';
-
+$lang['check_if_positive_amount'] = 'The amount should be a positive number';

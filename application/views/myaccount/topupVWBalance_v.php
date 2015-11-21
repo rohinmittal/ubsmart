@@ -7,13 +7,16 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 </head>
 
 <div id="update_details_form">
+	
 	<?php
 	echo form_open('myaccount/validateCreditCardDetails');
 	echo form_input('cardnumber', set_value('cardnumber', 'enter your 16 digit card number'));
-	echo form_input('month', set_value('month', '1-12'));
-	echo form_input('year', set_value('year', '2015'));
+	echo form_dropdown('month', $monthOptions, '');
+	echo form_dropdown('year', $yearOptions, '');
+	echo form_input('amount', set_value('Amount', 'Enter the amount:'));
 	echo form_submit('submit','Submit');
 	echo anchor('myaccount','Cancel');
+
 	echo form_close(); 	
 	
 	echo validation_errors('<p class="error">'); 			

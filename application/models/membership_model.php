@@ -66,6 +66,23 @@ class Membership_model extends CI_Model {
 		$this->db->update('users', $request);
 	}
 	
+	function topupVW() {
+		$this->db->where('username', $this->session->userdata('username'));
+		$query = $this->db->get('users');	
+		$old_balance = 0;
+		if ($query->num_rows() > 0) {
+			foreach ($query->result() as $row) {
+				$old_balance = $row->vw_balance;
+			}
+		}
+		
+		$request = array(
+			'vw_balance' => ($this->input->post('amount')	+ $old_balance)
+		);
+		$this->db->where('username', $this->session->userdata('username'));
+		$this->db->update('users', $request);
+	}
+	
 	function check_if_username_exists($username)
 	{
 		$this->db->where('username', $username);

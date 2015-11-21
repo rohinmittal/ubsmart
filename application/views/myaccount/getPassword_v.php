@@ -11,7 +11,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	<?php if (isset($incorrect_password)) {?>
 	<b><?php echo $incorrect_password; ?></b>
 	<?php } else { ?>
-	<b>Enter your current password.<b>
+	<b>Enter your current password.</b>
 	<?php } ?>
 	
 	<?php
