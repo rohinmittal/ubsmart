@@ -47,6 +47,19 @@ class myaccount extends CI_Controller {
 		$this->load->view('includes/footer');
 	}
 	
+	public function boughtHistory() {
+		$this->load->model('membership_model');
+		$data['query_result'] = $this->membership_model->boughtHistory();
+		$this->load->view('includes/header_loggedin');
+		if ($data['query_result']->num_rows() > 0) {
+			$this->load->view('myaccount/boughtHistory_v', $data);
+		}
+		else {
+			// no product bought
+			$this->load->view('myaccount/boughtHistory_v');
+		}
+		$this->load->view('includes/footer');
+	}
 	public function validatePassword()
 	{	
 		$this->load->library('form_validation');
@@ -137,9 +150,7 @@ class myaccount extends CI_Controller {
 		//rules		
 		$this->form_validation->set_rules('cardnumber', 'Card Number', 'trim|required|exact_length[16]|integer');
 		$this->form_validation->set_rules('amount', 'Amount', 'trim|required|integer|callback_check_if_positive_amount');
-		if ($this->form_validation->run() == FALSE) // didn't validate
-		{ 
-			$expiry['monthOptions'] = array(
+		$expiry['monthOptions'] = array(
 			'January' => 'Jan',
 			'February' => 'Feb',
 			'March' => 'Mar',	
@@ -167,6 +178,8 @@ class myaccount extends CI_Controller {
 			'2025' => '2025',			
 			
 		);
+		if ($this->form_validation->run() == FALSE) // didn't validate
+		{ 
          $this->load->view('includes/header_loggedin');
          $this->load->view('myaccount/topupVWBalance_v', $expiry);
          $this->load->view('includes/footer'); 
@@ -196,7 +209,7 @@ class myaccount extends CI_Controller {
 		{
 			return false;
 		}
-		return false;
+		return true;
 	}
 }
 ?>

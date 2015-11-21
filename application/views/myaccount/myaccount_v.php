@@ -12,11 +12,16 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 </p>
 
 <b>Orders:</b><br>
-Order History<br>
+<?php echo anchor('myaccount/boughtHistory', 'Order History'); ?>
+<br>
 <br>
 <b>UB sMart Wallet:</b><br>
-Current Balance: <b><?php echo $vwBalance ?> INR </b><br>
-<?php echo anchor('myaccount/topupVWBalance', 'Add money to wallet'); ?><br>
+Current Balance:
+	<b><?php echo $vwBalance ?> INR </b>
+	<div style="margin-left:1%; display:inline ">
+		<?php echo anchor('myaccount/topupVWBalance', 'Topup?'); ?>
+	</div><br>
+<br>
 <br>
 <b>Settings:</b><br>
 <?php
