@@ -40,7 +40,7 @@
 			?>
 			</div>
 			<div id="product_list">
-				hi
+				
 			</div>			
 		</div>
 	</div>		
