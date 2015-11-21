@@ -52,9 +52,27 @@ class Membership_model extends CI_Model {
 		return false;
 	}
 	
+	function retreiveUserDetails() {
+		$this->db->where('username', $this->session->userdata('username'));
+		$query = $this->db->get('users');		
+		return $query;
+	}
+	
 	function updateDetails() {
 		$request = array(
 			'password' => md5($this->input->post('newPassword'))	
+		);
+		$this->db->where('username', $this->session->userdata('username'));
+		$this->db->update('users', $request);
+	}
+	
+	function topupVW() {
+		$this->db->where('username', $this->session->userdata('username'));
+		$query = $this->db->get('users');	
+		$old_balance = $query->row()->vw_balance;
+		
+		$request = array(
+			'vw_balance' => ($this->input->post('amount')	+ $old_balance)
 		);
 		$this->db->where('username', $this->session->userdata('username'));
 		$this->db->update('users', $request);
@@ -78,5 +96,20 @@ class Membership_model extends CI_Model {
 		 { return FALSE;}
 		else
 		 { return TRUE; }
+	}
+	
+	function boughtHistory() {
+		$this->db->where('buyer_name', $this->session->userdata('username'));
+
+		$query = $this->db->get('orders');
+		return $query;
+	}
+	
+	function productDetailsFromProductID($product_id) {
+		$this->db->where('product_id', $product_id);
+
+		$query = $this->db->get('products');
+		assert($query->num_rows() > 0);
+		return $query->row();
 	}
 } 
