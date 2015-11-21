@@ -63,8 +63,17 @@ class myaccount extends CI_Controller {
         else
         {	
 			$this->load->model('membership_model');
-			$this->membership_model->check_password();
-			redirect('myaccount/getNewDetails');		
+			$query = $this->membership_model->check_password();
+			if($query) {
+				//password validated.
+				redirect('myaccount/getNewDetails');		
+			}
+			else {
+				$data['incorrect_password']='Incorrect password. Please enter your correct password.<br>';
+				$this->load->view('includes/header_loggedin');
+				$this->load->view('myaccount/getPassword_v', $data);         
+				$this->load->view('includes/footer'); 
+			}
 	    }
 	}
 	

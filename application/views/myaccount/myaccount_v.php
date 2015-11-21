@@ -15,10 +15,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 Order History<br>
 <br>
 <b>UB sMart Wallet:</b><br>
-Your wallet balance is: <b><?php echo $vwBalance ?> INR </b><br>
+Current Balance: <b><?php echo $vwBalance ?> INR </b><br>
 <?php echo anchor('myaccount/topupVWBalance', 'Add money to wallet'); ?><br>
 <br>
 <b>Settings:</b><br>
 <?php
 echo anchor('myaccount/getPassword','Change Account Details');
 ?>
+<br>
