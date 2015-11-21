@@ -4,7 +4,7 @@
 	<div id="breadcrumbs">
 	The page you are looking at is the homepage for UBsMart!!!!
 	</div>
-	<div id="product_related" style="background: blue;">		
+	<div id="product_related" class="clearfix" style="background: blue;">		
 		<div id="filter_related">
 			<fieldset>
 				<legend>Sort by:</legend>
@@ -43,4 +43,5 @@
 				
 			</div>			
 		</div>
+		
 	</div>		

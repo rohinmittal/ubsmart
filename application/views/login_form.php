@@ -1,5 +1,5 @@
 <title> UB sMart </title>
-<div id="login_page">	
+<div id="login_page" class="clearfix" style="background: yellow">	
 <div id="adbanner_on_loginpage">
 	<p style="font-size: 15" >"Content....."</p>
 </div>
