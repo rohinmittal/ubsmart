@@ -15,7 +15,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	<?php } ?>
 	
 	<?php
-	echo form_open('myaccount/validatePassword');
+	echo form_open('myaccount/validateCurrentPassword');
 	echo form_password('current_password', '', 'placeholder="your current password" class="password"');
 	echo form_submit('submit','Submit');
 	echo anchor('myaccount','Cancel');

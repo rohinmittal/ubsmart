@@ -209,20 +209,20 @@ class Home extends CI_Controller {
         return $tel_positive;
 	}
 	
-	function sendVerificationEmail($email) {
+	 function sendVerificationEmail($email) {
 		$this->load->library('email');
-		$config['protocol']    = 'smtp';
+	    $config['protocol']    = 'smtp';
 		$config['smtp_host']    = 'ssl://smtp.gmail.com';
 		$config['smtp_port']    = '465';
 		$config['smtp_timeout'] = '7';
 		$config['smtp_user']    = 'ubsmart.ub@gmail.com';
-		$config['smtp_pass']    = '<password>';
+		$config['smtp_pass']    = 'ubsmart123';
 		$config['charset']    = 'utf-8';
 		$config['newline']    = "\r\n";
 		$config['mailtype'] = 'html';
-		$config['validation'] = TRUE; // bool whether to validate email or not      
+		$config['validation'] = TRUE; // bool whether to validate email or not  
+	
 		$this->email->initialize($config);
-
 		$this->email->from('ubsmart.ub@gmail.com', 'Team UBsMart');
 		$this->email->to($email);
 		$this->email->subject('Thank you for registering at UBsmart!');

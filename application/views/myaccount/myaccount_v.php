@@ -28,7 +28,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	<fieldset>
 		<legend style="text-align:left"><b>Settings</b></legend>
 		<br>
-		<?php echo anchor('myaccount/getPassword','Change Account Details'); ?>
+		<?php echo anchor('myaccount/getCurrentPassword','Change Account Details'); ?>
 		<br>
 		<br>
 		<br>
