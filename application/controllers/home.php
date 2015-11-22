@@ -60,26 +60,33 @@ class Home extends CI_Controller {
 			$query=$this->membership_model->validate();
 			if($query)//credentials validated!
 			{
-		     //echo "<script type='text/javascript'>alert('login successful!')</script>";
-			 $lt='buyer';
-			 if($this->input->post('login_type')=='s')
-		     {$lt='seller';}		     			 
-			 $data=array(
-			      'username'=>$this->input->post('username'),
-			      'is_logged_in'=>true,
-			      'logintype'=>$lt
-			 );
-			 $this->session->set_userdata($data);
-			 print_r($_POST);
-			 if($lt=='buyer')
-			  {redirect('catalog');}
-			 else
-			  {redirect('seller_acc');}	//seller_acc is to be created by Suramrit	
+
+				//echo "<script type='text/javascript'>alert('login successful!')</script>";
+				$lt='buyer';
+				if($this->input->post('login_type')=='s')
+				{
+					$lt='seller';
+				}		     			 
+				$data=array(
+					'username'=>$this->input->post('username'),
+					'is_logged_in'=>true,
+					'logintype'=>$lt
+				);
+				$this->session->set_userdata($data);
+				//print_r($_POST);
+				if($lt=='buyer')
+				{
+					redirect('catalog');
+				}
+				else
+				{
+					redirect('seller_acc');
+				}	
 		    }
 	    	else
 		    {
-			 echo "<script type='text/javascript'>alert('Incorrect credentials!')</script>";
-			 $this->index();
+				echo "<script type='text/javascript'>alert('Incorrect credentials!')</script>";
+				$this->index();
 		    }
 	    }
 	}
@@ -95,7 +102,7 @@ class Home extends CI_Controller {
 		$this->form_validation->set_rules('password', 'Password', 'trim|required|min_length[8]');
 		$this->form_validation->set_rules('password_confirm', 'Password Confirmation', 'trim|required|matches[password]');
 		$this->form_validation->set_rules('roles[]', 'roles', 'callback_check_if_role_chosen'); 
-		$this->form_validation->set_rules('telephone', 'Cellphone Number', 'trim|required|callback_check_if_blank_tel|exact_length[10]|numeric');
+		$this->form_validation->set_rules('telephone', 'Cellphone Number', 'trim|required|callback_check_if_blank_tel|exact_length[10]|integer|callback_check_if_positive');
 
 		if ($this->form_validation->run() == FALSE) // didn't validate
 		{ 
@@ -109,6 +116,7 @@ class Home extends CI_Controller {
 		  
 		  if ($query=$this->membership_model->create_member())
 		  {
+			$this->sendVerificationEmail($this->input->post('email'));
 		  	$data['account_created']='Your account has been created.<br/><br/>You may now login.';
 			
 			$this->load->view('includes/header');
@@ -196,6 +204,37 @@ class Home extends CI_Controller {
 			$tel_entered=FALSE;
 		}
         return $tel_entered;
-	}    
+	}
+	function check_if_positive($tel)
+    {
+    	$tcomp=$tel[0];
+		$tel_positive=TRUE;
+        if($tcomp=='-')
+		{
+			$tel_positive=FALSE;
+		}
+        return $tel_positive;
+	}
+	
+	 function sendVerificationEmail($email) {
+		$this->load->library('email');
+	    $config['protocol']    = 'smtp';
+		$config['smtp_host']    = 'ssl://smtp.gmail.com';
+		$config['smtp_port']    = '465';
+		$config['smtp_timeout'] = '7';
+		$config['smtp_user']    = 'ubsmart.ub@gmail.com';
+		$config['smtp_pass']    = 'ubsmart123';
+		$config['charset']    = 'utf-8';
+		$config['newline']    = "\r\n";
+		$config['mailtype'] = 'html';
+		$config['validation'] = TRUE; // bool whether to validate email or not  
+	
+		$this->email->initialize($config);
+		$this->email->from('ubsmart.ub@gmail.com', 'Team UBsMart');
+		$this->email->to($email);
+		$this->email->subject('Thank you for registering at UBsmart!');
+		$this->email->message('Thank you!<br>Welcome to UBsMart. We hope you\'ll like our platform.');
+		$this->email->send();
+	}
 }
 ?>
