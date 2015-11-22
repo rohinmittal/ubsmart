@@ -52,7 +52,7 @@ class Home extends CI_Controller {
          $this->load->view('includes/header');
          $this->load->view('login_form');
          $this->load->view('includes/footer'); 
-		 //just checking for issues with git
+		
         } 
         else
         {	
@@ -74,7 +74,7 @@ class Home extends CI_Controller {
 			 if($lt=='buyer')
 			  {redirect('catalog');}
 			 else
-			  {redirect('seller_info');}	//seller_info is to be created by Suramrit	
+			  {redirect('seller_acc');}	//seller_acc is to be created by Suramrit	
 		    }
 	    	else
 		    {
