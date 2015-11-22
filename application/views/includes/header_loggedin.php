@@ -31,7 +31,6 @@
 		echo form_close();
 	}?>
 	</div>
-	
 	<div class="main_bar">
 		<div id="mb_headers">
 			<?php 

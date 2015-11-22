@@ -52,7 +52,7 @@ class Home extends CI_Controller {
          $this->load->view('includes/header');
          $this->load->view('login_form');
          $this->load->view('includes/footer'); 
-		 //just checking for issues with git
+		
         } 
         else
         {	
@@ -60,6 +60,7 @@ class Home extends CI_Controller {
 			$query=$this->membership_model->validate();
 			if($query)//credentials validated!
 			{
+
 				//echo "<script type='text/javascript'>alert('login successful!')</script>";
 				$lt='buyer';
 				if($this->input->post('login_type')=='s')
@@ -79,8 +80,8 @@ class Home extends CI_Controller {
 				}
 				else
 				{
-					redirect('seller_info');
-				}	//seller_info is to be created by Suramrit	
+					redirect('seller_acc');
+				}	
 		    }
 	    	else
 		    {
