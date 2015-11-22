@@ -60,26 +60,32 @@ class Home extends CI_Controller {
 			$query=$this->membership_model->validate();
 			if($query)//credentials validated!
 			{
-		     //echo "<script type='text/javascript'>alert('login successful!')</script>";
-			 $lt='buyer';
-			 if($this->input->post('login_type')=='s')
-		     {$lt='seller';}		     			 
-			 $data=array(
-			      'username'=>$this->input->post('username'),
-			      'is_logged_in'=>true,
-			      'logintype'=>$lt
-			 );
-			 $this->session->set_userdata($data);
-			 //print_r($_POST);
-			 if($lt=='buyer')
-			  {redirect('catalog');}
-			 else
-			  {redirect('seller_info');}	//seller_info is to be created by Suramrit	
+				//echo "<script type='text/javascript'>alert('login successful!')</script>";
+				$lt='buyer';
+				if($this->input->post('login_type')=='s')
+				{
+					$lt='seller';
+				}		     			 
+				$data=array(
+					'username'=>$this->input->post('username'),
+					'is_logged_in'=>true,
+					'logintype'=>$lt
+				);
+				$this->session->set_userdata($data);
+				//print_r($_POST);
+				if($lt=='buyer')
+				{
+					redirect('catalog');
+				}
+				else
+				{
+					redirect('seller_info');
+				}	//seller_info is to be created by Suramrit	
 		    }
 	    	else
 		    {
-			 echo "<script type='text/javascript'>alert('Incorrect credentials!')</script>";
-			 $this->index();
+				echo "<script type='text/javascript'>alert('Incorrect credentials!')</script>";
+				$this->index();
 		    }
 	    }
 	}
