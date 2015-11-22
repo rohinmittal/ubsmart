@@ -30,7 +30,7 @@ $(document).ready(function() {
 	
 	if(document.getElementById("search_bar"))
 	{
-		document.getElementById("search_submit").style.background = "gray";
+		document.getElementById("search_submit").style.background = "#C9CBCD";
 	 	document.getElementById("search_submit").disabled=true;
 		$( "#search_bar" ).keyup(checkvalidsq);
 		$( "#search_bar" ).focusin(checkvalidsq);
@@ -43,13 +43,13 @@ $(document).ready(function() {
 		 if(sq=="Search"||sq=="")
 		 {
 	 	  //alert("what");
-	 	  document.getElementById("search_submit").style.background = "gray";
+	 	  document.getElementById("search_submit").style.background = "#C9CBCD";
 	 	  document.getElementById("search_submit").disabled=true;
     	 }
     	 else
     	 {
     	 //	alert("hua!");
-    	  document.getElementById("search_submit").style.background = "#027cca";
+    	  document.getElementById("search_submit").style.background = "white";
     	  //document.getElementById("search_submit").style.background = /background: #0070b8;	cursor: pointer;
     	  document.getElementById("search_submit").disabled=false;
     	 }
@@ -95,7 +95,20 @@ $(document).ready(function() {
             document.getElementById('laptop_details').style.display="none";
         }
      });
-     
-     
-     
+    
+	//for drop downs
+	$('#mb_headers span').mouseenter(function() { 
+		var elem_class = $(this).attr('class');
+		var elem_width = $(this).css('width');
+		var matching_ul = $('ul.' + elem_class);
+		matching_ul.css('visibility','visible');
+		matching_ul.css('min-width', elem_width);
+	}).mouseleave(function() {
+		 var elem_class =$(this).attr('class');
+		 $('ul.' + elem_class).css('visibility','hidden'); 
+	});
+	$('#dropdowns ul').mouseenter(function() {
+		$(this).css('visibility','visible');
+	}).mouseleave(function() {
+		$(this).css('visibility','hidden'); }); 	
 });

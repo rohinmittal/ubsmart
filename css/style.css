@@ -3,11 +3,40 @@ body{
 	width: 90%; 
 	margin: auto;
 	padding: 0;
-	font-family:"Comic Sans MS",serif;
+	font-family:Arial, Helvetica, serif;
 }
 .main_bar {
-    text-align:right;
+    
     background: #AAC4C5;
+}
+#right{
+	float:right;
+	}
+#mb_headers{
+	margin-left: 1.5%; 
+	margin-right: 1.5%;
+	}
+#dropdowns{
+	position: relative;
+}	
+#dropdowns ul{
+	position: absolute;
+	list-style-type:none;
+	margin:0px 10px 0px 0px;
+	padding:0px 10px 0px 0px;
+	top:0px;
+	visibility:hidden;
+	}
+#dropdowns ul li{
+	margin:0px 0px 0px 0px;
+	padding:3px 0px 0px 0px;
+	background: #AAC4C5;
+}
+#dropdowns ul.electronics{
+	left:1.5%; /* because mb_headers has left margin of 1.5% */
+}
+#dropdowns ul.furniture{
+	left:9.5%;
 }
 #logo{
     display: block;
@@ -74,7 +103,7 @@ h3 {
 }
  
 input[type=text], input[type=password] { 
-	font-family: 'Comic Sans MS', serif;
+	font-family: Arial, Helvetica, serif;
 	font-size: 14px;
 	color: #0070b8;
 	display: block;
@@ -101,7 +130,7 @@ input:-ms-input-placeholder {
 	color: #549396; 
 } 
 input[type=submit], form a {
-	font-family: 'Comic Sans MS', serif;
+	font-family: Arial, Helvetica, serif;
 	border: none;
 	margin-right: 1em;
 	padding: 6px;
@@ -118,6 +147,12 @@ input[type=submit], form a {
 }
 input[type=submit]:hover, form a:hover{
 	background: #0070b8;
+	cursor: pointer;
+}
+#MG{
+	height:20px;
+}
+#MG:hover{
 	cursor: pointer;
 }
 	
@@ -146,4 +181,50 @@ input[type=submit]:hover, form a:hover{
 	margin-left: auto;
 	margin-right: auto;
 	margin-top: 20px
+}
+
+/*catalog*/
+#product_related{	
+	padding: 1%;	
+}    
+        
+#filter_related{
+	background: #AAC4C5;
+	width: 16.5%;
+	/*height:237px;
+	border: 1px solid white;*/
+	float:left;
+	padding: 1%;
+	-moz-border-radius: 4px;
+	-webkit-border-radius: 4px;
+	border-radius: 4px;
+}
+#product_grid{ 	
+	background: #AAC4C5;
+	width:78.4%;
+	margin-left:1%;	
+	float:left;
+	border: 1px;
+	padding: 1%;
+	-moz-border-radius: 4px;
+	-webkit-border-radius: 4px;
+	border-radius: 4px;
+}
+#left_side {
+    float: left;
+	width:35%;
+	text-align:center;
+}
+
+#center_s {
+    margin-left: auto;
+    margin-right: auto;
+    width: 28%;
+	text-align:center;
+}
+
+#right_side {
+    float: right;
+	width:35%;
+	text-align:center;
 }

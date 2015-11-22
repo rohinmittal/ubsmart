@@ -6,17 +6,44 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <title>My Account - UBsMart</title>
 </head>
 
+<p id=your_acc>
+	<b> Hello <?php echo $username?>! Welcome to your UB sMart Account. </b><br><br>
+	You have XX pending handovers! Click on the Handover link below to confirm your handovers!<br><br>
+</p>
 
-<p id=your_acc><b> Your Account </b></p>
-<b>Orders:</b><br>
-Order History<br>
-<br>
-<b>UB sMart Wallet:</b><br>
-Check Wallet Balance <br>
-Add money to wallet <br>
-<br>
-<b>Settings:</b><br>
-<br>
-<?php
-echo anchor('myaccount/getPassword','Change Account Details');
-?>
+
+
+<div id="left_side">
+	<fieldset>
+		<legend style="text-align:left"><b>Orders</b></legend>
+		<br>
+		<?php echo anchor('myaccount/boughtHistory', 'Order History'); ?>
+		<br>
+		<br>
+		<br>
+	</fieldset>
+</div>
+
+<div id="right_side">
+	<fieldset>
+		<legend style="text-align:left"><b>Settings</b></legend>
+		<br>
+		<?php echo anchor('myaccount/getCurrentPassword','Change Account Details'); ?>
+		<br>
+		<br>
+		<br>
+	</fieldset>
+</div>
+
+<div id ="center_s">
+	<fieldset>
+		<legend style="text-align:left"><b>UB sMart Wallet</b></legend>
+		<br>
+		Current Balance: <b><?php echo $vwBalance ?> INR </b>
+		<br>
+		<?php echo anchor('myaccount/topupVWBalance', 'Topup?'); ?>
+		<br>
+		<br>
+	</fieldset>
+</div>
+
