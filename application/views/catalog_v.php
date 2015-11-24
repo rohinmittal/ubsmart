@@ -8,10 +8,10 @@
 		<div id="filter_related">
 			<fieldset>
 				<legend>Sort by:</legend>
-				<input type="radio" name="sort" value="asc_price" onclick='alert("<?php echo anchor('catalog/execute_search/price/asc'); ?>");'>Price: Low to High<br>
-				<input type="radio" name="sort" value="desc_price">Price: Low to High<br>
-				<input type="radio" name="sort" value="asc_tier">Price: Low to High<br>
-				<input type="radio" name="sort" value="desc_tier">Price: Low to High<br>
+				<input type="radio" name="sort" value="asc_price" onclick="location.href='<?php echo base_url("catalog/execute_search/price/asc"); ?>'">Price: Low to High<br>
+				<input type="radio" name="sort" value="desc_price" onclick="location.href='<?php echo base_url("catalog/execute_search/price/desc"); ?>'">Price: High to Low<br>
+				<input type="radio" name="sort" value="asc_tier" onclick="location.href='<?php echo base_url("catalog/execute_search/tier/asc"); ?>'">Tier: Low to High<br>
+				<input type="radio" name="sort" value="desc_tier" onclick="location.href='<?php echo base_url("catalog/execute_search/tier/desc"); ?>'">Tier: High to Low<br>
 			</fieldset>
 			<br>
 			<fieldset>
