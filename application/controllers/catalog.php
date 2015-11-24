@@ -10,33 +10,58 @@ class Catalog extends CI_Controller {
 	public function home1()
 	{
 		//trying changes
-		//$data['title']='Welcome to UBsMart!';
+		//$data['title']='Welcome to UBsMart!';		
 		$data['searchval'] ="no_search_query";
 		$this->load->view('includes/header_loggedin');
 		$this->load->view('catalog_v',$data);
 		$this->load->view('includes/footer');
 		//print_r($this->session->userdata());//temporary. Feel free to remove once development of seller only/buyer only pages gets going!				
 	}
-	public function execute_search()
+	public function execute_search($sort_by='price', $sort_order='asc', $offset=0)
 	{
-		$data['searchval']=$_POST['search_query'];
+		$limit=8;
+					
+		$search_term = 'no_search_query'; // default when no term in session or POST
+		if ($this->input->post('search_query'))
+		{
+    		// use the term from POST and set it to session
+    		$search_term = $this->input->post('search_query');
+    		$this->session->set_userdata('search_term', $search_term);
+		}
+		elseif ($this->session->userdata('search_term'))
+		{
+    		// if term is not in POST use existing term from session
+    		$search_term = $this->session->userdata('search_term');
+		}
+		
+		$data['searchval']=$search_term;	
+		
 		$this->load->model('catalog_m');
-		$query_results=$this->catalog_m->fetch_results();
-	/*	if($query_results!=NULL)
-			{*/
-				$data['results']=$query_results;
-				$this->load->view('includes/header_loggedin');
-				$this->load->view('catalog_v',$data);
-				$this->load->view('includes/footer');
-				//print_r($this->session->userdata());
-			/*}
-		else
-			{
-				$data['no_results']=$query_results;
-				$this->load->view('includes/header_loggedin');
-				$this->load->view('catalog_v',$data);
-				$this->load->view('includes/footer');
-			}*/		
+		$query_results=$this->catalog_m->fetch_results($search_term,$limit,$offset,$sort_by,$sort_order);
+		$data['results']=$query_results['query'];
+		$data['results_num']=$query_results['num_rows'];
+		 
+		//pagination		
+		$this->load->library('pagination');
+		$conf = array();
+		$conf['base_url']=base_url("catalog/execute_search/$sort_by/$sort_order");
+		if($data['results']!=NULL)
+		{
+			$conf['total_rows']=$data['results_num'];
+		}
+		$conf['per_page']=$limit;
+		$conf['uri_segment']=5;
+		//$conf['searchval']=$_POST['search_query'];
+		$this->pagination->initialize($conf);
+		$data['pagination']=$this->pagination->create_links();
+		
+		$data['sort_by']=$sort_by; 
+ 		$data['sort_order']=$sort_order;
+		
+		$this->load->view('includes/header_loggedin');
+		$this->load->view('catalog_v',$data);
+		$this->load->view('includes/footer');
+			
 	}
 	
 }

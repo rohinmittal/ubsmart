@@ -39,9 +39,9 @@ if($this->session->userdata('logintype')=='buyer')
 	<div id="right">
 	<?php 
 	if($this->session->userdata('logintype')=='buyer')
-{echo anchor('catalog','Browse Catalog','style="padding-right: 10px;"');}			
-echo anchor('myaccount','My account','style="padding-right: 10px;"');
-echo anchor('home/logout','Logout!','style=""');?>
+		{echo anchor('catalog','Browse Catalog','style="padding-right: 10px;"');}			
+	echo anchor('myaccount','My account','style="padding-right: 10px;"');
+	echo anchor('home/logout','Logout!','style=""');?>
 </div>
 </div>
 <div id="dropdowns">
