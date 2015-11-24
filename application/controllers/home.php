@@ -52,7 +52,7 @@ class Home extends CI_Controller {
          $this->load->view('includes/header');
          $this->load->view('login_form');
          $this->load->view('includes/footer'); 
-		 //just checking for issues with git
+		
         } 
         else
         {	
@@ -60,26 +60,33 @@ class Home extends CI_Controller {
 			$query=$this->membership_model->validate();
 			if($query)//credentials validated!
 			{
-		     //echo "<script type='text/javascript'>alert('login successful!')</script>";
-			 $lt='buyer';
-			 if($this->input->post('login_type')=='s')
-		     {$lt='seller';}		     			 
-			 $data=array(
-			      'username'=>$this->input->post('username'),
-			      'is_logged_in'=>true,
-			      'logintype'=>$lt
-			 );
-			 $this->session->set_userdata($data);
-			 //print_r($_POST);
-			 if($lt=='buyer')
-			  {redirect('catalog');}
-			 else
-			  {redirect('seller_info');}	//seller_info is to be created by Suramrit	
+
+				//echo "<script type='text/javascript'>alert('login successful!')</script>";
+				$lt='buyer';
+				if($this->input->post('login_type')=='s')
+				{
+					$lt='seller';
+				}		     			 
+				$data=array(
+					'username'=>$this->input->post('username'),
+					'is_logged_in'=>true,
+					'logintype'=>$lt
+				);
+				$this->session->set_userdata($data);
+				//print_r($_POST);
+				if($lt=='buyer')
+				{
+					redirect('catalog');
+				}
+				else
+				{
+					redirect('seller_acc');
+				}	
 		    }
 	    	else
 		    {
-			 echo "<script type='text/javascript'>alert('Incorrect credentials!')</script>";
-			 $this->index();
+				echo "<script type='text/javascript'>alert('Incorrect credentials!')</script>";
+				$this->index();
 		    }
 	    }
 	}
@@ -109,6 +116,7 @@ class Home extends CI_Controller {
 		  
 		  if ($query=$this->membership_model->create_member())
 		  {
+			$this->sendVerificationEmail($this->input->post('email'));
 		  	$data['account_created']='Your account has been created.<br/><br/>You may now login.';
 			
 			$this->load->view('includes/header');
@@ -208,5 +216,25 @@ class Home extends CI_Controller {
         return $tel_positive;
 	}
 	
+	 function sendVerificationEmail($email) {
+		$this->load->library('email');
+	    $config['protocol']    = 'smtp';
+		$config['smtp_host']    = 'ssl://smtp.gmail.com';
+		$config['smtp_port']    = '465';
+		$config['smtp_timeout'] = '7';
+		$config['smtp_user']    = 'ubsmart.ub@gmail.com';
+		$config['smtp_pass']    = 'ubsmart123';
+		$config['charset']    = 'utf-8';
+		$config['newline']    = "\r\n";
+		$config['mailtype'] = 'html';
+		$config['validation'] = TRUE; // bool whether to validate email or not  
+	
+		$this->email->initialize($config);
+		$this->email->from('ubsmart.ub@gmail.com', 'Team UBsMart');
+		$this->email->to($email);
+		$this->email->subject('Thank you for registering at UBsmart!');
+		$this->email->message('Thank you!<br>Welcome to UBsMart. We hope you\'ll like our platform.');
+		$this->email->send();
+	}
 }
 ?>

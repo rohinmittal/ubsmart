@@ -55,7 +55,7 @@ class Membership_model extends CI_Model {
 	function retreiveUserDetails() {
 		$this->db->where('username', $this->session->userdata('username'));
 		$query = $this->db->get('users');		
-		return $query;
+		return $query->row();
 	}
 	
 	function updateDetails() {

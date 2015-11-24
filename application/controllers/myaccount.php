@@ -4,53 +4,25 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class myaccount extends CI_Controller {
 
-	/**
-	 * Index Page for this controller.
-	 *
-	 * Maps to the following URL
-	 * 		http://example.com/index.php/welcome
-	 *	- or -
-	 * 		http://example.com/index.php/welcome/index
-	 *	- or -
-	 * Since this controller is set as the default controller in
-	 * config/routes.php, it's displayed at http://example.com/
-	 *
-	 * So any other public methods not prefixed with an underscore will
-	 * map to /index.php/welcome/<method_name>
-	 * @see http://codeigniter.com/user_guide/general/urls.html
-	 */
 	public function index()
 	{
 		$this->load->model('membership_model');
-		$query = $this->membership_model->retreiveUserDetails();
-		$data = array();
-		if ($query->num_rows() > 0) {
-			foreach ($query->result() as $row) {
-				$data['vwBalance'] = $row->vw_balance;
-				$data['username'] = $row->username;
-			}
-		}
+		$result = $this->membership_model->retreiveUserDetails();
+		$data=array();
+		$data['vwBalance'] = $result->vw_balance;
+		$data['username'] = $result->username;
+
 		$this->load->view('includes/header_loggedin');
 		$this->load->view('myaccount/myaccount_v', $data);
-		$this->load->view('includes/footer');
-	}
-	
-	public function getPassword() {
-		$this->load->view('includes/header_loggedin');
-		$this->load->view('myaccount/getPassword_v');
-		$this->load->view('includes/footer');
-	}
-	
-	public function getNewDetails() {
-		$this->load->view('includes/header_loggedin');
-		$this->load->view('myaccount/updateDetails_v');
 		$this->load->view('includes/footer');
 	}
 	
 	public function boughtHistory() {
 		$this->load->model('membership_model');
 		$data['query_result'] = $this->membership_model->boughtHistory();
+		
 		$this->load->view('includes/header_loggedin');
+		
 		if ($data['query_result']->num_rows() > 0) {
 			$this->load->view('myaccount/boughtHistory_v', $data);
 		}
@@ -58,19 +30,25 @@ class myaccount extends CI_Controller {
 			// no product bought
 			$this->load->view('myaccount/boughtHistory_v');
 		}
+		
 		$this->load->view('includes/footer');
 	}
-	public function validatePassword()
+	
+	public function getCurrentPassword() {
+		$this->load->view('includes/header_loggedin');
+		$this->load->view('myaccount/getCurrentPassword_v');
+		$this->load->view('includes/footer');
+	}
+
+	public function validateCurrentPassword()
 	{	
 		$this->load->library('form_validation');
-		
-		//rules
 		$this->form_validation->set_rules('current_password', 'Password', 'trim|required|callback_check_if_blank_password');
 		
 		if ($this->form_validation->run() == FALSE) // didn't validate
 		{ 
          $this->load->view('includes/header_loggedin');
-         $this->load->view('myaccount/getPassword_v');
+         $this->load->view('myaccount/getCurrentPassword_v');
          $this->load->view('includes/footer'); 
         } 
         else
@@ -84,10 +62,18 @@ class myaccount extends CI_Controller {
 			else {
 				$data['incorrect_password']='Incorrect password. Please enter your correct password.<br>';
 				$this->load->view('includes/header_loggedin');
-				$this->load->view('myaccount/getPassword_v', $data);         
+				$this->load->view('myaccount/getCurrentPassword_v', $data);         
 				$this->load->view('includes/footer'); 
 			}
 	    }
+	}
+	
+	
+			
+	public function getNewDetails() {
+		$this->load->view('includes/header_loggedin');
+		$this->load->view('myaccount/updateDetails_v');
+		$this->load->view('includes/footer');
 	}
 	
 	public function updateDetails() {
