@@ -55,7 +55,47 @@ $(document).ready(function() {
     	 }
         }		
 	}
-	
+	 $('#furniture_form,#laptop_form,#mobile_form').css("display","none");
+	   
+    $(".cat").click(function(){
+        if ($('input[name=categories]:checked').val() == "furniture") {
+           document.getElementById('furniture_form').style.display="block";
+           document.getElementById('electronic_form').style.display="none";
+           //document.getElementById('mobile_form').style.display="none";
+        }
+        if ($('input[name=categories]:checked').val() == "electronic") {
+            document.getElementById('electronic_form').style.display="block";
+            document.getElementById('furniture_form').style.display="none";
+            //document.getElementById('mobile_form').style.display="none";
+        }
+       // if ($('input[name=categories]:checked').val() == "mobile"){
+         //  document.getElementById('mobile_form').style.display="block";
+          // document.getElementById('laptop_form').style.display="none";
+           //document.getElementById('furniture_form').style.display="none";
+       // }
+     });
+     
+     $(".f_type").click(function(){
+     	if ($('input[name=f_type]:checked').val() == "table") {
+           document.getElementById('table_details').style.display="block";
+           document.getElementById('chair_details').style.display="none";
+        }
+        if ($('input[name=f_type]:checked').val() == "chair") {
+            document.getElementById('chair_details').style.display="block";
+            document.getElementById('table_details').style.display="none";
+        }
+     });
+      $(".e_type").click(function(){
+     	if ($('input[name=e_type]:checked').val() == "laptop") {
+           document.getElementById('laptop_details').style.display="block";
+           document.getElementById('cellphone_details').style.display="none";
+        }
+        if ($('input[name=e_type]:checked').val() == "cellphone") {
+            document.getElementById('cellphone_details').style.display="block";
+            document.getElementById('laptop_details').style.display="none";
+        }
+     });
+    
 	//for drop downs
 	$('#mb_headers span').mouseenter(function() { 
 		var elem_class = $(this).attr('class');
@@ -71,5 +111,4 @@ $(document).ready(function() {
 		$(this).css('visibility','visible');
 	}).mouseleave(function() {
 		$(this).css('visibility','hidden'); }); 	
-	
 });

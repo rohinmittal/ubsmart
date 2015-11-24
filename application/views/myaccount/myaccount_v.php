@@ -7,8 +7,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 </head>
 
 <p id=your_acc>
-	<b> Hello <?php echo $username?>! Welcome to your UB sMart Account. </b>
+	<b> Hello <?php echo $username?>! Welcome to your UB sMart Account. </b><br><br>
+	You have XX pending handovers! Click on the Handover link below to confirm your handovers!<br><br>
 </p>
+
+
 
 <div id="left_side">
 	<fieldset>
@@ -25,7 +28,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	<fieldset>
 		<legend style="text-align:left"><b>Settings</b></legend>
 		<br>
-		<?php echo anchor('myaccount/getPassword','Change Account Details'); ?>
+		<?php echo anchor('myaccount/getCurrentPassword','Change Account Details'); ?>
 		<br>
 		<br>
 		<br>
