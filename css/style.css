@@ -46,15 +46,14 @@ body{
     }
 #login_page{
 	margin: auto;
-	position:relative;
+	
 	padding: 3%;	
 }    
         
 #adbanner_on_loginpage{
-	background: #AAC4C5;
-	position: absolute;     	
-	width: 62.5%;
-	height:237px;
+	background: #AAC4C5;	     	
+	width: 67.5%;
+	height:294px;/*237px*/
 	border: 1px solid white;
 	float:left;
 	padding: 1em;
@@ -64,9 +63,7 @@ body{
 }
 #login_form{ 	
 	background: #AAC4C5;
-	position: absolute;
-	width:24.4%;
-	margin-left:66.15%;	
+	width:24.4%;		
 	float:right;
 	border: 1px solid white;
 	padding: 1em;
@@ -182,7 +179,33 @@ input[type=submit]:hover, form a:hover{
 	margin-right: auto;
 	margin-top: 20px
 }
-
+/*product_grid*/
+#product_grid{
+	 min-height: 276px;
+}
+.prow div{
+ width: 226px;
+ background:#99B8B9;
+ float: left;
+ margin-left:0.5%;
+ margin-top:0.5%;
+ height: 300px;	
+}
+.pimg{
+	margin-top:5px;
+	margin-left:5px;
+	height:215px;
+	width:215px;
+}
+.prow p{
+ margin-left:2.5%;	
+ font-size:small;
+ height: 300px;	
+}
+#pagination{
+	margin-top:1%;
+	text-align: center;
+}
 /*catalog*/
 #product_related{	
 	padding: 1%;	
@@ -227,4 +250,12 @@ input[type=submit]:hover, form a:hover{
     float: right;
 	width:35%;
 	text-align:center;
+}
+.clearfix:after {
+	visibility: hidden;
+	display: block;
+	font-size: 0;
+	content: " ";
+	clear: both;
+	height: 0;
 }

@@ -4,11 +4,11 @@
 	<div id="breadcrumbs">
 	The page you are looking at is the homepage for UBsMart!!!!
 	</div>
-	<div id="product_related" style="background: blue;">		
+	<div id="product_related" class="clearfix" style="background: blue;">		
 		<div id="filter_related">
 			<fieldset>
 				<legend>Sort by:</legend>
-				<input type="radio" name="sort" value="asc_price">Price: Low to High<br>
+				<input type="radio" name="sort" value="asc_price" onclick='alert("<?php echo anchor('catalog/execute_search/price/asc'); ?>");'>Price: Low to High<br>
 				<input type="radio" name="sort" value="desc_price">Price: Low to High<br>
 				<input type="radio" name="sort" value="asc_tier">Price: Low to High<br>
 				<input type="radio" name="sort" value="desc_tier">Price: Low to High<br>
@@ -30,17 +30,53 @@
 			{
 				if ($results==NULL)
 				{
-		         echo "Sorry, no results found.";
+		         echo "Sorry, no results found for '$searchval'.";
 				}
 				else
 				{ 
-		     	 echo "Found ".$results->num_rows()." result(s) for ".$searchval;
+		     	 echo "Found $results_num result(s) for '$searchval'.";
 				}
+			}
+			else {
+				echo 'Will display featured prods here!';
 			}
 			?>
 			</div>
-			<div id="product_list">
-				
+			<?php
+			if($searchval != "no_search_query")
+			{
+				if ($results!=NULL)
+				{
+		         echo '<div class="prow clearfix" id="product_list" >';
+				 $products=$results->result();
+				 foreach ($products as $prod):
+				 	$s=base_url("/p_images/");
+				 	echo '<div><img class="pimg" src="'.$s.'/'.$prod->product_id.'/'.$prod->pic1.'"/>
+				 	<hr noshade size="1.5" style="margin-top:-0.25%">'.'<p style="margin-top:-1.5%">'.				 	
+				 	'Name: '.$prod->pname.'<br>'.
+				 	'Price: '.$prod->price.'<br>'.
+				 	'Tier: '.$prod->tier.'<br>'.
+				 	'Avg SmartPrice: '.$prod->smart_price.
+				 	'</p>'.
+				 	'</div>';
+				 endforeach;	 
+				 echo '</div>';	 
+				}
+			}			
+			
+			?>
+			
+			<?php 
+			if($searchval != "no_search_query")
+			{
+				if (strlen($pagination)): ?>
+				<div id="pagination">
+					Pages: <?php echo $pagination; ?>
+				</div>
+			<?php endif; 
+			}
+			?>
 			</div>			
+					
 		</div>
 	</div>		

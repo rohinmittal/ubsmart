@@ -5,8 +5,6 @@
 <link rel="stylesheet" href="<?php echo base_url();?>css/style.css" type='text/css'>
 <img id= "logo" src="<?php echo base_url("/images/ubsmart_logo.jpg"); ?>"/>   	
 </head>
-
-
 <body>   
 	<div class="search_bar">
 	<?php
