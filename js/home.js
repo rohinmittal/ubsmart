@@ -53,8 +53,55 @@ $(document).ready(function() {
     	  //document.getElementById("search_submit").style.background = /background: #0070b8;	cursor: pointer;
     	  document.getElementById("search_submit").disabled=false;
     	 }
-        }		
+        }
+        
+        
+        //for conditional visibilty of filters/sorting options
+        if(searchval=="no_search_query")
+        {
+			document.getElementById("filter_related").style.display= "none";
+			document.getElementById("product_grid").style.width= "98%";
+			document.getElementById("product_grid").style.margin= "auto";
+        }
+        else
+        {
+        	document.getElementById("filter_related").style.display= "block";
+			document.getElementById("product_grid").style.width= "78.4%";
+			document.getElementById("product_grid").style.marginLeft="1%";
+			//document.getElementById("product_grid").style.float= "left";
+        }
+        //alert(sort_by);        
+        //alert(sort_order);
+        
+        //to set sort radio buttons
+        if (typeof sort_by !== 'undefined')
+        {
+          	if(sort_by=="price")
+        	{
+        		if(sort_order=="asc")
+        		{
+        			SetRadiobuttonValue("asc_price");
+        		}
+        		else{SetRadiobuttonValue("desc_price");}
+        	}
+        	else
+        	{
+        		if(sort_order=="asc")
+        		{
+        			SetRadiobuttonValue("asc_tier");
+        		}
+        		else{SetRadiobuttonValue("desc_tier");}
+        		
+        	}
+        }
+        
+        function SetRadiobuttonValue(selectedValue)
+        {
+  			$(':radio[value="' + selectedValue + '"]').attr('checked', 'checked');
+  		}
 	}
+	
+	
 	 $('#furniture_form,#laptop_form,#mobile_form').css("display","none");
 	   
     $(".cat").click(function(){

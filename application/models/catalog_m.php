@@ -13,7 +13,11 @@ class Catalog_m extends CI_Model {
 		//$search_terms = explode(" ", $sq);    //supposed to be used for more sophisticated searching
 		
 		//$query = $this->db->query($q);
-		$condn="is_sold = 0 AND (pname LIKE '%" . $sq  ."%')";	
+		$condn="is_sold = 0 AND (pname LIKE '%" . $sq  ."%')";
+		if($sort_by=='tier')
+		{
+			$sort_order = ($sort_order=='desc') ? 'asc':'desc';
+		}	
 		$q=$this->db->from('products')->where($condn)->limit($limit,$offset)->order_by($sort_by,$sort_order);
 		$query = $q->get();
 		
