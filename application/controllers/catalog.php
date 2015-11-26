@@ -12,12 +12,13 @@ class Catalog extends CI_Controller {
 		//trying changes
 		//$data['title']='Welcome to UBsMart!';		
 		$data['searchval'] ="no_search_query";
+		$data['filter'] ="default";
 		$this->load->view('includes/header_loggedin');
 		$this->load->view('catalog_v',$data);
 		$this->load->view('includes/footer');
 		//print_r($this->session->userdata());//temporary. Feel free to remove once development of seller only/buyer only pages gets going!				
 	}
-	public function execute_search($sort_by='price', $sort_order='asc', $offset=0)
+	public function execute_search($sort_by='price', $sort_order='asc',$filter='abcde', $offset=0)
 	{
 		$limit=8;
 					
@@ -37,26 +38,27 @@ class Catalog extends CI_Controller {
 		$data['searchval']=$search_term;	
 		
 		$this->load->model('catalog_m');
-		$query_results=$this->catalog_m->fetch_results($search_term,$limit,$offset,$sort_by,$sort_order);
+		$query_results=$this->catalog_m->fetch_results($search_term,$limit,$offset,$sort_by,$sort_order,$filter);
 		$data['results']=$query_results['query'];
 		$data['results_num']=$query_results['num_rows'];
 		 
 		//pagination		
 		$this->load->library('pagination');
 		$conf = array();
-		$conf['base_url']=base_url("catalog/execute_search/$sort_by/$sort_order");
+		$conf['base_url']=base_url("catalog/execute_search/$sort_by/$sort_order/$filter");
 		if($data['results']!=NULL)
 		{
 			$conf['total_rows']=$data['results_num'];
 		}
 		$conf['per_page']=$limit;
-		$conf['uri_segment']=5;
+		$conf['uri_segment']=6;
 		//$conf['searchval']=$_POST['search_query'];
 		$this->pagination->initialize($conf);
 		$data['pagination']=$this->pagination->create_links();
 		
 		$data['sort_by']=$sort_by; 
  		$data['sort_order']=$sort_order;
+		$data['filter']=$filter;
 		
 		$this->load->view('includes/header_loggedin');
 		$this->load->view('catalog_v',$data);
