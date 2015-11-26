@@ -12,6 +12,8 @@ Contact Us <br>
 	<?php if (isset($sort_by)){ ?>
 	var sort_by = '<?php echo $sort_by; ?>';
     var sort_order = '<?php echo $sort_order; ?>';
+    var filter = '<?php echo $filter; ?>';
+    var baseurl= '<?php echo base_url(); ?>';
 	<?php } ?>		
 </script>
 	<script src='http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js'></script>

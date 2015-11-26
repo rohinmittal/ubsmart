@@ -193,6 +193,7 @@ input[type=submit]:hover, form a:hover{
 }
 .pimg{
 	margin-top:5px;
+	margin-bottom:5px;
 	margin-left:5px;
 	height:215px;
 	width:215px;

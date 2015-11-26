@@ -1,4 +1,3 @@
-
 <title>Welcome to UBsMart</title>
 
 	<div id="breadcrumbs">
@@ -8,19 +7,19 @@
 		<div id="filter_related">
 			<fieldset>
 				<legend>Sort by:</legend>
-				<input type="radio" name="sort" value="asc_price" onclick="location.href='<?php echo base_url("catalog/execute_search/price/asc"); ?>'">Price: Low to High<br>
-				<input type="radio" name="sort" value="desc_price" onclick="location.href='<?php echo base_url("catalog/execute_search/price/desc"); ?>'">Price: High to Low<br>
-				<input type="radio" name="sort" value="asc_tier" onclick="location.href='<?php echo base_url("catalog/execute_search/tier/asc"); ?>'">Tier: Low to High<br>
-				<input type="radio" name="sort" value="desc_tier" onclick="location.href='<?php echo base_url("catalog/execute_search/tier/desc"); ?>'">Tier: High to Low<br>
+				<input type="radio" name="sort" value="asc_price" onclick="location.href='<?php echo base_url("catalog/execute_search/price/asc/".$filter); ?>'">Price: Low to High<br>
+				<input type="radio" name="sort" value="desc_price" onclick="location.href='<?php echo base_url("catalog/execute_search/price/desc/".$filter); ?>'">Price: High to Low<br>
+				<input type="radio" name="sort" value="asc_tier" onclick="location.href='<?php echo base_url("catalog/execute_search/tier/asc/".$filter); ?>'">Tier: Low to High<br>
+				<input type="radio" name="sort" value="desc_tier" onclick="location.href='<?php echo base_url("catalog/execute_search/tier/desc/".$filter); ?>'">Tier: High to Low<br>
 			</fieldset>
 			<br>
 			<fieldset>
 				<legend>Filter by:</legend>
-				<input type="checkbox" name="TierA" value="ta">Tier A<br>
-				<input type="checkbox" name="TierB" value="tb">Tier B<br>
-				<input type="checkbox" name="TierC" value="tc">Tier C<br>
-				<input type="checkbox" name="TierD" value="td">Tier D<br>
-				<input type="checkbox" name="TierE" value="te">Tier E<br>
+				<input type="checkbox" id="TierA" value="a" onclick="updatefilter()" <?php echo (strpos($filter, 'a') !== FALSE ? 'checked' : ''); ?>>Tier A<br>
+				<input type="checkbox" id="TierB" value="b" onclick="updatefilter()" <?php echo (strpos($filter, 'b') !== FALSE ? 'checked' : ''); ?>>Tier B<br>
+				<input type="checkbox" id="TierC" value="c" onclick="updatefilter()" <?php echo (strpos($filter, 'c') !== FALSE ? 'checked' : ''); ?>>Tier C<br>
+				<input type="checkbox" id="TierD" value="d" onclick="updatefilter()" <?php echo (strpos($filter, 'd') !== FALSE ? 'checked' : ''); ?>>Tier D<br>
+				<input type="checkbox" id="TierE" value="e" onclick="updatefilter()" <?php echo (strpos($filter, 'e') !== FALSE ? 'checked' : ''); ?>>Tier E<br>
 			</fieldset>			
 		</div>
 		<div id="product_grid">
@@ -52,7 +51,7 @@
 				 foreach ($products as $prod):
 				 	$s=base_url("/p_images/");
 				 	echo '<div><img class="pimg" src="'.$s.'/'.$prod->product_id.'/'.$prod->pic1.'"/>
-				 	<hr noshade size="1.5" style="margin-top:-0.25%">'.'<p style="margin-top:-1.5%">'.				 	
+				 	<hr noshade size="1.5">'.'<p style="margin-top:-1.5%">'.				 	
 				 	'Name: '.$prod->pname.'<br>'.
 				 	'Price: '.$prod->price.'<br>'.
 				 	'Tier: '.$prod->tier.'<br>'.
@@ -79,4 +78,4 @@
 			</div>			
 					
 		</div>
-	</div>		
+		

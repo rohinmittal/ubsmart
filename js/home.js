@@ -1,5 +1,21 @@
-$(document).ready(function() {
-	
+function updatefilter()
+        {
+        	var new_filter_val='';
+  			if(document.getElementById("TierA").checked)
+  			{new_filter_val='a';}
+  			if(document.getElementById("TierB").checked)
+  			{new_filter_val=new_filter_val+'b';}
+  			if(document.getElementById("TierC").checked)
+  			{new_filter_val=new_filter_val+'c';}
+  			if(document.getElementById("TierD").checked)
+  			{new_filter_val=new_filter_val+'d';}
+  			if(document.getElementById("TierE").checked)
+  			{new_filter_val=new_filter_val+'e';}
+  			
+  			location.href=baseurl+'catalog/execute_search/'+sort_by+'/'+sort_order+'/'+new_filter_val;
+  		}
+
+$(document).ready(function() {	
 	$(':text').click(function() {
 		current_input_val=$(this).val();
 		$(this).select();
@@ -98,7 +114,7 @@ $(document).ready(function() {
         function SetRadiobuttonValue(selectedValue)
         {
   			$(':radio[value="' + selectedValue + '"]').attr('checked', 'checked');
-  		}
+  		}  		
 	}
 	
 	

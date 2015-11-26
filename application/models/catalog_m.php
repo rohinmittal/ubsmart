@@ -1,7 +1,7 @@
 <?php
 
 class Catalog_m extends CI_Model {
-	function fetch_results($search_term,$limit,$offset,$sort_by,$sort_order) {
+	function fetch_results($search_term,$limit,$offset,$sort_by,$sort_order,$filter) {
 		
 		$sort_order = ($sort_order=='desc') ? 'desc':'asc';
 		$sort_col=array ('price','tier');
@@ -12,13 +12,27 @@ class Catalog_m extends CI_Model {
 		$sq=preg_replace("!\s+!"," ", $sq);
 		//$search_terms = explode(" ", $sq);    //supposed to be used for more sophisticated searching
 		
+		$len=strlen($filter);
+		if((1 <= $len) && ($len <= 5))
+		{
+			if (preg_match('/[^abcde]/', $filter))
+ 				{$filter='abcde';}
+		}
+		else {
+			$filter='abcde';
+		}		
+		$filter_by = str_split($filter);
+		$filter_by = implode("','", $filter_by);
+		$filter_by = "'".$filter_by."'";
+		
 		//$query = $this->db->query($q);
-		$condn="is_sold = 0 AND (pname LIKE '%" . $sq  ."%')";
+		$condn="is_sold = 0 AND tier IN (".$filter_by.") AND (pname LIKE '%" . $sq  ."%')";
 		if($sort_by=='tier')
 		{
 			$sort_order = ($sort_order=='desc') ? 'asc':'desc';
 		}	
 		$q=$this->db->from('products')->where($condn)->limit($limit,$offset)->order_by($sort_by,$sort_order);
+		//print_r($condn);
 		$query = $q->get();
 		
 		//for count
