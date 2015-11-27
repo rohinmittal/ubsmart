@@ -120,6 +120,15 @@ $(document).ready(function() {
 	
 	 $('#furniture_form,#laptop_form,#mobile_form').css("display","none");
 	   
+	    $(".edit_option").click(function(){
+        if ($('input[name=edit_option]:checked').val() == "edit") {
+           document.getElementById('edit_detail_form').style.display="block";
+           //document.getElementById('electronic_form').style.display="none";
+           //document.getElementById('mobile_form').style.display="none";
+        }
+     });
+	   
+	   
     $(".cat").click(function(){
         if ($('input[name=categories]:checked').val() == "furniture") {
            document.getElementById('furniture_form').style.display="block";

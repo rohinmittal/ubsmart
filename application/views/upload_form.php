@@ -5,7 +5,9 @@
 	<hl>Please Enter Product Details!</h1>
 		<?php
 		$attributes_upload = array('id' => 'upload_form');
-		echo form_open_multipart('seller_acc/do_upload',$attributes_upload);
+		//$data
+		$data['suri']="suri";
+		echo form_open_multipart('seller_acc/form_upload',$attributes_upload);
 		
 		echo form_label('Product Name','p_name');
 		echo form_input('productname', set_value('productname', 'Product Name'));
@@ -277,11 +279,11 @@
 		
 		//echo form_input('file_upload',set_value('file_upload'));
 		
-		echo form_label('Choose Images','image');
-		echo "<input type='file' name='userfile' size='20' />"; 
+		//echo form_label('Choose Images','image');
+		//echo "<input type='file' name='userfile' size='20' />"; 
 		echo "<br />";
 		echo "<br />";
-        echo "<input type='submit' name='submit' value='upload' /> ";
+        echo "<input type='submit' name='submit' value='Proceed to next step.'/> ";
 		echo anchor('seller_acc','Cancel');	
 		echo form_close();
 		?>
