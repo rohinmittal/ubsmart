@@ -34,6 +34,12 @@ class myaccount extends CI_Controller {
 		$this->load->view('includes/footer');
 	}
 	
+	public function confirmHandover() {
+		$this->load->model('membership_model');
+		$this->membership_model->updateBuyersHandover();
+		redirect('myaccount/boughtHistory');
+	}
+	
 	public function getCurrentPassword() {
 		$this->load->view('includes/header_loggedin');
 		$this->load->view('myaccount/getCurrentPassword_v');

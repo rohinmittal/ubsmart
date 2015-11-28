@@ -112,4 +112,12 @@ class Membership_model extends CI_Model {
 		assert($query->num_rows() > 0);
 		return $query->row();
 	}
+	
+	function updateBuyersHandover() {
+		$this->db->where('order_id', $this->input->post('orderID'));	
+		$data = array(
+			'buyer_conf' => 1 
+		);
+		$this->db->update('orders', $data);
+	}
 } 

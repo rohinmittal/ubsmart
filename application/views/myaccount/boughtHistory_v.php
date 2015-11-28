@@ -17,8 +17,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		<th> Price </th>
 		<th> Buyer Confirm </th>
 		<th> Seller Confirm </th>
-		<th> Amount credited </th>
+		<th> Amount credited to Seller </th>
 	</tr>
+
+		
 	<?php foreach ($query_result->result() as $row) { ?>
 	<tr>
 		<?php $productDetails = $this->membership_model->productDetailsFromProductID($row->product_id); ?>
@@ -40,7 +42,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		</td>
 		<td>
 			<?php if($row->buyer_conf == 0) {
-				echo form_button('name','Click to Confirm'); 
+				echo form_open('myaccount/confirmHandover');
+				echo form_hidden('orderID', $row->order_id);
+				echo form_submit('submit','Click to Confirm'); 
+				echo form_close();
 			}
 			else {
 				echo "Confirmed";
@@ -67,7 +72,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 			?>
 		</td>
 	</tr>
-	<?php } ?>
+	<?php 
+	} 
+
+	?>
 </table>
 
 <?php } else { ?>
