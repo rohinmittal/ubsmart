@@ -40,9 +40,9 @@ class Membership_model extends CI_Model {
 		return $insert;
     }
 	
-	function check_password() {
-		$this->db->where('username', $this->session->userdata('username'));
-		$this->db->where('password', md5($this->input->post('current_password')));
+	function check_password($username, $password) {
+		$this->db->where('username', $username);
+		$this->db->where('password', $password);
 
 		$query = $this->db->get('users');
 		
@@ -119,5 +119,55 @@ class Membership_model extends CI_Model {
 			'buyer_conf' => 1 
 		);
 		$this->db->update('orders', $data);
+		
+		//now from this orderID, find if buyer_conf and seller_conf both are 1. If yes, fetch the subcategory 
+		// and tier of the current product. Update it's smartprice'
+		
+		$this->db->where('order_id', $this->input->post('orderID'));
+		$orderQuery = $this->db->get('orders');
+		
+		if($orderQuery->row()->buyer_conf == 1 && $orderQuery->row()->seller_conf == 1) {
+			
+			// since both buyer and seller have confirmed, update is_sold in product table to 2.
+			$this->db->where('product_id', $orderQuery->row()->product_id);
+			$data = array(
+				'is_sold' => 2 
+			);
+			
+			$this->db->update('products', $data);
+			
+			$this->db->where('product_id', $orderQuery->row()->product_id);
+			$productQuery = $this->db->get('products');
+			
+			$tier = $productQuery->row()->tier;
+			$subcategory = $productQuery->row()->subcategory;
+			
+			$this->db->where('is_sold', 2);
+			$this->db->where('tier', $tier);
+			$this->db->where('subcategory', $subcategory);
+			$soldProductsSameType = $this->db->get('products');
+			$totalPrice = 0;
+			$count = $soldProductsSameType->num_rows();
+			foreach ($soldProductsSameType->result() as $row) {
+				$totalPrice = $totalPrice + $row->price;
+			} 
+			
+			$smartPrice = $totalPrice / $count;
+			
+			$this->db->where('tier', $tier);
+			$this->db->where('subcategory', $subcategory);
+			$data = array(
+				'smart_price' => $smartPrice
+			);
+			
+			$this->db->update('products', $data);
+		}	
+	}
+	
+	function countBuyerPendingHandovers() {
+		$this->db->where('buyer_name', $this->session->userdata('username'));
+		$this->db->where('buyer_conf', 0);	
+		$query = $this->db->get('orders');
+		return $query;
 	}
 } 

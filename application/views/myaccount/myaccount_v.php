@@ -8,7 +8,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 <p id=your_acc>
 	<b> Hello <?php echo $username?>! Welcome to your UB sMart Account. </b><br><br>
-	You have XX pending handovers! Click on the Handover link below to confirm your handovers!<br><br>
+	You have <?php echo $handoverCount ?> pending handovers! Click on the Handover link below to confirm your handovers!<br><br>
 </p>
 
 
@@ -17,7 +17,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	<fieldset>
 		<legend style="text-align:left"><b>Orders</b></legend>
 		<br>
-		<?php echo anchor('myaccount/boughtHistory', 'Order History'); ?>
+		<?php echo anchor('myaccount/boughtHistory', 'Order History / Handovers'); ?>
 		<br>
 		<br>
 		<br>

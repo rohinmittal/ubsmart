@@ -12,6 +12,9 @@ class myaccount extends CI_Controller {
 		$data['vwBalance'] = $result->vw_balance;
 		$data['username'] = $result->username;
 
+		// now find the pending handovers count
+		$data['handoverCount'] = $this->membership_model->countBuyerPendingHandovers()->num_rows();
+					
 		$this->load->view('includes/header_loggedin');
 		$this->load->view('myaccount/myaccount_v', $data);
 		$this->load->view('includes/footer');
@@ -60,7 +63,7 @@ class myaccount extends CI_Controller {
         else
         {	
 			$this->load->model('membership_model');
-			$query = $this->membership_model->check_password();
+			$query = $this->membership_model->check_password($this->session->userdata('username'), md5($this->input->post('current_password')));
 			if($query) {
 				//password validated.
 				redirect('myaccount/getNewDetails');		
