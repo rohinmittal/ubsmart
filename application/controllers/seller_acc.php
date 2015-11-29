@@ -122,7 +122,13 @@ class seller_acc extends CI_Controller {
 		//echo $concat;//t
 		else
 		{
-			
+			$material=0;
+			$dimension=0;
+			$imei=0;
+			$is_charger_cell=0;
+			$is_headset=0;
+			$is_charger=0;			
+			$serial=0;
 		$category = $_POST['categories'];    //value of radio button
 		if($category == "furniture")
 		{
@@ -407,7 +413,7 @@ class seller_acc extends CI_Controller {
 				{
 					$prod_weight = $prod_weight + 100;
 				}
-				else if($lap_age=="1-2yr")
+				else if($phn_age=="1-2yr")
 				{
 					$prod_weight = $prod_weight + 50;
 				}
@@ -521,6 +527,22 @@ class seller_acc extends CI_Controller {
 	 public function do_upload()
 	{
 		$this->load->library('form_validation'); // to be implemented
+		//rules
+		$this->form_validation->set_rules('ask_price', 'Asking Price', 'trim|required|callback_check_if_blank_price|integer|callback_check_if_positive');
+		$this->form_validation->set_rules('p_desc', 'Description', 'trim|required|callback_check_if_blank_desc');
+		//$this->form_validation->run();
+		if ($this->form_validation->run() == FALSE)
+		{
+		$this->load->view('includes/header_loggedin');
+		$this->load->view('seller_acc/confirm_upload',$_POST);
+		$this->load->view('includes/footer');
+		}
+
+		
+		else 
+
+		{
+		
 		$this->load->model('product_upload_model');
 		//$current_smart_price =  $this->product_upload_model->evaluate_smart_price($data);
 		//$suramrit = $data['suri'];
@@ -599,6 +621,7 @@ class seller_acc extends CI_Controller {
 		
 		//echo "product uploaded";
 		//redirect('seller_acc');
+		}
 	}
 	
    public function display_seller_prods()
@@ -709,6 +732,36 @@ class seller_acc extends CI_Controller {
 			$imei_entered=FALSE;
 		}
         return $imei_entered;
+	}
+	function check_if_positive($tel)
+    {
+    	$tcomp=$tel[0];
+		$tel_positive=TRUE;
+        if($tcomp=='-')
+		{
+			$tel_positive=FALSE;
+		}
+        return $tel_positive;
+	}
+	function check_if_blank_price($price)
+    {
+    	$tcomp=strcmp($price,"Enter Asking price for your product!");
+		$pr_entered=TRUE;
+        if($tcomp==0)
+		{
+			$pr_entered=FALSE;
+		}
+        return $pr_entered;
+	}
+	function check_if_blank_desc($desc)
+    {
+    	$tcomp=strcmp($desc,"Enter a brief description of the product"); //Make this a text box! -- 
+		$desc_entered=TRUE;
+        if($tcomp==0)
+		{
+			$desc_entered=FALSE;
+		}
+        return $desc_entered;
 	}
 
 
