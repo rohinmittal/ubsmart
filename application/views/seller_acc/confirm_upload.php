@@ -7,8 +7,9 @@
 	    echo $suramrit; //use  these variables from $data to fill form... fill form to data base.. :)
 		echo form_open_multipart('seller_acc/do_upload',$attributes_upload);
 		?>
-		<div id ="product details" style="visibility:visible; display: none" > <!-- Do not stare at this piece of code for long time... it gives out harmful radiations 
-		 	
+		<div id ="product details" style="visibility:visible; display: none" > 
+		<!-- Do not stare at this piece of code for long time... it gives out harmful radiations 
+			 	
 		 Might burn your eyes
 		 	
 		 So hardcode-Much Wowe	-->
@@ -18,6 +19,13 @@
 		echo form_input('p_subcategory', set_value('p_subcategory', $p_subcategory));
 		echo form_input('p_smart_price', set_value('p_smart_price', $p_smart_price));
 		echo form_input('p_tier', set_value('p_tier', $p_tier));
+		echo form_input('dimension', set_value('dimension', $dimension));
+		echo form_input('material', set_value('material', $material));
+		echo form_input('serial', set_value('serial', $serial));
+		echo form_input('is_charger', set_value('is_charger', $is_charger));
+		echo form_input('is_headset', set_value('is_headset', $is_headset));
+		echo form_input('is_charger_cell', set_value('is_charger_cell', $is_charger_cell));
+		echo form_input('imei', set_value('imei', $imei));
 		?>
 		</div>
 		<?php

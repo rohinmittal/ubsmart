@@ -10,7 +10,7 @@
 		echo form_open_multipart('seller_acc/form_upload',$attributes_upload);
 		
 		echo form_label('Product Name','p_name');
-		echo form_input('productname', set_value('productname', 'Product Name'));
+		echo form_input('productname', set_value('productname', 'Enter Product Name:'));
 		echo form_fieldset('Enter Product Specifications');
 		echo form_label('Product Category','p_cat');
 		echo "<br />";
@@ -47,6 +47,8 @@
 		 echo form_label('Steel','type_material');
 		echo form_radio('mat_type','steel',FALSE,'class="type_table"');
 		echo "<br />";
+		echo form_label('Table Dimension','tab_dimen'); 
+		echo form_input('tab_dimension', set_value('tab_dimension', ''));
 		$options = array(
                   '<6month'  => '<6 Months',
                   '6-1yr'    => '6 Months to 1 Year',
@@ -85,6 +87,8 @@
 		 echo form_label('None','type_cushion');
 		echo form_radio('cushion_type','none',FALSE,'class="type"');
 		echo "<br />";
+		echo form_label('Chair Dimension','chair_dimen'); 
+		echo form_input('chair_dimension', set_value('chair_dimension', 'Enter the chair dimensions:'));
 		$options = array(
                   '<6month'  => '<6 Months',
                   '6-1yr'    => '6 Months to 1 Year',
@@ -177,8 +181,10 @@
 		echo form_label('Select Condition of product','laptop_condition');
 		echo form_dropdown('laptop_condition', $options, 'avg');
 		echo "<br />";
+	
+	 	echo form_label('Serial Number','lap_serial');
+		echo form_input('laptop_serial', set_value('laptop_serial', 'Enter serial number:'));	
 		?>
-	 		
 	 	</div>
 	 	
 	 	<div id = "cellphone_details" style="visibility:visible; display:none" >
@@ -231,6 +237,10 @@
 		echo form_label('Select Condition of product','phone_condition');
 		echo form_dropdown('phone_condition', $options, 'avg');
 		echo "<br />";
+		echo form_label('IMEI Number','imei');
+		echo form_input('imei', set_value('imei', 'Enter IMEI number:'));
+		
+		
 		?>
 	 		
 	 	</div>
@@ -286,6 +296,8 @@
         echo "<input type='submit' name='submit' value='Proceed to next step.'/> ";
 		echo anchor('seller_acc','Cancel');	
 		echo form_close();
+		
+		echo validation_errors('<p class="error">'); 
 		?>
 		<?php echo validation_errors('<p class="error">'); ?>
 </div> 
