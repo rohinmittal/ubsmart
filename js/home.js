@@ -130,12 +130,12 @@ $(document).ready(function() {
 	   
 	   
     $(".cat").click(function(){
-        if ($('input[name=categories]:checked').val() == "furniture") {
+        if ($('input[name=categories]:checked').val() == "Furniture") {
            document.getElementById('furniture_form').style.display="block";
            document.getElementById('electronic_form').style.display="none";
            //document.getElementById('mobile_form').style.display="none";
         }
-        if ($('input[name=categories]:checked').val() == "electronic") {
+        if ($('input[name=categories]:checked').val() == "Electronic") {
             document.getElementById('electronic_form').style.display="block";
             document.getElementById('furniture_form').style.display="none";
             //document.getElementById('mobile_form').style.display="none";
@@ -148,11 +148,11 @@ $(document).ready(function() {
      });
      
      $(".f_type").click(function(){
-     	if ($('input[name=f_type]:checked').val() == "table") {
+     	if ($('input[name=f_type]:checked').val() == "Tables") {
            document.getElementById('table_details').style.display="block";
            document.getElementById('chair_details').style.display="none";
         }
-        if ($('input[name=f_type]:checked').val() == "chair") {
+        if ($('input[name=f_type]:checked').val() == "Chairs") {
             document.getElementById('chair_details').style.display="block";
             document.getElementById('table_details').style.display="none";
         }

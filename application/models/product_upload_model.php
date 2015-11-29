@@ -93,7 +93,7 @@ class product_upload_model extends CI_Model {
 	
 	}
 	
-	function evaluate_smart_price($data=array()){ //NOTE: till now the users product has not been  uploaded into the database
+	function evaluate_smart_price($data=array()){ 
 		//$this->db->select('username');
  		//$this->db->where('username',$this->session->userdata('username'));
 		//$data['users'] = $this->db->get('users');
