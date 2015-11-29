@@ -37,4 +37,18 @@ class CITest extends PHPUnit_Framework_TestCase
         $posts = $this->CI->membership_model->validate('vsinha', md5('12345'), 'b');
         $this->assertEquals(FALSE, $posts);
     }
+    
+    public function testBoughtHistory1()
+    {
+        // check if login credentials are incorrect
+        $data = $this->CI->membership_model->boughtHistory('vsinha');
+        $this->assertEquals(0, $data->num_rows());
+    }
+    
+    public function testBoughtHistory2()
+    {
+        // check if login credentials are incorrect
+        $data = $this->CI->membership_model->boughtHistory('ajay');
+        $this->assertEquals(1, $data->num_rows());
+    }
 }

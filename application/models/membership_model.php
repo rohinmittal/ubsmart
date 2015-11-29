@@ -99,8 +99,8 @@ class Membership_model extends CI_Model {
 		 { return TRUE; }
 	}
 	
-	function boughtHistory() {
-		$this->db->where('buyer_name', $this->session->userdata('username'));
+	function boughtHistory($buyerName) {
+		$this->db->where('buyer_name', $buyerName);
 
 		$query = $this->db->get('orders');
 		return $query;

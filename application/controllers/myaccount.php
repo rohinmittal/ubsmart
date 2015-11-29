@@ -22,7 +22,7 @@ class myaccount extends CI_Controller {
 	
 	public function boughtHistory() {
 		$this->load->model('membership_model');
-		$data['query_result'] = $this->membership_model->boughtHistory();
+		$data['query_result'] = $this->membership_model->boughtHistory($this->session->userdata('username'));
 		
 		$this->load->view('includes/header_loggedin');
 		
