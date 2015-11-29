@@ -37,7 +37,23 @@
 				}
 			}
 			else {
-				echo 'Will display featured prods here!';
+				//Displaying latest prods
+				echo "Latest products uploaded on UBsMart!";
+				echo '<div class="prow clearfix" id="product_list" >';
+				$lprods=$resultsForLatestProd;
+				 foreach ($lprods as $lprod):
+				 	$s=base_url("/p_images/");
+					$s2="seee"; 
+				 	echo '<div onclick="location.href=\''.base_url("catalog/product_display/".$lprod->product_id).'\'"><img class="pimg" src="'.$s.'/'.$lprod->product_id.'/'.$lprod->pic1.'"/>
+				 	<hr noshade size="1.5">'.'<p style="margin-top:-1.5%">'.				 	
+				 	'Name: '.$lprod->pname.'<br>'.
+				 	'Price: '.$lprod->price.'<br>'.
+				 	'Tier: '.$lprod->tier.'<br>'.
+				 	'Avg SmartPrice: '.$lprod->smart_price.
+				 	'</p>'.
+				 	'</div>';
+				 endforeach;	 
+				 echo '</div>';				 				
 			}
 			?>
 			</div>
@@ -50,7 +66,7 @@
 				 $products=$results->result();
 				 foreach ($products as $prod):
 				 	$s=base_url("/p_images/");
-				 	echo '<div><img class="pimg" src="'.$s.'/'.$prod->product_id.'/'.$prod->pic1.'"/>
+				 	echo '<div onclick="location.href=\''.base_url("catalog/product_display/".$prod->product_id).'\'"><img class="pimg" src="'.$s.'/'.$prod->product_id.'/'.$prod->pic1.'"/>
 				 	<hr noshade size="1.5">'.'<p style="margin-top:-1.5%">'.				 	
 				 	'Name: '.$prod->pname.'<br>'.
 				 	'Price: '.$prod->price.'<br>'.
