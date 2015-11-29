@@ -23,9 +23,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		
 	</tr>
 	<?php 
-	echo "there";
-	echo $sure;
-	echo $allProducts->num_rows();
+	//echo "there";
+	//echo $sure;
+	//echo $allProducts->num_rows();
 	foreach ($allProducts->result() as $row) { ?>
 	<tr>
 		<td>
@@ -48,6 +48,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		</td>
 		
 			<?php 
+			
 				foreach($orders->result() as $row2)
 				{
 					if($row2->product_id==$row->product_id)
@@ -83,10 +84,39 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 							?>
 							</td>
 							<?php
+							break;
 					}
 					
-				} 
-			?>
+					else { ?>
+				
+				<td>
+					<?php echo "NA"; ?>
+				</td>
+				
+				<td>
+					<?php echo "NA"; ?>
+				</td>
+				<td>
+					<?php echo "NA"; ?>
+				</td>
+				<td>
+					<?php echo "NA" ;
+						
+					break;
+					?>
+				</td>
+				
+				
+				
+				
+				<?php
+				
+			}
+			
+					
+				}
+				?>
+			
 		
 	</tr>
 	<?php } ?>

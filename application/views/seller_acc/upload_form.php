@@ -135,9 +135,9 @@
         echo form_label('Select Electronic Item Type','type_electronic');
         echo "<br />";
         echo form_label('Laptop','type_electronic');
-		echo form_radio('e_type','laptop',TRUE,'class="e_type"');
+		echo form_radio('e_type','Laptops',TRUE,'class="e_type"');
 		echo form_label('CellPhone','type_electronic');
-		echo form_radio('e_type','cellphone',FALSE,'class="e_type"');
+		echo form_radio('e_type','Cellphones',FALSE,'class="e_type"');
 	 		?>
         <div id = "laptop_details" style="visibility:visible; " >
 	 		<?php
