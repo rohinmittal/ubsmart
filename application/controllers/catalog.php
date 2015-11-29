@@ -5,18 +5,15 @@ class Catalog extends CI_Controller {
 
 	public function index()
 	{			
-		$this->home1();//load->view('welcome_message');
+		$this->home1();
 	}
 	public function home1()
 	{
-		//trying changes
-		//$data['title']='Welcome to UBsMart!';		
 		$data['searchval'] ="no_search_query";
 		$data['filter'] ="default";
 		$this->load->view('includes/header_loggedin');
 		$this->load->view('catalog_v',$data);
 		$this->load->view('includes/footer');
-		//print_r($this->session->userdata());//temporary. Feel free to remove once development of seller only/buyer only pages gets going!				
 	}
 	public function execute_search($sort_by='price', $sort_order='asc',$filter='abcde', $offset=0)
 	{
@@ -52,7 +49,6 @@ class Catalog extends CI_Controller {
 		}
 		$conf['per_page']=$limit;
 		$conf['uri_segment']=6;
-		//$conf['searchval']=$_POST['search_query'];
 		$this->pagination->initialize($conf);
 		$data['pagination']=$this->pagination->create_links();
 		

@@ -20,13 +20,16 @@ class myaccount extends CI_Controller {
 		$this->load->view('includes/footer');
 	}
 	
-	public function boughtHistory() {
+	public function boughtHistory($newOrder=0) {
 		$this->load->model('membership_model');
 		$data['query_result'] = $this->membership_model->boughtHistory($this->session->userdata('username'));
 		
 		$this->load->view('includes/header_loggedin');
 		
 		if ($data['query_result']->num_rows() > 0) {
+			if($newOrder = 1) {
+				$data['newOrder'] = 1;
+			}
 			$this->load->view('myaccount/boughtHistory_v', $data);
 		}
 		else {
