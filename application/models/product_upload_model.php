@@ -46,6 +46,37 @@ class product_upload_model extends CI_Model {
     
 	}
 
+	function upload_furn_details($data= array())
+	{
+		$pid=$data['pid'];
+		$dimension=$data['dimension'];
+		$material=$data['material'];
+		$sql = "INSERT INTO furniture_detail(pid,dimensions,material) VALUES ('".$pid."','".$dimension."','".$material."')";
+		//$this->db->insert('products',$data); 	
+	    $this->db->query($sql);
+	}
+	
+	function upload_laptop_details($data= array())
+	{
+		$pid=$data['pid'];
+		$serial=$data['serial'];
+		$is_charger=$data['is_charger'];
+		$sql = "INSERT INTO laptop_detail(pid,is_charger,serial) VALUES ('".$pid."','".$is_charger."','".$serial."')";
+		//$this->db->insert('products',$data); 	
+	    $this->db->query($sql);
+	}
+	function upload_cellphone_details($data= array())
+	{
+		$pid=$data['pid'];
+		$imei=$data['imei'];
+		$is_charger=$data['is_charger_cell'];
+		$is_headset=$data['is_charger_cell'];
+		$sql = "INSERT INTO mobile_detail(pid,imei,is_charger,is_headset) VALUES ('".$pid."','".$imei."','".$is_charger."','".$is_headset."')";
+		//$this->db->insert('products',$data); 	
+	    $this->db->query($sql);
+	}
+	
+	
 	function upload_img_details($data=array())	
 	{
 	
@@ -87,9 +118,32 @@ class product_upload_model extends CI_Model {
 		$sellername = $this->session->userdata('username');
 		$this->db->select('pname, product_id, price, category, subcategory, is_sold');
 		$this->db->where('seller',$sellername);
-		$data['seller_prods'] = $this->db->get('products');
-		return $data;		
+		$query['allProducts']= $this->db->get('products');
+		
+		$soldProducts = array();
+		foreach ($query['allProducts']->result() as $row)
+		{
+			if($row->is_sold == '1' || '2') {
+				echo $row->product_id;
+				array_push($soldProducts,$row->product_id);
+			}
+		}
+		
+		$this->db->select('order_id, buyer_name, buyer_conf, seller_conf,product_id');
+		$this->db->where_in('product_id',$soldProducts);
+		$query['orders']= $this->db->get('orders');
+		return $query;
 	}
+	function updateSellersHandover()
+	{
+			$this->db->where('order_id', $this->input->post('orderID'));	
+		$data = array(
+			'seller_conf' => 1 
+		);
+		$this->db->update('orders', $data);
+	
+	}
+	
 	function edit_seller_prod()
 	{
 		$pid = $this->input->post('product_id');
@@ -105,9 +159,8 @@ class product_upload_model extends CI_Model {
 		$pid = $this->input->post('product_id');
 		$sql = "DELETE FROM `products` WHERE `product_id` = ".$pid." ";
 		$query = $this->db->query($sql);
-		
 	}
-	
-	
+
+
 
 } 

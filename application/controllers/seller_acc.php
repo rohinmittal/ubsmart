@@ -41,7 +41,7 @@ class seller_acc extends CI_Controller {
         // Set the headings
         $this->table->set_heading($header);
         // Load the view and send the results
-        $this->load->view('seller_acc',$data);
+        $this->load->view('seller_acc/seller_acc',$data);
 		$this->load->view('includes/footer');
 	}
 	public function update()
@@ -53,25 +53,49 @@ class seller_acc extends CI_Controller {
 		public function upload_form()
 	{
 		$this->load->view('includes/header_loggedin');
-		$this->load->view('upload_form');
+		$this->load->view('seller_acc/upload_form');
 		$this->load->view('includes/footer');
 	}
 	function form_upload()
 	{
-		echo "fir shuru ho gya";	
+		$this->load->library('form_validation');
+		
+		//rules
+		$fur_type = $_POST['f_type'];
+		$this->form_validation->set_rules('productname', 'Product Name', 'trim|required|callback_check_if_blank_pname');
+		if($fur_type == "table")
+		{
+			$this->form_validation->set_rules('tab_dimension', 'Table Dimensions', 'trim|required');
+		}
+		if($fur_type == "chair")
+		{
+			$this->form_validation->set_rules('chair_dimension', 'Chair Dimension', 'trim|required');
+		}
+		
+		//$this->form_validation->set_rules('productname', 'Product Name', 'required');
+		//$this->form_validation->set_rules('productname', 'Product Name', 'required');
+		
+		if ($this->form_validation->run() == FALSE) // didn't validate
+		{
+			echo "dint validate";
+			$this->load->view('seller_acc/upload_form');
+		}	
 		//$config['upload_path'] = './p_images/';//t
 		//$concat = $config['upload_path'].'random';//t
 		//echo $concat;//t
+		
 		$category = $_POST['categories'];    //value of radio button
 		if($category == "furniture")
 		{
-			$sub_cat=$fur_type;
+			
 			$fur_type = $_POST['f_type'];
+			$sub_cat=$fur_type;
 			if($fur_type == "table")
 			{
 				$prod_weight = 0;
 				$material = $_POST['mat_type'];
 				$tab_age = $_POST['age_table'];
+				$dimension = $_POST['tab_dimension']; //add to form...
 				$table_cond = $_POST['table_condition'];
 				echo $tab_age;
 				if($material=='plastic')
@@ -135,6 +159,7 @@ class seller_acc extends CI_Controller {
 			else if($fur_type == "chair"){ //chair weight calculation
 				$prod_weight = 0;
 				$material = $_POST['chair_mat_type'];
+				$dimension = $_POST['chair_dimension'];
 				$chair_age = $_POST['age_chair'];
 				$chair_cond = $_POST['chair_condition'];
 				$type_cush = $_POST['cushion_type'];
@@ -226,6 +251,8 @@ class seller_acc extends CI_Controller {
 			{
 				//laptop weight calculation
 			    $prod_weight = 0;
+				$is_charger=0;
+				$serial = $_POST['laptop_serial'];
 				$ram = $_POST['ram_laptop'];
 				$laptop_storage = $_POST['storage_laptop'];
 				$laptop_cond = $_POST['laptop_condition'];
@@ -291,6 +318,7 @@ class seller_acc extends CI_Controller {
 				}
 				if(isset($_POST['charger_included']))
 				{
+					$is_charger=1;
 					$prod_weight = $prod_weight +100;
 				}
 				if(isset($_POST['bill_included']))
@@ -332,6 +360,9 @@ class seller_acc extends CI_Controller {
 			    $prod_weight = 0;
 				$phone_cond = $_POST['phone_condition'];
 				$phn_age = $_POST['phone_age'];
+				$imei = $_POST['imei'];
+				$is_charger_cell=0;
+				$is_headset=0;
 				echo $phn_age;
 				if($phn_age=="<11mnth")
 				{
@@ -374,6 +405,7 @@ class seller_acc extends CI_Controller {
 				}
 				if(isset($_POST['phone_charger_included']))
 				{
+					$is_charger_cell = 1;
 					$prod_weight = $prod_weight +100;
 				}
 				if(isset($_POST['phone_bill_included']))
@@ -382,6 +414,7 @@ class seller_acc extends CI_Controller {
 				}
 				if(isset($_POST['earphone_included']))
 				{
+					$is_headset = 1;
 					$prod_weight = $prod_weight +150;
 				}
 				if(isset($_POST['box_included']))
@@ -425,13 +458,20 @@ class seller_acc extends CI_Controller {
 		$data['p_subcategory']=$sub_cat;
 		$data['p_condition'] = $_POST['condition'];
 		$data['p_name'] = $_POST['productname'];
+		$data['material'] = $material;
+		$data['dimension']=$dimension;
+		$data['is_charger']=$is_charger;
+		$data['serial']=$serial;
+		$data['imei']=$imei;
+		$data['is_charger_cell']=$is_charger_cell;
+		$data['is_headset']=$is_headset;
 		$data['suramrit'] = "suramrit";
 		$this->load->library('form_validation'); // to be implemented
 		$this->load->model('product_upload_model');
 		$current_smart_price =  $this->product_upload_model->evaluate_smart_price($data);
 		$data['p_smart_price'] = $current_smart_price;
 		$this->load->view('includes/header_loggedin');
-		$this->load->view('confirm_upload',$data);
+		$this->load->view('seller_acc/confirm_upload',$data);
 		$this->load->view('includes/footer');
 		
 		
@@ -486,11 +526,37 @@ class seller_acc extends CI_Controller {
 		echo $pid;
 		$new_path = "./p_images/".$pid;
 		rename($config['upload_path'], $new_path);
-		$data['user_img1_path'] =  "./p_images/".$pid."/".$user_img[0];
-		$data['user_img2_path'] =  "./p_images/".$pid."/".$user_img[1];
-		$data['user_img3_path'] =  "./p_images/".$pid."/".$user_img[2];
+		$data['user_img1_path'] =  $user_img[0];
+		$data['user_img2_path'] =  $user_img[1];
+		$data['user_img3_path'] =  $user_img[2];
 		$data['pid']	= $pid;
 		$this->product_upload_model->upload_img_details($data);
+		//update the category specific tables
+		if($_POST['p_category']=="furniture")
+		{
+			$cat_data['pid']=$pid;
+			$cat_data['dimension']=$_POST['dimension'];
+			$cat_data['material']=$_POST['material'];
+			$this->product_upload_model->upload_furn_details($cat_data);
+			echo "hello--furniture category";	
+		}
+		else if($_POST['p_subcategory']=="laptop")
+		{
+			$cat_data['pid']=$pid;
+			$cat_data['is_charger']=$_POST['is_charger'];
+			$cat_data['serial']=$_POST['serial'];
+			$this->product_upload_model->upload_laptop_details($cat_data);
+			echo "hello--laptop category";	
+		}
+		else if($_POST['p_subcategory']=="cellphone")
+		{
+			$cat_data['pid']=$pid;
+			$cat_data['is_charger_cell']=$_POST['is_charger_cell'];
+			$cat_data['imei']=$_POST['imei'];
+			$cat_data['is_headset']=$_POST['is_headset'];
+			$this->product_upload_model->upload_cellphone_details($cat_data);
+			echo "hello--cellphone category";	
+		}
 		
 		//echo "product uploaded";
 		//redirect('seller_acc');
@@ -504,15 +570,29 @@ class seller_acc extends CI_Controller {
 		// Set the headings
 		$this->table->set_heading($header);
 		$this->load->model('product_upload_model');
-		$data = $this->product_upload_model->fetch_seller_prod($data);
+		$results = $this->product_upload_model->fetch_seller_prod();
+		$data['allProducts'] = $results['allProducts'];
+		echo "here";
+		echo $data['allProducts']->num_rows();
+		$data['orders'] = $results['orders'];
+		echo "here2 ";
+		echo $data['orders']->num_rows();
+		$data['sure']="sur";
+		//$data['soldProducts'] = $this->product_upload_model->fetch_sold_prod($data['allProducts']);
 		$this->load->view('includes/header_loggedin');
-		$this->load->view('display_seller_prod',$data);
+		$this->load->view('seller_acc/display_seller_prod',$data);
 		$this->load->view('includes/footer');
+	}
+	public function seller_handover()
+	{
+		$this->load->model('product_upload_model');
+		$this->product_upload_model->updateSellersHandover();
+		redirect('seller_acc/display_seller_prods');
 	}
  	public function edit_seller_prods()
 	{
 		$this->load->view('includes/header_loggedin');
-		$this->load->view('edit_seller_prod');
+		$this->load->view('seller_acc/edit_seller_prod');
 		$this->load->view('includes/footer');
 	}
 
@@ -532,5 +612,20 @@ class seller_acc extends CI_Controller {
 			
 		
 	}
+	//form validation functions
+	function check_if_blank_pname($pname)
+    {
+    	$tcomp=strcmp($tel,"Cellphone Number");
+		$name_entered=TRUE;
+        if($tcomp==0)
+		{
+			$name_entered=FALSE;
+		}
+        return $name_entered;
+	}
+
+
+
+
 	}
 ?>
