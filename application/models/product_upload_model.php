@@ -18,7 +18,7 @@ class product_upload_model extends CI_Model {
 		$askprice = $this->input->post('ask_price'); //to be changed
 		
 		$productname = $this->input->post('p_name');
-	    echo $user_img[0];;
+	    //echo $user_img[0];;
 		$category = $this->input->post('p_category');
 		$sub_cat = $this->input->post('p_subcategory');
 		$condition = 10;
@@ -26,9 +26,9 @@ class product_upload_model extends CI_Model {
 		$p_desc = $this->input->post('p_desc'); 
 		$p_condition = $this->input->post('p_condition');
 		 $is_owner = $this->input->post('is_sowner'); 
-		 echo "here here here";
-		 echo $is_owner;
-		 echo $p_condition;
+		 //echo "here here here";
+		 //echo $is_owner;
+		 //echo $p_condition;
 		$smart_price = $this->input->post('p_smart_price');//calculation of the updated smart price
 		$data = array($sellername,NULL,$askprice,$productname,0,$category,$sub_cat,$condition,$tier,$smart_price);
 		$sql = "INSERT INTO products(seller,price,pname,is_sold,category,subcategory,p_condition,is_sowner,tier,smart_price,p_desc) VALUES ('".$sellername."','".$askprice."','".$productname."','0','".$category."','".$sub_cat."','".$p_condition."','".$is_owner."','".$tier."','".$smart_price."','".$p_desc."')";
@@ -147,7 +147,7 @@ class product_upload_model extends CI_Model {
 		foreach ($query['allProducts']->result() as $row)
 		{
 			if($row->is_sold == '1' || '2') {
-				echo $row->product_id;
+				//echo $row->product_id;
 				array_push($soldProducts,$row->product_id);
 			}
 		}
@@ -159,11 +159,58 @@ class product_upload_model extends CI_Model {
 	}
 	function updateSellersHandover()
 	{
+		$curr_time = time();
+		$date = date("Y-m-d H:i:s", $curr_time);
 			$this->db->where('order_id', $this->input->post('orderID'));	
 		$data = array(
-			'seller_conf' => 1 
+			'seller_conf' => 1 ,
+			'scdt' => $date
 		);
 		$this->db->update('orders', $data);
+	
+	//now from this orderID, find if buyer_conf and seller_conf both are 1. If yes, fetch the subcategory 
+		// and tier of the current product. Update it's smartprice'
+		//check implementation for this
+		$this->db->where('order_id', $this->input->post('orderID'));
+		$orderQuery = $this->db->get('orders');
+	
+	
+	if($orderQuery->row()->buyer_conf == 1 && $orderQuery->row()->seller_conf == 1) {
+			
+			// since both buyer and seller have confirmed, update is_sold in product table to 2.
+			$this->db->where('product_id', $orderQuery->row()->product_id);
+			$data = array(
+				'is_sold' => 2 
+			);
+			
+			$this->db->update('products', $data);
+			
+			$this->db->where('product_id', $orderQuery->row()->product_id);
+			$productQuery = $this->db->get('products');
+			
+			$tier = $productQuery->row()->tier;
+			$subcategory = $productQuery->row()->subcategory;
+			
+			$this->db->where('is_sold', 2);
+			$this->db->where('tier', $tier);
+			$this->db->where('subcategory', $subcategory);
+			$soldProductsSameType = $this->db->get('products');
+			$totalPrice = 0;
+			$count = $soldProductsSameType->num_rows();
+			foreach ($soldProductsSameType->result() as $row) {
+				$totalPrice = $totalPrice + $row->price;
+			} 
+			
+			$smartPrice = $totalPrice / $count;
+			
+			$this->db->where('tier', $tier);
+			$this->db->where('subcategory', $subcategory);
+			$data = array(
+				'smart_price' => $smartPrice
+			);
+			
+			$this->db->update('products', $data);
+		}
 	
 	}
 	
@@ -173,7 +220,6 @@ class product_upload_model extends CI_Model {
 		$p_name = $this->input->post('product_name');
 		$p_price = $this->input->post('product_price');
 		$p_desc = $this->input->post('product_desc');
-		
 		$sql = "UPDATE `products` SET `pname`= '".$p_name."', `price`= '".$p_price."',`p_desc`= '".$p_desc."' WHERE product_id = ".$pid." ";
 		$query = $this->db->query($sql);
 	}
@@ -183,7 +229,4 @@ class product_upload_model extends CI_Model {
 		$sql = "DELETE FROM `products` WHERE `product_id` = ".$pid." ";
 		$query = $this->db->query($sql);
 	}
-
-
-
 } 
