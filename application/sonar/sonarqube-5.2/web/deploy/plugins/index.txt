@@ -1,0 +1,4 @@
+java,sonar-java-plugin-3.6.jar|afb6ad44f35b43232575207a8dd0b757
+scmgit,sonar-scm-git-plugin-1.0.jar|e1d9d8e1d3524f9f0f69017e6dbead02
+php,sonar-php-plugin-2.7.jar|98957fc7da0ef757cb5e6a0ee7c3cb65
+scmsvn,sonar-scm-svn-plugin-1.2.jar|188d526ad86ec7f2dc7de694bf5f1851

@@ -1,0 +1,24 @@
+<div class="page">
+  <header class="page-header">
+    <h1 class="page-title"><%= message('system_info.page') -%></h1>
+    <div class="page-actions">
+      <div>
+        <a href="<%= ApplicationController.root_context -%>/api/system/logs" id="logs-link">Logs</a>&nbsp;&nbsp;
+        <a href="<%= ApplicationController.root_context -%>/api/system/info" id="download-link">Download</a>
+      </div>
+    </div>
+  </header>
+
+  <% @monitors.each do |monitor| %>
+    <%= render :partial => 'monitor', :locals => {:monitor => monitor} -%>
+  <% end %>
+
+</div>
+
+
+<% content_for :extra_script do %>
+  <script>
+    require(['apps/system/app']);
+  </script>
+<% end %>
+
