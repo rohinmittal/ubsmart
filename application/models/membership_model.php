@@ -1,22 +1,23 @@
 <?php
 
 class Membership_model extends CI_Model {
-	function validate() {
-		$this->db->where('username', $this->input->post('username'));
-		$this->db->where('password', md5($this->input->post('password')));
-		if($this->input->post('login_type')=='s')
+	function validate($username, $password, $loginType) {
+		$this->db->where('username', $username);
+		$this->db->where('password', $password);
+		if($loginType=='s')
 		{
 			$this->db->where('is_seller', 1);
 		}
-		if($this->input->post('login_type')=='b')
+		if($loginType=='b')
 		{
 			$this->db->where('is_buyer', 1);
 		}
 		$query = $this->db->get('users');
 		
-		if($query->num_rows() == 1) {
+		if($query->num_rows() > 0) {
 			 return true;
 		}
+		return false;
 	}
 	
 	function create_member() {

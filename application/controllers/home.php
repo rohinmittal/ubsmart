@@ -57,10 +57,13 @@ class Home extends CI_Controller {
         else
         {	
 			$this->load->model('membership_model');
-			$query=$this->membership_model->validate();
-			if($query)//credentials validated!
+			$username = $this->input->post('username');
+			$password = md5($this->input->post('password'));
+			$loginType = $this->input->post('login_type');
+		
+			$query=$this->membership_model->validate($username, $password, $loginType);
+			if($query) //credentials validated!
 			{
-
 				//echo "<script type='text/javascript'>alert('login successful!')</script>";
 				$lt='buyer';
 				if($this->input->post('login_type')=='s')
