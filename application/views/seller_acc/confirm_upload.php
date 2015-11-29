@@ -4,7 +4,7 @@
 		<div id="confirm_form">
 	<?php 
 	$attributes_upload = array('id' => 'confirm_upload');
-	    echo $suramrit; //use  these variables from $data to fill form... fill form to data base.. :)
+	    //echo $suramrit; //use  these variables from $data to fill form... fill form to data base.. :)
 		echo form_open_multipart('seller_acc/do_upload',$attributes_upload);
 		?>
 		<div id ="product details" style="visibility:visible; display: none" > 
@@ -36,22 +36,22 @@
 		echo form_fieldset_close();
 		echo "<br />";
 		echo "<br />";
-		echo $_POST['productname'];
+		//echo $_POST['productname'];
 		echo "<br />";
 		echo "<br />";
 		echo form_fieldset('The Smart price for this product is:');
 		echo form_label($p_smart_price,'p_sp');
 		echo form_fieldset_close();
 	    echo form_label('Enter Asking price for your product!','ask_price'); 
-		echo form_input('ask_price', set_value('ask_price', 'Enter your asking price'));
+		echo form_input('ask_price', set_value('ask_price'));
 		echo form_label('Enter a brief description of the product','p_desc');
-		echo form_input('p_desc', set_value('p_desc', 'Enter a Brief Description of the product!'));
+		echo form_input('p_desc', set_value('p_desc'));
 		echo form_label('Choose 3 Images','image2');
 		echo "<input type='file' name='userfiles[]' size='20' multiple/>"; 
 		echo "<input type='submit' name='submit2' value='upload' /> ";
 		echo anchor('seller_acc','Cancel');	
 		echo form_close();
 		?>
-		
+		<?php echo validation_errors('<p class="error">'); ?>
 </div>
 	</div>
