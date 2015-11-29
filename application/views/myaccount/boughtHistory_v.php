@@ -81,3 +81,16 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <?php } else { ?>
 <b>No product History.</b>
 <?php } ?>
+
+
+
+<?php
+if(isset($newOrder))
+{
+	if($newOrder==1)
+	{
+		$msg='Your order has been placed. Please see the order history on this page.';
+		echo '<script type="text/javascript">alert("'.$msg.'"); </script>';
+	}
+}
+?>

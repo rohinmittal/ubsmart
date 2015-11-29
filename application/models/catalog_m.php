@@ -55,28 +55,57 @@ class Catalog_m extends CI_Model {
 			return $ret;
 		}		
 	}
-	/*
-	function check_password() {
-		$this->db->where('username', $this->session->userdata('username'));
-		$this->db->where('password', md5($this->input->post('current_password')));
-
-		$query = $this->db->get('users');
+	
+	function fetch_latest_prods() {
 		
-		if($query->num_rows() == 1) {
-			return true;
+		$q=$this->db->from('products')->where('is_sold = 0')->limit(5)->order_by('product_id','desc');
+		$query = $q->get()->result();
+				
+		return $query;
+	}
+		
+	function fetch_prod_details($pid)
+	{
+		$q=$this->db->from('products')->where('is_sold = 0 AND product_id = '.$pid);
+		$query = $q->get();
+		//$ret['q1']=$q;
+		$ret['prod_details']=$query;
+		
+		$table='';
+		$query=$query->result();
+		
+		switch ($query[0]->subcategory)
+		{
+			case "Cellphones":
+				$table='mobile_detail';
+				break;
+			case "Laptops":
+				$table='laptop_detail';
+				break;
+			case "Tables":
+			case "Chairs":
+				$table='furniture_detail';
+				break;
 		}
-		return false;
+		
+		$q2=$this->db->from($table)->where('pid = '.$pid);
+		$query2 = $q2->get();
+		$ret['specific_details']=$query2;
+		
+		return $ret;
 	}
 	
-	
-	
-	function check_if_email_exists($email)
+	function order_product($pid)
 	{
-		$this->db->where('email', $email);
-		$result = $this->db->get('users');
-		if ($result->num_rows() > 0)
-		 { return FALSE;}
-		else
-		 { return TRUE; }
-	}*/
-} 
+		$timestamp = time();
+		$curr_date=date("Y-m-d", $timestamp);
+		$new_order_insert_data = array(
+        	'buyer_name' => $this->session->userdata('username'),
+        	'product_id' => $pid,
+        	'order_date' => $curr_date
+			);
+		
+		$insert=$this->db->insert('orders', $new_order_insert_data);
+		return $insert;
+	}	
+}
