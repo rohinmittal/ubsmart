@@ -13,6 +13,12 @@ class Catalog extends CI_Controller {
 		//$data['title']='Welcome to UBsMart!';		
 		$data['searchval'] ="no_search_query";
 		$data['filter'] ="default";
+		
+		
+		$this->load->model('catalog_m');
+		$query_results=$this->catalog_m->fetch_latest_prods();
+		$data['resultsForLatestProd']=$query_results;
+				
 		$this->load->view('includes/header_loggedin');
 		$this->load->view('catalog_v',$data);
 		$this->load->view('includes/footer');
@@ -66,4 +72,39 @@ class Catalog extends CI_Controller {
 			
 	}
 	
+	public function product_display($id)
+	{
+	  $this->load->model('catalog_m');
+	  $query=$this->catalog_m->fetch_prod_details($id);
+	  $data['prod_details']=$query['prod_details'];
+	  $data['add_details']=$query['specific_details'];
+	  	  
+	  //print_r($query['q1']);
+	  //echo nl2br("\n\n");
+	  //print_r($query['prod_details']);
+	  if($this->session->flashdata('order_not_placed')=='no')
+		{
+		$data['order_placed']='no';	
+		}	  
+	  
+	  $this->load->view('includes/header_loggedin');
+	  $this->load->view('product_display_v',$data);
+	  $this->load->view('includes/footer');
+	}
+	public function product_buy($pid)
+	{
+	  $this->load->model('catalog_m');
+	  $query=$this->catalog_m->order_product($pid);
+	  
+	  if($query)
+	  {
+	  	$newOrder=1;
+	  	redirect('myaccount/boughtHistory/'.$newOrder);
+	  }
+	  else
+	  {    
+		$this->session->set_flashdata('order_not_placed','no');
+		redirect('catalog/product_display/'.$pid);
+	  }		
+	}
 }

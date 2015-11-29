@@ -1,20 +1,27 @@
 function updatefilter()
-        {
-        	var new_filter_val='';
-  			if(document.getElementById("TierA").checked)
-  			{new_filter_val='a';}
-  			if(document.getElementById("TierB").checked)
-  			{new_filter_val=new_filter_val+'b';}
-  			if(document.getElementById("TierC").checked)
-  			{new_filter_val=new_filter_val+'c';}
-  			if(document.getElementById("TierD").checked)
-  			{new_filter_val=new_filter_val+'d';}
-  			if(document.getElementById("TierE").checked)
-  			{new_filter_val=new_filter_val+'e';}
-  			
-  			location.href=baseurl+'catalog/execute_search/'+sort_by+'/'+sort_order+'/'+new_filter_val;
-  		}
-
+    {
+       	var new_filter_val='';
+  		if(document.getElementById("TierA").checked)
+  		{new_filter_val='a';}
+  		if(document.getElementById("TierB").checked)
+  		{new_filter_val=new_filter_val+'b';}
+  		if(document.getElementById("TierC").checked)
+  		{new_filter_val=new_filter_val+'c';}
+  		if(document.getElementById("TierD").checked)
+  		{new_filter_val=new_filter_val+'d';}
+  		if(document.getElementById("TierE").checked)
+  		{new_filter_val=new_filter_val+'e';}
+  		location.href=baseurl+'catalog/execute_search/'+sort_by+'/'+sort_order+'/'+new_filter_val;
+  	}
+function goBack()
+	{
+		window.history.back();
+	}
+function updateImage(id)
+    {
+    	var src=document.getElementById(id).src;
+    	document.getElementById("largeimg").src=src ;
+    }
 $(document).ready(function() {	
 	$(':text').click(function() {
 		current_input_val=$(this).val();
