@@ -11,11 +11,17 @@
 		
 		echo form_label('Product Name','p_name');
 		echo form_input('productname', set_value('productname', 'Enter Product Name:'));
+		echo form_label('Ownership Type','p_owner');
+		echo "<br />";
+		echo form_checkbox('is_owner', 'is_owner', FALSE);
+		echo form_label('You are the first owner of the product?','is_owner');
+		echo "<br />";
+		echo "<br />";
 		echo form_fieldset('Enter Product Specifications');
 		echo form_label('Product Category','p_cat');
 		echo "<br />";
 		echo form_label('Furniture','is_furniture');
-		echo form_radio('categories','furniture',FALSE,'class="cat"');
+		echo form_radio('categories','furniture',TRUE,'class="cat"');
 		echo form_label('Electronics','is_electronic');
 		echo form_radio('categories','electronic',FALSE,'class="cat"');
 		//echo form_label('Mobile','is_mobile');
@@ -25,18 +31,18 @@
 		<div id="formContainer">
 	 	<div id = "product_type_form"></div>
 	 	
-	 	<div id = "furniture_form" style="visibility:visible; display:none" >
+	 	<div id = "furniture_form" style="visibility:visible; " >
 	 		<?php
         echo form_label('Select Furniture Type','type_furniture');
         echo "<br />";
         echo form_label('Table','type_furniture');
-		echo form_radio('f_type','table',FALSE,'class="f_type"');
+		echo form_radio('f_type','table',TRUE,'class="f_type"');
 		echo form_label('Chair','type_furniture');
 		echo form_radio('f_type','chair',FALSE,'class="f_type"');
 	 		?>
 	 		
 	 	
-	 	<div id = "table_details" style="visibility:visible; display: none" >
+	 	<div id = "table_details" style="visibility:visible; " >
 	 		<?php
 	 		echo form_label('Material Type','type_material');
         echo "<br />";
@@ -47,8 +53,14 @@
 		 echo form_label('Steel','type_material');
 		echo form_radio('mat_type','steel',FALSE,'class="type_table"');
 		echo "<br />";
-		echo form_label('Table Dimension','tab_dimen'); 
-		echo form_input('tab_dimension', set_value('tab_dimension', ''));
+		echo form_fieldset('Enter Product dimensions');
+		echo form_label('Length','tab_dimen_l'); 
+		echo form_input('tab_dimension_l', set_value('tab_dimension_l', 'Length'));
+		echo form_label('Width','tab_dimen_w'); 
+		echo form_input('tab_dimension_w', set_value('tab_dimension_w', 'Width'));
+		echo form_label('Height','tab_dimen_h'); 
+		echo form_input('tab_dimension_h', set_value('tab_dimension_h', 'Height'));
+		echo form_fieldset_close();
 		$options = array(
                   '<6month'  => '<6 Months',
                   '6-1yr'    => '6 Months to 1 Year',
@@ -87,8 +99,15 @@
 		 echo form_label('None','type_cushion');
 		echo form_radio('cushion_type','none',FALSE,'class="type"');
 		echo "<br />";
-		echo form_label('Chair Dimension','chair_dimen'); 
-		echo form_input('chair_dimension', set_value('chair_dimension', 'Enter the chair dimensions:'));
+		echo form_fieldset('Enter Product dimensions');
+		echo form_label('Length','chair_dimen_l'); 
+		echo form_input('chair_dimension_l', set_value('chair_dimension_l', 'Length'));
+		echo form_label('Width','chair_dimen_w'); 
+		echo form_input('chair_dimension_w', set_value('chair_dimension_w', 'Width'));
+		echo form_label('Height','chair_dimen_h'); 
+		echo form_input('chair_dimension_h', set_value('chair_dimension_h', 'Height'));
+		echo form_fieldset_close();
+		
 		$options = array(
                   '<6month'  => '<6 Months',
                   '6-1yr'    => '6 Months to 1 Year',
@@ -116,11 +135,11 @@
         echo form_label('Select Electronic Item Type','type_electronic');
         echo "<br />";
         echo form_label('Laptop','type_electronic');
-		echo form_radio('e_type','laptop',FALSE,'class="e_type"');
+		echo form_radio('e_type','laptop',TRUE,'class="e_type"');
 		echo form_label('CellPhone','type_electronic');
 		echo form_radio('e_type','cellphone',FALSE,'class="e_type"');
 	 		?>
-        <div id = "laptop_details" style="visibility:visible; display:none" >
+        <div id = "laptop_details" style="visibility:visible; " >
 	 		<?php
 		echo "<br />";
 		echo form_fieldset('System Configuration');
@@ -297,7 +316,7 @@
 		echo anchor('seller_acc','Cancel');	
 		echo form_close();
 		
-		echo validation_errors('<p class="error">'); 
+		
 		?>
 		<?php echo validation_errors('<p class="error">'); ?>
 </div> 

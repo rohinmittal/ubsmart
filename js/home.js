@@ -118,7 +118,7 @@ $(document).ready(function() {
 	}
 	
 	
-	 $('#furniture_form,#laptop_form,#mobile_form').css("display","none");
+//	 $('#furniture_form,#laptop_form,#mobile_form').css("display","none");
 	   
 	    $(".edit_option").click(function(){
         if ($('input[name=edit_option]:checked').val() == "edit") {

@@ -77,3 +77,13 @@ $lang['check_if_blank_tel']		= 'The Cellphone Number field is required.';
 $lang['check_if_blank_password'] = 'The Password field is required.';
 $lang['check_if_positive'] = 'Please enter a valid Cellphone Number.';
 $lang['check_if_positive_amount'] = 'The amount should be a positive number';
+$lang['check_if_blank_pname']		= 'The Product Name is a required field';
+$lang['check_if_blank_dimension']		= 'Dimension for furniture is required';
+$lang['check_if_mat_set']		= 'Select Material Type';
+$lang['check_if_cat_set']		= 'Select Product Category';
+$lang['check_if_f_type_set']		= 'Select Type of Furniture';
+$lang['check_if_serial_set']		= 'Enter Serial Number';
+$lang['check_if_imei_set']		= 'Enter IMEI Number';
+
+
+

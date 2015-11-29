@@ -61,29 +61,68 @@ class seller_acc extends CI_Controller {
 		$this->load->library('form_validation');
 		
 		//rules
-		$fur_type = $_POST['f_type'];
+		
 		$this->form_validation->set_rules('productname', 'Product Name', 'trim|required|callback_check_if_blank_pname');
-		if($fur_type == "table")
+		//$this->form_validation->set_rules('categories', 'Category' , 'callback_check_if_cat_set');
+		//$this->form_validation->run();
+		$category = $_POST['categories']; 
+		if($category=="furniture")
 		{
-			$this->form_validation->set_rules('tab_dimension', 'Table Dimensions', 'trim|required');
-		}
-		if($fur_type == "chair")
+			//$this->form_validation->set_rules('f_type', 'F type' , 'callback_check_if_f_type_set');
+			//$this->form_validation->run();
+			$f_type = $_POST['f_type'];
+		
+		
+		if($f_type == "table")
 		{
-			$this->form_validation->set_rules('chair_dimension', 'Chair Dimension', 'trim|required');
+			$this->form_validation->set_rules('mat_type', 'Material', 'callback_check_if_mat_set');
+			$this->form_validation->set_rules('tab_dimension_l', 'Table Dimension', 'trim|required|callback_check_if_blank_dimension');
+			$this->form_validation->set_rules('tab_dimension_w', 'Table Dimension', 'trim|required|callback_check_if_blank_dimension');
+			$this->form_validation->set_rules('tab_dimension_h', 'Table Dimension', 'trim|required|callback_check_if_blank_dimension');
+		
 		}
+		if($f_type == "chair")
+		{
+			$this->form_validation->set_rules('chair_mat_type', 'Material', 'callback_check_if_mat_set');
+			$this->form_validation->set_rules('chair_dimension_l', 'Chair Dimension', 'trim|required|callback_check_if_blank_dimension');
+			$this->form_validation->set_rules('chair_dimension_w', 'Chair Dimension', 'trim|required|callback_check_if_blank_dimension');
+			$this->form_validation->set_rules('chair_dimension_h', 'Chair Dimension', 'trim|required|callback_check_if_blank_dimension');
+		}
+		}
+		else 
+		{
+			$elec_type = $_POST['e_type'];
+			if($elec_type == "laptop")
+			{
+				$this->form_validation->set_rules('laptop_serial', 'Serial', 'callback_check_if_serial_set');
+			}
+			if($elec_type == "cellphone")
+			{
+				$this->form_validation->set_rules('imei', 'IMEI', 'callback_check_if_imei_set');
+			}
+		}
+		
+		
+		
+		
+		
+
 		
 		//$this->form_validation->set_rules('productname', 'Product Name', 'required');
 		//$this->form_validation->set_rules('productname', 'Product Name', 'required');
 		
 		if ($this->form_validation->run() == FALSE) // didn't validate
 		{
-			echo "dint validate";
-			$this->load->view('seller_acc/upload_form');
+		$this->load->view('includes/header_loggedin');
+		$this->load->view('seller_acc/upload_form');
+		$this->load->view('includes/footer');
 		}	
 		//$config['upload_path'] = './p_images/';//t
 		//$concat = $config['upload_path'].'random';//t
 		//echo $concat;//t
-		
+		else
+		{
+			
 		$category = $_POST['categories'];    //value of radio button
 		if($category == "furniture")
 		{
@@ -474,7 +513,7 @@ class seller_acc extends CI_Controller {
 		$this->load->view('seller_acc/confirm_upload',$data);
 		$this->load->view('includes/footer');
 		
-		
+		}	
 	
 	}
 	
@@ -615,7 +654,7 @@ class seller_acc extends CI_Controller {
 	//form validation functions
 	function check_if_blank_pname($pname)
     {
-    	$tcomp=strcmp($tel,"Cellphone Number");
+    	$tcomp=strcmp($pname,"Enter Product Name:");
 		$name_entered=TRUE;
         if($tcomp==0)
 		{
@@ -623,8 +662,54 @@ class seller_acc extends CI_Controller {
 		}
         return $name_entered;
 	}
-
-
+	function check_if_blank_dimension($dimen)
+    {
+    	$tcomp=strcmp($dimen,"Enter Dimension:");
+		$dim_entered=TRUE;
+        if($tcomp==0)
+		{
+			$dim_entered=FALSE;
+		}
+        return $dim_entered;
+	}
+	function check_if_mat_set($mat_type)
+    {
+	  if(isset($_POST['mat_type']))
+	  {    return TRUE;     }       
+      else { return FALSE; }    	
+	}
+	function check_if_cat_set($mat_type)
+    {
+	  if(isset($_POST['categories']))
+	  {    return TRUE;     }       
+      else { return FALSE; }    	
+	}
+	function check_if_f_type_set($mat_type)
+    {
+	  if(isset($_POST['f_type']))
+	  {    return TRUE;     }       
+      else { return FALSE; }    	
+	}
+	function check_if_serial_set($serial)
+    {
+    	$tcomp=strcmp($serial,"Enter serial number:");
+		$ser_entered=TRUE;
+        if($tcomp==0)
+		{
+			$ser_entered=FALSE;
+		}
+        return $ser_entered;
+	}
+	function check_if_imei_set($imei)
+    {
+    	$tcomp=strcmp($imei,"Enter IMEI number:");
+		$imei_entered=TRUE;
+        if($tcomp==0)
+		{
+			$imei_entered=FALSE;
+		}
+        return $imei_entered;
+	}
 
 
 	}
