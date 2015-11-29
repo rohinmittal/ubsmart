@@ -14,7 +14,7 @@
 		//echo form_label('Age: '.form_input('userAge',""),'age');
 		?>
 		
-		<div id="SB" style="background:#393939; padding: 1px;
+		<div id="SB" style="background:#AAC4C5; padding: 1px;
 		display: -webkit-flex;
 		-webkit-align-items: center;
 		display: flex;

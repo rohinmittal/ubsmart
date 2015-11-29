@@ -2,24 +2,21 @@
 	<div id="breadcrumbs">
 	Product details page!
 	</div>
-	<div id="parentdiv" class="clearfix" style="background: blue;">
+	<div id="parentdiv" class="clearfix">
 		<div id="product_details" class="clearfix">		
-			<div class="gallerycontainer" style="background: orange;">
-				<a class="thumbnail" href="#thumb">
-					<img src="media/tree_thumb.jpg" width="150px" height="150px" border="0" />
-				</a>
-				<a class="thumbnail" href="#thumb">
-					<img src="media/tree_thumb.jpg" width="150px" height="150px" border="0" />
-				</a>
-				<a class="thumbnail" href="#thumb">
-					<img src="media/tree_thumb.jpg" width="150px" height="150px" border="0" />
-				</a>			
-			</div>
-			<?php
+			<div class="gallerycontainer" style="">
+				<?php
+				$s=base_url("/p_images/");
 				$pd=$prod_details->result();
-				$add_pd=$add_details->result();
-			?>
-			<div id="product_description" style="background: red;">
+				$add_pd=$add_details->result(); 
+				echo '<div>';
+				echo '<img id="largeimg" src="'.$s.'/'.$pd[0]->product_id.'/'.$pd[0]->pic1.'"/>';
+				echo '</div>';							
+				echo '<img class="thumbnail" id="p1" onclick="updateImage(\'p1\')" src="'.$s.'/'.$pd[0]->product_id.'/'.$pd[0]->pic1.'"/>';
+				echo '<img class="thumbnail" id="p2" onclick="updateImage(\'p2\')" src="'.$s.'/'.$pd[0]->product_id.'/'.$pd[0]->pic2.'"/>';
+				echo '<img class="thumbnail" id="p3" onclick="updateImage(\'p3\')" src="'.$s.'/'.$pd[0]->product_id.'/'.$pd[0]->pic3.'"/>';?>
+			</div>
+			<div id="product_description">
 				<h1 style="margin-top: 2%"><?php echo $pd[0]->pname ?></h1>
 				<?php echo '<p style="margin-left:2%;">'.				 	
 				 	'Name: '.$pd[0]->pname.'<br>'.
@@ -120,3 +117,16 @@
 			</div>					
 		</div>
 	</div>
+	
+
+
+<?php
+if(isset($order_placed))
+{
+	if($order_placed=='no')
+	{
+		$msg='Sorry, your order could not be placed.';
+		echo '<script type="text/javascript">alert("'.$msg.'"); </script>';
+	}
+}
+?>

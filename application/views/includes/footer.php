@@ -1,8 +1,8 @@
-<div id="footer"style="background: green; text-align: center">	
-About UBsMart<br>
+<div id="footer"style="background: #AAC4C5; text-align: center">	
+<br>About UBsMart<br>
 About SmartPrice<br>
 Our Promise<br>
-Contact Us <br>
+Contact Us <br><br>
 </div>	
 <br>
 <script type="text/javascript">
