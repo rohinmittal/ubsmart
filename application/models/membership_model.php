@@ -21,7 +21,6 @@ class Membership_model extends CI_Model {
 	}
 	
 	function create_member() {
-		$username = $this->input->post('username');
 		$ro[0]=1;
 		$ro[1]=1; 
 		if($this->input->post('roles[0]')==NULL)
@@ -168,7 +167,6 @@ class Membership_model extends CI_Model {
 	function countBuyerPendingHandovers() {
 		$this->db->where('buyer_name', $this->session->userdata('username'));
 		$this->db->where('buyer_conf', 0);	
-		$query = $this->db->get('orders');
-		return $query;
+		return $this->db->get('orders');
 	}
 } 

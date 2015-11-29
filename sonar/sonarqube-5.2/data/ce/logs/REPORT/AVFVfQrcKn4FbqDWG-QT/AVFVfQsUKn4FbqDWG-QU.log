@@ -1,0 +1,76 @@
+2015.11.29 18:03:58 INFO  [o.s.s.c.t.CeWorkerRunnableImpl] Execute task | project=org.sonarqube:ubsmart | id=AVFVfQsUKn4FbqDWG-QU
+2015.11.29 18:03:58 INFO  [o.s.s.c.s.ExtractReportStep] Analysis report extracted | compressedSize=194 KB
+2015.11.29 18:03:58 INFO  [o.s.s.c.s.ComputationStepExecutor] Extract report | time=82ms
+2015.11.29 18:03:58 INFO  [o.s.s.c.s.LogScannerContextStep] SonarQube plugins:
+2015.11.29 18:03:58 INFO  [o.s.s.c.s.LogScannerContextStep]   - PHP 2.7 (php)
+2015.11.29 18:03:58 INFO  [o.s.s.c.s.LogScannerContextStep]   - Java 3.6 (java)
+2015.11.29 18:03:58 INFO  [o.s.s.c.s.LogScannerContextStep]   - SVN 1.2 (scmsvn)
+2015.11.29 18:03:58 INFO  [o.s.s.c.s.LogScannerContextStep]   - Git 1.0 (scmgit)
+2015.11.29 18:03:58 INFO  [o.s.s.c.s.LogScannerContextStep] Settings for module: org.sonarqube:ubsmart
+2015.11.29 18:03:58 INFO  [o.s.s.c.s.LogScannerContextStep]   - sonar.core.id=20151129175753
+2015.11.29 18:03:58 INFO  [o.s.s.c.s.LogScannerContextStep]   - sonar.core.startTime=2015-11-29T17:57:53-0500
+2015.11.29 18:03:58 INFO  [o.s.s.c.s.LogScannerContextStep]   - sonar.core.version=5.2
+2015.11.29 18:03:58 INFO  [o.s.s.c.s.LogScannerContextStep]   - sonar.host.url=http://localhost:9000
+2015.11.29 18:03:58 INFO  [o.s.s.c.s.LogScannerContextStep]   - sonar.language=php
+2015.11.29 18:03:58 INFO  [o.s.s.c.s.LogScannerContextStep]   - sonar.libraries=
+2015.11.29 18:03:58 INFO  [o.s.s.c.s.LogScannerContextStep]   - sonar.permission.template.default=default_template
+2015.11.29 18:03:58 INFO  [o.s.s.c.s.LogScannerContextStep]   - sonar.php.coverage.reportPath=/Users/rohinmittal/Sites/ubsmart/log/tests-clover.xml
+2015.11.29 18:03:58 INFO  [o.s.s.c.s.LogScannerContextStep]   - sonar.php.tests.reportPath=/Users/rohinmittal/Sites/ubsmart/log/tests-junit.xml
+2015.11.29 18:03:58 INFO  [o.s.s.c.s.LogScannerContextStep]   - sonar.projectBaseDir=/Users/rohinmittal/Sites/ubsmart/.
+2015.11.29 18:03:58 INFO  [o.s.s.c.s.LogScannerContextStep]   - sonar.projectKey=org.sonarqube:ubsmart
+2015.11.29 18:03:58 INFO  [o.s.s.c.s.LogScannerContextStep]   - sonar.projectName=UBsMart
+2015.11.29 18:03:58 INFO  [o.s.s.c.s.LogScannerContextStep]   - sonar.projectVersion=1.0
+2015.11.29 18:03:58 INFO  [o.s.s.c.s.LogScannerContextStep]   - sonar.qualitygate=1
+2015.11.29 18:03:58 INFO  [o.s.s.c.s.LogScannerContextStep]   - sonar.sourceEncoding=UTF-8
+2015.11.29 18:03:58 INFO  [o.s.s.c.s.LogScannerContextStep]   - sonar.sources=/Users/rohinmittal/Sites/ubsmart/application
+2015.11.29 18:03:58 INFO  [o.s.s.c.s.LogScannerContextStep]   - sonar.test.inclusions=/Users/rohinmittal/Sites/ubsmart/tests/CITest.php
+2015.11.29 18:03:58 INFO  [o.s.s.c.s.LogScannerContextStep]   - sonar.tests=/Users/rohinmittal/Sites/ubsmart/tests/
+2015.11.29 18:03:58 INFO  [o.s.s.c.s.LogScannerContextStep]   - sonar.working.directory=/Users/rohinmittal/Sites/ubsmart/./.sonar
+2015.11.29 18:03:58 INFO  [o.s.s.c.s.ComputationStepExecutor] Log scanner context | time=2ms
+2015.11.29 18:03:58 INFO  [o.s.s.c.s.ComputationStepExecutor] Build tree of components | time=5ms
+2015.11.29 18:03:58 INFO  [o.s.s.c.s.ComputationStepExecutor] Validate project | time=1ms
+2015.11.29 18:03:58 INFO  [o.s.s.c.s.ComputationStepExecutor] Load debt model | time=2ms
+2015.11.29 18:03:58 INFO  [o.s.s.c.s.ComputationStepExecutor] Load quality profiles | time=95ms
+2015.11.29 18:03:58 INFO  [o.s.s.c.s.ComputationStepExecutor] Load Quality gate | time=14ms
+2015.11.29 18:03:58 INFO  [o.s.s.c.s.ComputationStepExecutor] Load differential periods | time=12ms
+2015.11.29 18:03:58 INFO  [o.s.s.c.s.ComputationStepExecutor] Compute size measures | time=9ms
+2015.11.29 18:03:58 INFO  [o.s.s.c.s.ComputationStepExecutor] Compute new coverage | time=15ms
+2015.11.29 18:03:58 INFO  [o.s.s.c.s.ComputationStepExecutor] Compute coverage measures | time=4ms
+2015.11.29 18:03:58 INFO  [o.s.s.c.s.ComputationStepExecutor] Compute comment measures | time=4ms
+2015.11.29 18:03:58 INFO  [o.s.s.c.s.ComputationStepExecutor] Copy custom measures | time=73ms
+2015.11.29 18:03:58 INFO  [o.s.s.c.s.ComputationStepExecutor] Compute duplication measures | time=2ms
+2015.11.29 18:03:58 INFO  [o.s.s.c.s.ComputationStepExecutor] Compute language distribution | time=16ms
+2015.11.29 18:03:58 INFO  [o.s.s.c.s.ComputationStepExecutor] Compute test measures | time=0ms
+2015.11.29 18:03:58 INFO  [o.s.s.c.s.ComputationStepExecutor] Compute complexity measures | time=28ms
+2015.11.29 18:03:58 INFO  [o.s.s.c.s.ComputationStepExecutor] Load measure computers | time=0ms
+2015.11.29 18:03:59 INFO  [o.s.s.c.s.ExecuteVisitorsStep]   Execution time for each component visitor:
+2015.11.29 18:03:59 INFO  [o.s.s.c.s.ExecuteVisitorsStep]   - LoadComponentUuidsHavingOpenIssuesVisitor | time=6ms
+2015.11.29 18:03:59 INFO  [o.s.s.c.s.ExecuteVisitorsStep]   - IntegrateIssuesVisitor | time=438ms
+2015.11.29 18:03:59 INFO  [o.s.s.c.s.ExecuteVisitorsStep]   - CloseIssuesOnRemovedComponentsVisitor | time=0ms
+2015.11.29 18:03:59 INFO  [o.s.s.c.s.ExecuteVisitorsStep]   - SqaleMeasuresVisitor | time=5ms
+2015.11.29 18:03:59 INFO  [o.s.s.c.s.ExecuteVisitorsStep]   - SqaleNewMeasuresVisitor | time=0ms
+2015.11.29 18:03:59 INFO  [o.s.s.c.s.ExecuteVisitorsStep]   - LastCommitVisitor | time=3ms
+2015.11.29 18:03:59 INFO  [o.s.s.c.s.ExecuteVisitorsStep]   - MeasureComputersVisitor | time=2ms
+2015.11.29 18:03:59 INFO  [o.s.s.c.s.ComputationStepExecutor] Execute component visitors | time=468ms
+2015.11.29 18:03:59 INFO  [o.s.s.c.s.ComputationStepExecutor] Compute measure variations | time=0ms
+2015.11.29 18:03:59 INFO  [o.s.s.c.s.ComputationStepExecutor] Computes Quality Gate measures | time=1ms
+2015.11.29 18:03:59 INFO  [o.s.s.c.s.ComputationStepExecutor] Compute Quality profile measures | time=0ms
+2015.11.29 18:03:59 INFO  [o.s.s.c.s.ComputationStepExecutor] Generate Quality profile events | time=4ms
+2015.11.29 18:03:59 INFO  [o.s.s.c.s.ComputationStepExecutor] Generate Quality gate events | time=2ms
+2015.11.29 18:03:59 INFO  [o.s.s.c.s.ComputationStepExecutor] Persist components | time=85ms
+2015.11.29 18:03:59 INFO  [o.s.s.c.s.ComputationStepExecutor] Persist snapshots | time=62ms
+2015.11.29 18:03:59 INFO  [o.s.s.c.s.ComputationStepExecutor] Persist measures | time=249ms
+2015.11.29 18:03:59 INFO  [o.s.s.c.s.ComputationStepExecutor] Persist issues | time=404ms
+2015.11.29 18:03:59 INFO  [o.s.s.c.s.ComputationStepExecutor] Persist project links | time=2ms
+2015.11.29 18:03:59 INFO  [o.s.s.c.s.ComputationStepExecutor] Persist events | time=3ms
+2015.11.29 18:03:59 INFO  [o.s.s.c.s.ComputationStepExecutor] Persist duplications | time=5ms
+2015.11.29 18:04:00 INFO  [o.s.s.c.s.ComputationStepExecutor] Persist sources | time=147ms
+2015.11.29 18:04:00 INFO  [o.s.s.c.s.ComputationStepExecutor] Persist tests | time=1ms
+2015.11.29 18:04:00 INFO  [o.s.s.c.s.ComputationStepExecutor] Enable snapshot | time=8ms
+2015.11.29 18:04:00 INFO  [o.s.s.c.s.ComputationStepExecutor] Index components | time=57ms
+2015.11.29 18:04:00 INFO  [o.s.s.c.s.ComputationStepExecutor] Purge db | time=10ms
+2015.11.29 18:04:00 INFO  [o.s.s.c.s.ComputationStepExecutor] Apply permissions | time=2ms
+2015.11.29 18:04:00 INFO  [o.s.s.c.s.ComputationStepExecutor] Index issues | time=249ms
+2015.11.29 18:04:00 INFO  [o.s.s.c.s.ComputationStepExecutor] Index tests | time=33ms
+2015.11.29 18:04:00 INFO  [o.s.s.c.s.ComputationStepExecutor] Send issue notifications | time=2ms
+2015.11.29 18:04:00 INFO  [o.s.s.c.t.CeWorkerRunnableImpl] Executed task | project=org.sonarqube:ubsmart | id=AVFVfQsUKn4FbqDWG-QU | time=2296ms

@@ -13,20 +13,23 @@ cacheTokens="true"
 verbose="false"
 bootstrap="tests/Bootstrap.php">
     <testsuites>
-        <testsuite name="CITools Test Suite">
+        <testsuite name="UBsMart Test Suite">
             <directory>./tests/</directory>
+	    <file>./tests/CITest.php</file>
         </testsuite>
     </testsuites>
     <filter>
-        <whitelist>
-            <directory>./system/</directory>
+        <whitelist processUncoveredFilesFromWhitelist="true" addUncoveredFilesFromWhitelist="false">
+            <directory suffix=".php">./application/models</directory>
+            <directory suffix=".php">./application/controllers</directory>
+            <directory suffix=".php">./application/views</directory>
         </whitelist>
     </filter>
-    
-         <logging>
-        <log type="coverage-html" target="./log/codeCoverage" charset="UTF-8"
-            yui="true" highlight="true"
-            lowUpperBound="50" highLowerBound="80"/>
-        <log type="testdox-html" target="./log/testdox.html" />
+    <logging>
+    <log type="coverage-clover"
+    target="./log/tests-clover.xml"/>
+    <log type="junit"
+    target="./log/tests-junit.xml"
+    logIncompleteSkipped="false"/>
     </logging>
-</phpunit>
+    </phpunit>
