@@ -24,9 +24,14 @@ class product_upload_model extends CI_Model {
 		$condition = 10;
 		$tier = $this->input->post('p_tier'); 
 		$p_desc = $this->input->post('p_desc'); 
+		$p_condition = $this->input->post('p_condition');
+		 $is_owner = $this->input->post('is_sowner'); 
+		 echo "here here here";
+		 echo $is_owner;
+		 echo $p_condition;
 		$smart_price = $this->input->post('p_smart_price');//calculation of the updated smart price
 		$data = array($sellername,NULL,$askprice,$productname,0,$category,$sub_cat,$condition,$tier,$smart_price);
-		$sql = "INSERT INTO products(seller,price,pname,is_sold,category,subcategory,p_condition,is_sowner,tier,smart_price,p_desc) VALUES ('".$sellername."','".$askprice."','".$productname."','0','".$category."','".$sub_cat."','".$condition."','1','".$tier."','".$smart_price."','".$p_desc."')";
+		$sql = "INSERT INTO products(seller,price,pname,is_sold,category,subcategory,p_condition,is_sowner,tier,smart_price,p_desc) VALUES ('".$sellername."','".$askprice."','".$productname."','0','".$category."','".$sub_cat."','".$p_condition."','".$is_owner."','".$tier."','".$smart_price."','".$p_desc."')";
 		//$this->db->insert('products',$data); 	
 	    $this->db->query($sql);
 		
@@ -49,7 +54,10 @@ class product_upload_model extends CI_Model {
 	function upload_furn_details($data= array())
 	{
 		$pid=$data['pid'];
-		$dimension=$data['dimension'];
+		$dim_l=$data['dim_l'];
+		$dim_w=$data['dim_w'];
+		$dim_h=$data['dim_h'];
+		$dimension = $dim_l.'x'.$dim_w.'x'.$dim_h;
 		$material=$data['material'];
 		$sql = "INSERT INTO furniture_detail(pid,dimensions,material) VALUES ('".$pid."','".$dimension."','".$material."')";
 		//$this->db->insert('products',$data); 	
@@ -92,26 +100,41 @@ class product_upload_model extends CI_Model {
 		$current_smart_price=0;
 		$prod_tier=$data['p_tier'];
 		$category=$data['p_category'];
+		$subcategory=$data['p_subcategory'];
 		//$subcat=$data['sub_cat'];
 		$this->db->select('smart_price');
 		$this->db->where('category',$category);
-		$this->db->where('subcategory',$category);
+		$this->db->where('subcategory',$subcategory);
 		$this->db->where('tier',$prod_tier);
 		$query = $this->db->get('products',1);
 		if($query->num_rows()){
 		foreach ($query->result() as $row)
 		{
 			//echo $row->smart_price;
-			 $current_smart_price =  $row->smart_price;	
+			 $data['current_smart_price'] =  $row->smart_price;	
 			//echo "<br />";
    		}
 		//$current_smart_price = $current_smart_price/($query->num_rows());
 		}
 		else   $current_smart_price=0;
+		$sql2 = "SELECT MAX(price) from products WHERE category= '".$category."' AND subcategory = '".$subcategory."' AND tier ='".$prod_tier."'";
+		$query2 = $this->db->query($sql2);
+		$data2 = $query2->result_array();
+		
+        $data['max_price'] = ($data2[0]['MAX(price)']);
+		
+		$sql3 = "SELECT MIN(price) from products WHERE category= '".$category."' AND subcategory = '".$subcategory."' AND tier ='".$prod_tier."'";
+		$query3 = $this->db->query($sql3);
+		$data3 = $query3->result_array();
+		
+        $data['min_price'] = ($data3[0]['MIN(price)']);
+		//$this->db->select_max();
 	//	echo "<br />";
 	//	echo "<br />";
     //	echo $current_smart_price;
-		return $current_smart_price;
+    // here find the min?max in the same sub category + tier 
+    
+		return $data;
 	}
 	function fetch_seller_prod()
 	{

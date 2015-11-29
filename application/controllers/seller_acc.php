@@ -138,11 +138,18 @@ class seller_acc extends CI_Controller {
 			if($fur_type == "table")
 			{
 				$prod_weight = 0;
+				$data['dim_l'] = $_POST['tab_dimension_l'];
+				$data['dim_w'] = $_POST['tab_dimension_w'];
+				$data['dim_h'] = $_POST['tab_dimension_h'];
 				$material = $_POST['mat_type'];
 				$tab_age = $_POST['age_table'];
-				$dimension = $_POST['tab_dimension']; //add to form...
+				//$dimension = $_POST['tab_dimension']; //add to form...
 				$table_cond = $_POST['table_condition'];
 				echo $tab_age;
+				if(isset($_POST['is_owner']))
+				{
+					$prod_weight = $prod_weight + 25;
+				}
 				if($material=='plastic')
 				{
 				$prod_weight = $prod_weight + 25;		
@@ -166,31 +173,34 @@ class seller_acc extends CI_Controller {
 					$prod_weight = $prod_weight + 25;
 				} //>1yr
 				if($table_cond=="slight")
-				{
-					$prod_weight = $prod_weight + 300;
-				}
+				{														//Product Condition reresentation in DataBase
+					$data['p_condition'] = 'f';                           //f -FAIR
+					$prod_weight = $prod_weight + 300;					  //a -Average 
+				}														  //b -Below Average
 				else if($table_cond=="moderate")
 				{
+					$data['p_condition'] = 'a';
 					$prod_weight = $prod_weight + 150;
 				}
 				else{
+					$data['p_condition'] = 'b';
 					$prod_weight = $prod_weight + 50;
 				} //serious wear
 				echo "<br />";
 				echo $prod_weight;
-				if($prod_weight <= 100)
+				if($prod_weight <= 125)
 				{
 					$prod_tier="e";
 				}
-				else if($prod_weight <= 200)
+				else if($prod_weight <= 225)
 				{
 					$prod_tier="d";
 				}
-				else if($prod_weight <= 300)
+				else if($prod_weight <= 325)
 				{
 					$prod_tier="c";
 				}
-				else if($prod_weight <= 400)
+				else if($prod_weight <= 425)
 				{
 					$prod_tier="b";
 				}
@@ -203,12 +213,19 @@ class seller_acc extends CI_Controller {
 			}
 			else if($fur_type == "chair"){ //chair weight calculation
 				$prod_weight = 0;
+			    $data['dim_l'] = $_POST['chair_dimension_l'];
+				$data['dim_w'] = $_POST['chair_dimension_w'];
+				$data['dim_h'] = $_POST['chair_dimension_h'];
 				$material = $_POST['chair_mat_type'];
-				$dimension = $_POST['chair_dimension'];
+				//$dimension = $_POST['chair_dimension'];
 				$chair_age = $_POST['age_chair'];
 				$chair_cond = $_POST['chair_condition'];
 				$type_cush = $_POST['cushion_type'];
 				echo $chair_age;
+				if(isset($_POST['is_owner']))
+				{
+					$prod_weight = $prod_weight + 25;
+				}
 				if($material=='plastic')
 				{
 				$prod_weight = $prod_weight + 25;		
@@ -244,13 +261,16 @@ class seller_acc extends CI_Controller {
 				
 				if($chair_cond=="slight")
 				{
+					$data['p_condition'] = 'f';
 					$prod_weight = $prod_weight + 300;
 				}
 				else if($chair_cond=="moderate")
 				{
+					$data['p_condition'] = 'a';
 					$prod_weight = $prod_weight + 150;
 				}
 				else{
+					$data['p_condition'] = 'b';
 					$prod_weight = $prod_weight + 50;
 				} //serious wear
 				
@@ -262,19 +282,19 @@ class seller_acc extends CI_Controller {
 				}
 				echo $prod_weight;
 				echo "<br />";
-					if($prod_weight <= 140)
+					if($prod_weight <= 165)
 				{
 					$prod_tier="e";
 				}
-				else if($prod_weight <= 280)
+				else if($prod_weight <= 305)
 				{
 					$prod_tier="d";
 				}
-				else if($prod_weight <= 420)
+				else if($prod_weight <= 445)
 				{
 					$prod_tier="c";
 				}
-				else if($prod_weight <= 560)
+				else if($prod_weight <= 585)
 				{
 					$prod_tier="b";
 				}
@@ -303,6 +323,10 @@ class seller_acc extends CI_Controller {
 				$laptop_cond = $_POST['laptop_condition'];
 				$lap_age = $_POST['laptop_age'];
 				echo $lap_age;
+				if(isset($_POST['is_owner']))
+				{
+					$prod_weight = $prod_weight + 50;
+				}
 				if($ram=='<1g')
 				{
 				$prod_weight = $prod_weight + 25;		
@@ -335,14 +359,17 @@ class seller_acc extends CI_Controller {
 				} //>1yr
 				if($laptop_cond=="flawless")
 				{
+					$data['p_condition'] = 'f';
 					$prod_weight = $prod_weight + 300;
 				}
 				else if($laptop_cond=="avg")
 				{
+					$data['p_condition'] = 'a';
 					$prod_weight = $prod_weight + 150;
 				}
 				else{
 					//below avg condition
+					$data['p_condition'] = 'b';
 					$prod_weight = $prod_weight + 50;
 				}
 				if(isset($_POST['key_missing']))
@@ -376,19 +403,19 @@ class seller_acc extends CI_Controller {
 				}
 				echo $prod_weight;
 				echo "<br />";	
-					if($prod_weight <= 270)
+					if($prod_weight <= 320)
 				{
 					$prod_tier="e";
 				}
-				else if($prod_weight <= 540)
+				else if($prod_weight <= 590)
 				{
 					$prod_tier="d";
 				}
-				else if($prod_weight <= 810)
+				else if($prod_weight <= 860)
 				{
 					$prod_tier="c";
 				}
-				else if($prod_weight <= 1080)
+				else if($prod_weight <= 1130)
 				{
 					$prod_tier="b";
 				}
@@ -409,6 +436,10 @@ class seller_acc extends CI_Controller {
 				$is_charger_cell=0;
 				$is_headset=0;
 				echo $phn_age;
+				if(isset($_POST['is_owner']))
+				{
+					$prod_weight = $prod_weight + 25;
+				}
 				if($phn_age=="<11mnth")
 				{
 					$prod_weight = $prod_weight + 100;
@@ -422,14 +453,17 @@ class seller_acc extends CI_Controller {
 				} 
 				if($phone_cond=="flawless")
 				{
+					$data['p_condition'] = 'f';
 					$prod_weight = $prod_weight + 300;
 				}
 				else if($phone_cond=="avg")
 				{
+					$data['p_condition'] = 'a';
 					$prod_weight = $prod_weight + 150;
 				}
 				else{
 					//below avg condition
+					$data['p_condition'] = 'b';
 					$prod_weight = $prod_weight + 50;
 				}
 				if(isset($_POST['touch_working']))
@@ -468,19 +502,19 @@ class seller_acc extends CI_Controller {
 				}
 				echo $prod_weight;
 				echo "<br />";
-						if($prod_weight <= 260)
+						if($prod_weight <= 310)
 				{
 					$prod_tier="e";
 				}
-				else if($prod_weight <= 520)
+				else if($prod_weight <= 570)
 				{
 					$prod_tier="d";
 				}
-				else if($prod_weight <= 780)
+				else if($prod_weight <= 830)
 				{
 					$prod_tier="c";
 				}
-				else if($prod_weight <= 1040)
+				else if($prod_weight <= 1090)
 				{
 					$prod_tier="b";
 				}
@@ -501,7 +535,7 @@ class seller_acc extends CI_Controller {
 		$data['p_tier']= $prod_tier;
 		$data['p_category']= $category;
 		$data['p_subcategory']=$sub_cat;
-		$data['p_condition'] = $_POST['condition'];
+		//$data['p_condition'] = $_POST['condition'];
 		$data['p_name'] = $_POST['productname'];
 		$data['material'] = $material;
 		$data['dimension']=$dimension;
@@ -510,11 +544,20 @@ class seller_acc extends CI_Controller {
 		$data['imei']=$imei;
 		$data['is_charger_cell']=$is_charger_cell;
 		$data['is_headset']=$is_headset;
+		if(isset($_POST['is_owner']))
+				{
+					$data['is_owner']=1;
+                }
+		else {
+					$data['is_owner']=0;
+		}
 		$data['suramrit'] = "suramrit";
 		$this->load->library('form_validation'); // to be implemented
 		$this->load->model('product_upload_model');
-		$current_smart_price =  $this->product_upload_model->evaluate_smart_price($data);
-		$data['p_smart_price'] = $current_smart_price;
+		$result =  $this->product_upload_model->evaluate_smart_price($data);
+		$data['p_smart_price'] = $result['current_smart_price'];
+		$data['max_price'] = $result['max_price'];
+		$data['min_price'] = $result['min_price'];
 		$this->load->view('includes/header_loggedin');
 		$this->load->view('seller_acc/confirm_upload',$data);
 		$this->load->view('includes/footer');
@@ -534,15 +577,11 @@ class seller_acc extends CI_Controller {
 		if ($this->form_validation->run() == FALSE)
 		{
 		$this->load->view('includes/header_loggedin');
-		$this->load->view('seller_acc/confirm_upload',$_POST);
+		$this->load->view('seller_acc/confirm_upload',$_POST); // $_POST is used only when form validation failsso that data remains consistent....
 		$this->load->view('includes/footer');
 		}
-
-		
 		else 
-
 		{
-		
 		$this->load->model('product_upload_model');
 		//$current_smart_price =  $this->product_upload_model->evaluate_smart_price($data);
 		//$suramrit = $data['suri'];
@@ -596,7 +635,9 @@ class seller_acc extends CI_Controller {
 		if($_POST['p_category']=="furniture")
 		{
 			$cat_data['pid']=$pid;
-			$cat_data['dimension']=$_POST['dimension'];
+			$cat_data['dim_l']=$_POST['dim_l'];
+			$cat_data['dim_w']=$_POST['dim_w'];
+			$cat_data['dim_h']=$_POST['dim_h'];
 			$cat_data['material']=$_POST['material'];
 			$this->product_upload_model->upload_furn_details($cat_data);
 			echo "hello--furniture category";	
@@ -763,7 +804,5 @@ class seller_acc extends CI_Controller {
 		}
         return $desc_entered;
 	}
-
-
 	}
 ?>
