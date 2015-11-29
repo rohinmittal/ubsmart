@@ -21,9 +21,9 @@
 		echo form_label('Product Category','p_cat');
 		echo "<br />";
 		echo form_label('Furniture','is_furniture');
-		echo form_radio('categories','furniture',TRUE,'class="cat"');
+		echo form_radio('categories','Furniture',TRUE,'class="cat"');
 		echo form_label('Electronics','is_electronic');
-		echo form_radio('categories','electronic',FALSE,'class="cat"');
+		echo form_radio('categories','Electronic',FALSE,'class="cat"');
 		//echo form_label('Mobile','is_mobile');
 		//echo form_radio('categories','mobile',FALSE,'class="cat"');
 		echo form_fieldset_close();
@@ -36,9 +36,9 @@
         echo form_label('Select Furniture Type','type_furniture');
         echo "<br />";
         echo form_label('Table','type_furniture');
-		echo form_radio('f_type','table',TRUE,'class="f_type"');
+		echo form_radio('f_type','Tables',TRUE,'class="f_type"');
 		echo form_label('Chair','type_furniture');
-		echo form_radio('f_type','chair',FALSE,'class="f_type"');
+		echo form_radio('f_type','Chairs',FALSE,'class="f_type"');
 	 		?>
 	 		
 	 	

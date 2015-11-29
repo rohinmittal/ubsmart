@@ -66,14 +66,14 @@ class seller_acc extends CI_Controller {
 		//$this->form_validation->set_rules('categories', 'Category' , 'callback_check_if_cat_set');
 		//$this->form_validation->run();
 		$category = $_POST['categories']; 
-		if($category=="furniture")
+		if($category=="Furniture")
 		{
 			//$this->form_validation->set_rules('f_type', 'F type' , 'callback_check_if_f_type_set');
 			//$this->form_validation->run();
 			$f_type = $_POST['f_type'];
 		
 		
-		if($f_type == "table")
+		if($f_type == "Tables")
 		{
 			$this->form_validation->set_rules('mat_type', 'Material', 'callback_check_if_mat_set');
 			$this->form_validation->set_rules('tab_dimension_l', 'Table Dimension', 'trim|required|callback_check_if_blank_dimension');
@@ -81,9 +81,9 @@ class seller_acc extends CI_Controller {
 			$this->form_validation->set_rules('tab_dimension_h', 'Table Dimension', 'trim|required|callback_check_if_blank_dimension');
 		
 		}
-		if($f_type == "chair")
+		if($f_type == "Chairs")
 		{
-			$this->form_validation->set_rules('chair_mat_type', 'Material', 'callback_check_if_mat_set');
+			$this->form_validation->set_rules('chair_mat_type', 'Material', 'callback_check_if_chair_mat_set');
 			$this->form_validation->set_rules('chair_dimension_l', 'Chair Dimension', 'trim|required|callback_check_if_blank_dimension');
 			$this->form_validation->set_rules('chair_dimension_w', 'Chair Dimension', 'trim|required|callback_check_if_blank_dimension');
 			$this->form_validation->set_rules('chair_dimension_h', 'Chair Dimension', 'trim|required|callback_check_if_blank_dimension');
@@ -92,11 +92,11 @@ class seller_acc extends CI_Controller {
 		else 
 		{
 			$elec_type = $_POST['e_type'];
-			if($elec_type == "laptop")
+			if($elec_type == "Laptops")
 			{
 				$this->form_validation->set_rules('laptop_serial', 'Serial', 'callback_check_if_serial_set');
 			}
-			if($elec_type == "cellphone")
+			if($elec_type == "Cellphones")
 			{
 				$this->form_validation->set_rules('imei', 'IMEI', 'callback_check_if_imei_set');
 			}
@@ -130,12 +130,12 @@ class seller_acc extends CI_Controller {
 			$is_charger=0;			
 			$serial=0;
 		$category = $_POST['categories'];    //value of radio button
-		if($category == "furniture")
+		if($category == "Furniture")
 		{
 			
 			$fur_type = $_POST['f_type'];
 			$sub_cat=$fur_type;
-			if($fur_type == "table")
+			if($fur_type == "Tables")
 			{
 				$prod_weight = 0;
 				$data['dim_l'] = $_POST['tab_dimension_l'];
@@ -211,7 +211,7 @@ class seller_acc extends CI_Controller {
 				echo $prod_tier;
 				echo "<br />";
 			}
-			else if($fur_type == "chair"){ //chair weight calculation
+			else if($fur_type == "Chairs"){ //chair weight calculation
 				$prod_weight = 0;
 			    $data['dim_l'] = $_POST['chair_dimension_l'];
 				$data['dim_w'] = $_POST['chair_dimension_w'];
@@ -312,7 +312,7 @@ class seller_acc extends CI_Controller {
 		else{ //weight calculation for electronics category
 		$elec_type = $_POST['e_type'];
 		$sub_cat=$elec_type;
-			if($elec_type == "laptop")
+			if($elec_type == "Laptops")
 			{
 				//laptop weight calculation
 			    $prod_weight = 0;
@@ -632,7 +632,7 @@ class seller_acc extends CI_Controller {
 		$data['pid']	= $pid;
 		$this->product_upload_model->upload_img_details($data);
 		//update the category specific tables
-		if($_POST['p_category']=="furniture")
+		if($_POST['p_category']=="Furniture")
 		{
 			$cat_data['pid']=$pid;
 			$cat_data['dim_l']=$_POST['dim_l'];
@@ -642,7 +642,7 @@ class seller_acc extends CI_Controller {
 			$this->product_upload_model->upload_furn_details($cat_data);
 			echo "hello--furniture category";	
 		}
-		else if($_POST['p_subcategory']=="laptop")
+		else if($_POST['p_subcategory']=="Laptops")
 		{
 			$cat_data['pid']=$pid;
 			$cat_data['is_charger']=$_POST['is_charger'];
@@ -650,7 +650,7 @@ class seller_acc extends CI_Controller {
 			$this->product_upload_model->upload_laptop_details($cat_data);
 			echo "hello--laptop category";	
 		}
-		else if($_POST['p_subcategory']=="cellphone")
+		else if($_POST['p_subcategory']=="Cellphones")
 		{
 			$cat_data['pid']=$pid;
 			$cat_data['is_charger_cell']=$_POST['is_charger_cell'];
@@ -739,6 +739,12 @@ class seller_acc extends CI_Controller {
 	function check_if_mat_set($mat_type)
     {
 	  if(isset($_POST['mat_type']))
+	  {    return TRUE;     }       
+      else { return FALSE; }    	
+	}
+function check_if_chair_mat_set($mat_type)
+    {
+	  if(isset($_POST['chair_mat_type']))
 	  {    return TRUE;     }       
       else { return FALSE; }    	
 	}
