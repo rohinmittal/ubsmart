@@ -13,8 +13,8 @@
 		echo form_input('productname', set_value('productname', 'Enter Product Name:'));
 		echo form_label('Ownership Type','p_owner');
 		echo "<br />";
-		echo form_checkbox('is_owner', 'is_owner', FALSE);
-		echo form_label('You are the first owner of the product?','is_owner');
+		echo form_checkbox('is_owner', 'is_owner', TRUE);
+		echo form_label('You are the first owner of the product?','is_own');
 		echo "<br />";
 		echo "<br />";
 		echo form_fieldset('Enter Product Specifications');

@@ -26,11 +26,21 @@
 		echo form_input('is_headset', set_value('is_headset', $is_headset));
 		echo form_input('is_charger_cell', set_value('is_charger_cell', $is_charger_cell));
 		echo form_input('imei', set_value('imei', $imei));
+		echo form_input('p_condition', set_value('p_condition', $p_condition));
+		echo form_input('is_sowner', set_value('is_sowner', $is_owner));
+		echo form_input('dim_l', set_value('dim_l', $dim_l));
+		echo form_input('dim_w', set_value('dim_w', $dim_w));
+		echo form_input('dim_h', set_value('dim_h', $dim_h));
+		
+		
 		?>
 		</div>
 		<?php
 		//echo form_label('Product Name','p_name');
 		//echo form_input('productname', set_value('productname',$p_name ));
+		echo $is_owner;
+		echo $p_condition;
+		echo form_input('is_sowner', set_value('is_sowner', $is_owner));
 		echo form_fieldset('The evaluated teir for your product is');
 		echo form_label($p_tier,'p_tier');
 		echo form_fieldset_close();
@@ -40,7 +50,15 @@
 		echo "<br />";
 		echo "<br />";
 		echo form_fieldset('The Smart price for this product is:');
+		echo form_label('Smart Price  ','p_sp');
 		echo form_label($p_smart_price,'p_sp');
+		echo "<br />";
+		echo form_label('Max Price  ','p_mp');
+		echo form_label($max_price,'p_mp');
+		echo "<br />";
+		echo form_label('Min Price  ','p_mp');
+		echo form_label($min_price,'p_minp');
+		echo "<br />";
 		echo form_fieldset_close();
 	    echo form_label('Enter Asking price for your product!','ask_price'); 
 		echo form_input('ask_price', set_value('ask_price'));
@@ -51,6 +69,7 @@
 		echo "<input type='submit' name='submit2' value='upload' /> ";
 		echo anchor('seller_acc','Cancel');	
 		echo form_close();
+		
 		?>
 		<?php echo validation_errors('<p class="error">'); ?>
 </div>
