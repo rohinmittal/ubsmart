@@ -1,3 +1,6 @@
+<?php
+defined('BASEPATH') OR exit('No direct script access allowed');
+?>
 <title>Edit Products Uploaded</title>
 
 <div style="padding: 1.1%; width:450px;margin:auto">

@@ -18,7 +18,14 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	echo form_open('myaccount/validateCurrentPassword');
 	echo form_password('current_password', '', 'placeholder="your current password" class="password"');
 	echo form_submit('submit','Submit');
-	echo anchor('myaccount','Cancel');
+	if($this->session->userdata('logintype')=='buyer')
+			{
+				echo anchor('myaccount','Cancel');
+			}
+			else
+			{
+				echo anchor('seller_acc','Cancel');
+			}
 	echo form_close(); 	
 	
 	echo validation_errors('<p class="error">'); 			
