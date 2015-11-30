@@ -7,13 +7,7 @@ class product_upload_model extends CI_Model {
  		//$this->db->select('username');
  		//$this->db->where('username',$this->session->userdata('username'));
 		//$data['users'] = $this->db->get('users');
-		$conn = mysqli_connect("127.0.0.1", "ubsmart", "CVsxu2ENzhVbeMm9", "ubsmart");
-		if (!$conn) {
-    echo "Error: Unable to connect to MySQL." . PHP_EOL;
-    echo "Debugging errno: " . mysqli_connect_errno() . PHP_EOL;
-    echo "Debugging error: " . mysqli_connect_error() . PHP_EOL;
-    exit;
-}
+
 		$sellername = $this->session->userdata('username');
 		$askprice = $this->input->post('ask_price'); //to be changed
 		

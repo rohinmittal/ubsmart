@@ -105,7 +105,7 @@
 					echo '</fieldset>';			
 														
 					echo '</p>';
-					echo form_open('catalog/product_buy/'.$pd[0]->product_id,"id='prod_buycancel'");
+					echo form_open('catalog/product_buy/'.$pd[0]->product_id.'/'.$pd[0]->price,"id='prod_buycancel'");
 					echo form_submit('submit','Buy', 'id="buy"');
 				?>
 					<button id="not_buy" onclick="goBack()">Cancel</button>
@@ -118,14 +118,12 @@
 		</div>
 	</div>
 	
-
-
 <?php
 if(isset($order_placed))
 {
 	if($order_placed=='no')
 	{
-		$msg='Sorry, your order could not be placed.';
+		$msg='Sorry, your order could not be placed. Please check your virtual wallet balance.';
 		echo '<script type="text/javascript">alert("'.$msg.'"); </script>';
 	}
 }

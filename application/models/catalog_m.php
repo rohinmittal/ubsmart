@@ -95,17 +95,25 @@ class Catalog_m extends CI_Model {
 		return $ret;
 	}
 	
-	function order_product($pid)
+	function order_product($pid,$price)
 	{
-		$timestamp = time();
-		$curr_date=date("Y-m-d", $timestamp);
-		$new_order_insert_data = array(
+		$un=$this->session->userdata('username');
+		$this->db->where('username', $un);
+		$q1 = $this->db->get('users')->result();
+		if($q1[0]->vw_balance >= $price)
+		{
+			$timestamp = time();
+			$curr_date=date("Y-m-d", $timestamp);
+			$new_order_insert_data = array(
         	'buyer_name' => $this->session->userdata('username'),
         	'product_id' => $pid,
         	'order_date' => $curr_date
 			);
-		
-		$insert=$this->db->insert('orders', $new_order_insert_data);
-		return $insert;
+			$insert=$this->db->insert('orders', $new_order_insert_data);
+			$query = $this->db->query('UPDATE users SET vw_balance = vw_balance-'.$price.' WHERE username = \''.$un.'\';');			
+			return $insert;
+		}
+		else
+			return FALSE;
 	}	
 }
