@@ -7,13 +7,7 @@ class product_upload_model extends CI_Model {
  		//$this->db->select('username');
  		//$this->db->where('username',$this->session->userdata('username'));
 		//$data['users'] = $this->db->get('users');
-		$conn = mysqli_connect("127.0.0.1", "ubsmart", "CVsxu2ENzhVbeMm9", "ubsmart");
-		if (!$conn) {
-    echo "Error: Unable to connect to MySQL." . PHP_EOL;
-    echo "Debugging errno: " . mysqli_connect_errno() . PHP_EOL;
-    echo "Debugging error: " . mysqli_connect_error() . PHP_EOL;
-    exit;
-}
+	
 		$sellername = $this->session->userdata('username');
 		$askprice = $this->input->post('ask_price'); //to be changed
 		
@@ -116,14 +110,14 @@ class product_upload_model extends CI_Model {
    		}
 		//$current_smart_price = $current_smart_price/($query->num_rows());
 		}
-		else   $current_smart_price=0;
-		$sql2 = "SELECT MAX(price) from products WHERE category= '".$category."' AND subcategory = '".$subcategory."' AND tier ='".$prod_tier."'";
+		else   $data['current_smart_price']=": Cannot evaluate Smart Price currently";
+		$sql2 = "SELECT MAX(price) from products WHERE category= '".$category."' AND subcategory = '".$subcategory."' AND tier ='".$prod_tier."' AND is_sold = 2";
 		$query2 = $this->db->query($sql2);
 		$data2 = $query2->result_array();
 		
         $data['max_price'] = ($data2[0]['MAX(price)']);
 		
-		$sql3 = "SELECT MIN(price) from products WHERE category= '".$category."' AND subcategory = '".$subcategory."' AND tier ='".$prod_tier."'";
+		$sql3 = "SELECT MIN(price) from products WHERE category= '".$category."' AND subcategory = '".$subcategory."' AND tier ='".$prod_tier."' AND is_sold = 2";
 		$query3 = $this->db->query($sql3);
 		$data3 = $query3->result_array();
 		
