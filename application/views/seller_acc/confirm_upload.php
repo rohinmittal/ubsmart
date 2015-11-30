@@ -38,8 +38,8 @@
 		<?php
 		//echo form_label('Product Name','p_name');
 		//echo form_input('productname', set_value('productname',$p_name ));
-		echo $is_owner;
-		echo $p_condition;
+		//echo $is_owner;
+		//echo $p_condition;
 		echo form_input('is_sowner', set_value('is_sowner', $is_owner));
 		echo form_fieldset('The evaluated teir for your product is');
 		echo form_label($p_tier,'p_tier');
@@ -61,9 +61,9 @@
 		echo "<br />";
 		echo form_fieldset_close();
 	    echo form_label('Enter Asking price for your product!','ask_price'); 
-		echo form_input('ask_price', set_value('ask_price'));
+		echo form_input('ask_price', set_value('ask_price','Enter Asking Price of the product.'));
 		echo form_label('Enter a brief description of the product','p_desc');
-		echo form_input('p_desc', set_value('p_desc'));
+		echo form_input('p_desc', set_value('p_desc','Describe your product.'));
 		echo form_label('Choose 3 Images','image2');
 		echo "<input type='file' name='userfiles[]' size='20' multiple/>"; 
 		echo "<input type='submit' name='submit2' value='upload' /> ";

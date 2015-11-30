@@ -13,12 +13,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <b>Products:</b><br>
 <a href="<?php echo site_url('seller_acc/upload_form') ?>">Upload Product</a><br>
 <br>
-<b>UB sMart Wallet:</b><br>
-Check Wallet Balance <br>
-Add money to wallet <br>
+
 <br>
 <b><a href="<?php echo site_url('seller_acc/display_seller_prods') ?>">Display Uploaded Products</a></b><br>
 <b><a href="<?php echo site_url('seller_acc/edit_seller_prods') ?>">Edit Uploaded Product</a></b><br>
 <b>Settings:</b><br>
-<a href="<?php echo site_url('seller_acc/update') ?>">Change Account Details</a>
+<a href="<?php echo site_url('seller_acc/update_acc') ?>">Change Account Details</a>
 <br>

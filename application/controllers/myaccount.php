@@ -105,7 +105,13 @@ class myaccount extends CI_Controller {
         {	
 			$this->load->model('membership_model');
 			$this->membership_model->updateDetails();
-			redirect('myaccount');		
+			if($this->session->userdata('logintype')=='buyer')
+			{
+			redirect('myaccount');		}
+			else
+			{
+				redirect('seller_acc');
+			}
 	    }	
 	}
 	

@@ -165,11 +165,11 @@ $(document).ready(function() {
         }
      });
       $(".e_type").click(function(){
-     	if ($('input[name=e_type]:checked').val() == "laptop") {
+     	if ($('input[name=e_type]:checked').val() == "Laptops") {
            document.getElementById('laptop_details').style.display="block";
            document.getElementById('cellphone_details').style.display="none";
         }
-        if ($('input[name=e_type]:checked').val() == "cellphone") {
+        if ($('input[name=e_type]:checked').val() == "Cellphones") {
             document.getElementById('cellphone_details').style.display="block";
             document.getElementById('laptop_details').style.display="none";
         }

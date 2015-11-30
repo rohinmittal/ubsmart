@@ -29,7 +29,7 @@ class seller_acc extends CI_Controller {
  
 		$data['products'] = $this->db->get('products');
 		//$data['u_name']=$this->session->userdata('username');
-		echo $this->session->userdata('username');
+		//echo $this->session->userdata('username');
 		
 		//$data['users'] = $this->db->query('SELECT username, email, telephone, vw_balance from users where username=' );
  		$this->db->select('username, email, telephone, vw_balance');
@@ -145,7 +145,7 @@ class seller_acc extends CI_Controller {
 				$tab_age = $_POST['age_table'];
 				//$dimension = $_POST['tab_dimension']; //add to form...
 				$table_cond = $_POST['table_condition'];
-				echo $tab_age;
+				//echo $tab_age;
 				if(isset($_POST['is_owner']))
 				{
 					$prod_weight = $prod_weight + 25;
@@ -187,28 +187,28 @@ class seller_acc extends CI_Controller {
 					$prod_weight = $prod_weight + 50;
 				} //serious wear
 				echo "<br />";
-				echo $prod_weight;
+				//echo $prod_weight;
 				if($prod_weight <= 125)
 				{
-					$prod_tier="e";
+					$prod_tier="E";
 				}
 				else if($prod_weight <= 225)
 				{
-					$prod_tier="d";
+					$prod_tier="D";
 				}
 				else if($prod_weight <= 325)
 				{
-					$prod_tier="c";
+					$prod_tier="C";
 				}
 				else if($prod_weight <= 425)
 				{
-					$prod_tier="b";
+					$prod_tier="B";
 				}
 				else
 				{
-					$prod_tier="a";
+					$prod_tier="A";
 				}
-				echo $prod_tier;
+				//echo $prod_tier;
 				echo "<br />";
 			}
 			else if($fur_type == "Chairs"){ //chair weight calculation
@@ -221,7 +221,7 @@ class seller_acc extends CI_Controller {
 				$chair_age = $_POST['age_chair'];
 				$chair_cond = $_POST['chair_condition'];
 				$type_cush = $_POST['cushion_type'];
-				echo $chair_age;
+				//echo $chair_age;
 				if(isset($_POST['is_owner']))
 				{
 					$prod_weight = $prod_weight + 25;
@@ -277,7 +277,7 @@ class seller_acc extends CI_Controller {
 				if(isset($_POST['has_leather']))
 				{
 					$prod_weight = $prod_weight + 100;
-					echo "sab set hai";
+					//echo "sab set hai";
 					echo "<br />";
 				}
 				echo $prod_weight;
@@ -302,7 +302,7 @@ class seller_acc extends CI_Controller {
 				{
 					$prod_tier="a";
 				}
-				echo $prod_tier;
+				//echo $prod_tier;
 				echo "<br />";
 				//chair teir calculation	
 			}	
@@ -322,7 +322,7 @@ class seller_acc extends CI_Controller {
 				$laptop_storage = $_POST['storage_laptop'];
 				$laptop_cond = $_POST['laptop_condition'];
 				$lap_age = $_POST['laptop_age'];
-				echo $lap_age;
+				//echo $lap_age;
 				if(isset($_POST['is_owner']))
 				{
 					$prod_weight = $prod_weight + 50;
@@ -401,29 +401,29 @@ class seller_acc extends CI_Controller {
 				{
 					$prod_weight = $prod_weight +150;
 				}
-				echo $prod_weight;
+				//echo $prod_weight;
 				echo "<br />";	
 					if($prod_weight <= 320)
 				{
-					$prod_tier="e";
+					$prod_tier="E";
 				}
 				else if($prod_weight <= 590)
 				{
-					$prod_tier="d";
+					$prod_tier="D";
 				}
 				else if($prod_weight <= 860)
 				{
-					$prod_tier="c";
+					$prod_tier="C";
 				}
 				else if($prod_weight <= 1130)
 				{
-					$prod_tier="b";
+					$prod_tier="B";
 				}
 				else
 				{
-					$prod_tier="a";
+					$prod_tier="A";
 				}
-				echo $prod_tier;
+				//echo $prod_tier;
 				echo "<br />";
 			}	
 			else
@@ -435,7 +435,7 @@ class seller_acc extends CI_Controller {
 				$imei = $_POST['imei'];
 				$is_charger_cell=0;
 				$is_headset=0;
-				echo $phn_age;
+				//echo $phn_age;
 				if(isset($_POST['is_owner']))
 				{
 					$prod_weight = $prod_weight + 25;
@@ -500,29 +500,29 @@ class seller_acc extends CI_Controller {
 				{
 					$prod_weight = $prod_weight +150;
 				}
-				echo $prod_weight;
+				//echo $prod_weight;
 				echo "<br />";
 						if($prod_weight <= 310)
 				{
-					$prod_tier="e";
+					$prod_tier="E";
 				}
 				else if($prod_weight <= 570)
 				{
-					$prod_tier="d";
+					$prod_tier="D";
 				}
 				else if($prod_weight <= 830)
 				{
-					$prod_tier="c";
+					$prod_tier="C";
 				}
 				else if($prod_weight <= 1090)
 				{
-					$prod_tier="b";
+					$prod_tier="B";
 				}
 				else
 				{
-					$prod_tier="a";
+					$prod_tier="A";
 				}
-				echo $prod_tier;
+				//echo $prod_tier;
 				echo "<br />";
 				//upload---integeration... 		
 			}
@@ -594,7 +594,7 @@ class seller_acc extends CI_Controller {
 		$this->load->library('upload');
 		$upload_path = './p_images/'.$this->session->userdata('username');
 		mkdir($upload_path);
-		echo $upload_path;
+		//echo $upload_path;
 		$config['upload_path'] = './p_images/'.$this->session->userdata('username'); //Path to be stored as  ./p_images/temp_'username'/image1,2,3.... 
 		$config['allowed_types'] = 'gif|jpg|png|bmp|jpeg';
 		$config['max_size']	= '1024000';
@@ -615,7 +615,7 @@ class seller_acc extends CI_Controller {
 		 if($this->upload->do_upload('userfiles'))
 		{
 			
-			echo "file upload success--renamed the path too!";
+			//echo "file upload success--renamed the path too!";
 			
 		}
 		}
@@ -623,7 +623,7 @@ class seller_acc extends CI_Controller {
 		$this->load->library('upload', $config);
 		
 		$pid = $this->product_upload_model->upload_details($user_img);
-		echo $pid;
+		//echo $pid;
 		$new_path = "./p_images/".$pid;
 		rename($config['upload_path'], $new_path);
 		$data['user_img1_path'] =  $user_img[0];
@@ -640,7 +640,7 @@ class seller_acc extends CI_Controller {
 			$cat_data['dim_h']=$_POST['dim_h'];
 			$cat_data['material']=$_POST['material'];
 			$this->product_upload_model->upload_furn_details($cat_data);
-			echo "hello--furniture category";	
+			//echo "hello--furniture category";	
 		}
 		else if($_POST['p_subcategory']=="Laptops")
 		{
@@ -648,7 +648,7 @@ class seller_acc extends CI_Controller {
 			$cat_data['is_charger']=$_POST['is_charger'];
 			$cat_data['serial']=$_POST['serial'];
 			$this->product_upload_model->upload_laptop_details($cat_data);
-			echo "hello--laptop category";	
+			//echo "hello--laptop category";	
 		}
 		else if($_POST['p_subcategory']=="Cellphones")
 		{
@@ -657,7 +657,7 @@ class seller_acc extends CI_Controller {
 			$cat_data['imei']=$_POST['imei'];
 			$cat_data['is_headset']=$_POST['is_headset'];
 			$this->product_upload_model->upload_cellphone_details($cat_data);
-			echo "hello--cellphone category";	
+			//echo "hello--cellphone category";	
 		}
 		
 		//echo "product uploaded";
@@ -675,11 +675,11 @@ class seller_acc extends CI_Controller {
 		$this->load->model('product_upload_model');
 		$results = $this->product_upload_model->fetch_seller_prod();
 		$data['allProducts'] = $results['allProducts'];
-		echo "here";
-		echo $data['allProducts']->num_rows();
+		//echo "here";
+		//echo $data['allProducts']->num_rows();
 		$data['orders'] = $results['orders'];
-		echo "here2 ";
-		echo $data['orders']->num_rows();
+		//echo "here2 ";
+		//echo $data['orders']->num_rows();
 		$data['sure']="sur";
 		//$data['soldProducts'] = $this->product_upload_model->fetch_sold_prod($data['allProducts']);
 		$this->load->view('includes/header_loggedin');
@@ -715,6 +715,15 @@ class seller_acc extends CI_Controller {
 			
 		
 	}
+
+	public function update_acc()
+	{
+		$this->load->view('includes/header_loggedin');
+		$this->load->view('myaccount/getCurrentPassword_v');
+		$this->load->view('includes/footer');
+	}
+	
+	
 	//form validation functions
 	function check_if_blank_pname($pname)
     {

@@ -17,6 +17,9 @@ class CITest extends PHPUnit_Framework_TestCase
         $this->assertEquals(FALSE, $posts);
     }
     
+    /**
+    * @covers Membership_model::check_if_email_exists
+    */
     public function testEmailDoesntExists()
     {
         // check if email exists returns false, if the id exists in database else it returns true
@@ -40,15 +43,65 @@ class CITest extends PHPUnit_Framework_TestCase
     
     public function testBoughtHistory1()
     {
-        // check if login credentials are incorrect
         $data = $this->CI->membership_model->boughtHistory('vsinha');
         $this->assertEquals(0, $data->num_rows());
     }
     
     public function testBoughtHistory2()
     {
-        // check if login credentials are incorrect
         $data = $this->CI->membership_model->boughtHistory('ajay');
         $this->assertEquals(1, $data->num_rows());
+    }
+    
+    
+    /* Controller Test cases */
+    
+    /**
+    * @covers Home::check_if_positive
+    */         
+    public function testCheckIfPositive()
+    {
+        $data = $this->CI->check_if_positive('-2');
+        $this->assertEquals(FALSE, $data);
+    }
+    
+    /**
+    * @covers Home::check_if_blank_usrname
+    */
+    public function testCheckIfBlankUsrname()
+    {
+        /* returns true if username isn't blank */
+        $data = $this->CI->check_if_blank_usrname('Username');
+        $this->assertEquals(FALSE, $data);
+    }
+    
+    /**
+    * @covers Home::check_if_email_ub
+    */
+    public function testCheckIfEmailUB()
+    {
+        /* returns true if username isn't blank */
+        $data = $this->CI->check_if_email_ub('rohinmit@buffalo.com');
+        $this->assertEquals(FALSE, $data);
+    }
+    
+    /**
+    * @covers Home::check_if_blank_tel
+    */
+    public function testCheckIfBlankTel()
+    {
+        /* returns false if tel is blank */
+        $data = $this->CI->check_if_blank_tel('rohinmit@buffalo.edu');
+        $this->assertEquals(TRUE, $data);
+    }
+    
+    /**
+    * @covers Home::check_if_blank_email
+    */
+    public function testCheckIfBlankEmail()
+    {
+        /* returns false if email is blank */
+        $data = $this->CI->check_if_blank_email('Email Address');
+        $this->assertEquals(FALSE, $data);
     }
 }
