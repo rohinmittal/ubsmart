@@ -7,7 +7,7 @@ class product_upload_model extends CI_Model {
  		//$this->db->select('username');
  		//$this->db->where('username',$this->session->userdata('username'));
 		//$data['users'] = $this->db->get('users');
-	
+
 		$sellername = $this->session->userdata('username');
 		$askprice = $this->input->post('ask_price'); //to be changed
 		
