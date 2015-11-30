@@ -73,6 +73,8 @@ class Catalog extends CI_Controller {
 	  $this->load->model('catalog_m');
 	  $query=$this->catalog_m->fetch_prod_details($id);
 	  $data['prod_details']=$query['prod_details'];
+	  $data['minSP']=$query['minSP'];
+	  $data['maxSP']=$query['maxSP'];
 	  $data['add_details']=$query['specific_details'];
 	  	  
 	  //print_r($query['q1']);

@@ -22,7 +22,9 @@
 				 	'Name: '.$pd[0]->pname.'<br>'.
 				 	'Price: '.$pd[0]->price.'<br>'.
 				 	'Tier: '.$pd[0]->tier.'<br>'.
-				 	'Avg SmartPrice: '.$pd[0]->smart_price;
+				 	'Avg SmartPrice: '.$pd[0]->smart_price.'<br>'.
+					'Min SmartPrice: '.$minSP.'<br>'.
+					'Max SmartPrice: '.$maxSP;
 					switch ($pd[0]->subcategory)
 					{
 						case "Cellphones":

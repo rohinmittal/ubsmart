@@ -70,9 +70,32 @@ class Catalog_m extends CI_Model {
 		$query = $q->get();
 		//$ret['q1']=$q;
 		$ret['prod_details']=$query;
-		
 		$table='';
 		$query=$query->result();
+		
+		
+		$q11 = $this->db->query('SELECT MIN(price) as minsp FROM products WHERE is_sold = 2 AND tier=\''.$query[0]->tier.'\' AND subcategory=\''.$query[0]->subcategory.'\';');
+		$q11=$q11->result();
+		if($q11[0]->minsp != NULL)
+		{
+			
+			$ret['minSP']=$q11[0]->minsp;
+		}
+		else
+		{
+			$ret['minSP']="Not Available";				
+		}
+		$q12 = $this->db->query('SELECT MAX(price) as maxsp FROM products WHERE is_sold = 2 AND tier=\''.$query[0]->tier.'\' AND subcategory=\''.$query[0]->subcategory.'\';');
+		$q12=$q12->result();
+		if($q12[0]->maxsp != NULL)
+		{
+			
+			$ret['maxSP']=$q12[0]->maxsp;
+		}
+		else
+		{
+			$ret['maxSP']="Not Available";				
+		}	
 		
 		switch ($query[0]->subcategory)
 		{
@@ -110,7 +133,8 @@ class Catalog_m extends CI_Model {
         	'order_date' => $curr_date
 			);
 			$insert=$this->db->insert('orders', $new_order_insert_data);
-			$query = $this->db->query('UPDATE users SET vw_balance = vw_balance-'.$price.' WHERE username = \''.$un.'\';');			
+			$query1 = $this->db->query('UPDATE products SET is_sold = 1 WHERE product_id = '.$pid.';');
+			$query2 = $this->db->query('UPDATE users SET vw_balance = vw_balance-'.$price.' WHERE username = \''.$un.'\';');			
 			return $insert;
 		}
 		else
