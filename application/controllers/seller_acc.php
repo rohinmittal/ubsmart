@@ -596,7 +596,7 @@ class seller_acc extends CI_Controller {
 		mkdir($upload_path);
 		//echo $upload_path;
 		$config['upload_path'] = './p_images/'.$this->session->userdata('username'); //Path to be stored as  ./p_images/temp_'username'/image1,2,3.... 
-		$config['allowed_types'] = 'gif|jpg|png|bmp|jpeg';
+		$config['allowed_types'] = 'bmp|jpg|jpeg';
 		$config['max_size']	= '1024000';
 		$config['max_width']  = '1024';
 		$config['max_height']  = '768';
@@ -626,6 +626,11 @@ class seller_acc extends CI_Controller {
 		//echo $pid;
 		$new_path = "./p_images/".$pid;
 		rename($config['upload_path'], $new_path);
+		for($i = 0; $i < 3; $i++)
+		{
+			$user_img[$i] = str_replace(' ', '_',$files['name'][$i]);
+			echo $user_img[$i];
+		}
 		$data['user_img1_path'] =  $user_img[0];
 		$data['user_img2_path'] =  $user_img[1];
 		$data['user_img3_path'] =  $user_img[2];
@@ -661,7 +666,7 @@ class seller_acc extends CI_Controller {
 		}
 		
 		//echo "product uploaded";
-		//redirect('seller_acc');
+		redirect('seller_acc');
 		}
 	}
 	

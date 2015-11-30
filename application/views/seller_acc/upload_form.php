@@ -1,7 +1,10 @@
+<?php
+defined('BASEPATH') OR exit('No direct script access allowed');
+?>
 <title>Product Upload</title>
 
 <div style="padding: 1.1%; width:450px;margin:auto">
-		<div id="upload_form">
+		<div id="update_product_form">
 	<hl>Please Enter Product Details!</h1>
 		<?php
 		$attributes_upload = array('id' => 'upload_form');
@@ -239,13 +242,15 @@
 		echo form_label('Includes original pakaging','box_included');
 		echo "<br />";
 		echo form_fieldset_close();
-		
+		echo "<br />";
 		$options = array(
                   '<11mnth'  => 'Less than 11 months',
                   '1-2yr'    => '1 to 2 year',
                   '>2yr'   => 'More than 2 years',
                 );
 		echo form_label('Select Duration of Purchase','phone_age');
+		echo "<br />";
+		echo "<br />";
 		echo form_dropdown('phone_age', $options, '1-2yr');
 		echo "<br />";
 		$options = array(
@@ -258,17 +263,15 @@
 		echo "<br />";
 		echo form_label('IMEI Number','imei');
 		echo form_input('imei', set_value('imei', 'Enter IMEI number:'));
-		
-		
 		?>
 	 		
 	 	</div>
 	 	</div>
 	 	<?php
-	 	echo form_label('Product Condition','p_condition'); 
-		echo form_input('condition', set_value('condition', 'Rate the condition of your product out of 10'));
-		echo form_label('Listing Price','p_price');
-		echo form_input('ask_price', set_value('condition', 'Enter your asking price'));
+	 	//echo form_label('Product Condition','p_condition'); 
+		//echo form_input('condition', set_value('condition', 'Rate the condition of your product out of 10'));
+		//echo form_label('Listing Price','p_price');
+		//echo form_input('ask_price', set_value('condition', 'Enter your asking price'));
 		
 		//echo form_close();?>
 	  
@@ -296,12 +299,12 @@
 		?> -->
 		</div>
 		<?php
-		echo form_fieldset('Warranty Provided?');
-		echo form_label('Yes','has_warranty');
-		echo form_radio('warranty_check','4',TRUE);
-		echo form_label('No','has_warranty');
-		echo form_radio('warranty_check','5',FALSE);
-		echo form_fieldset_close();
+		//echo form_fieldset('Warranty Provided?');
+		//echo form_label('Yes','has_warranty');
+		//echo form_radio('warranty_check','4',TRUE);
+		///echo form_label('No','has_warranty');
+		//echo form_radio('warranty_check','5',FALSE);
+		//echo form_fieldset_close();
 		
 		echo "<br />";//br();
 		//echo form_submit('upload', 'Upload Product');
@@ -315,9 +318,8 @@
         echo "<input type='submit' name='submit' value='Proceed to next step.'/> ";
 		echo anchor('seller_acc','Cancel');	
 		echo form_close();
-		
-		
 		?>
 		<?php echo validation_errors('<p class="error">'); ?>
 </div> 
 </div>
+

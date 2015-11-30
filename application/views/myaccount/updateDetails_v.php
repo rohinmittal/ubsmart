@@ -12,7 +12,14 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	echo form_password('newPassword', '', 'placeholder="your new password" class="password"');
 	echo form_password('confirmPassword', '', 'placeholder="confirm your password" class="password"');
 	echo form_submit('submit','Update Details');
-	echo anchor('myaccount','Cancel');
+	if($this->session->userdata('logintype')=='buyer')
+			{
+				echo anchor('myaccount','Cancel');
+			}
+			else
+			{
+				echo anchor('seller_acc','Cancel');
+			}
 	echo form_close();
 	echo validation_errors('<p class="error">');  				
 	?>
