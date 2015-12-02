@@ -1,7 +1,7 @@
 <title>Sign up!</title>
 <div style="padding: 1.1%; width:300px;margin:auto">
 	<div id="register_form">
-	<hl>Create an Account!</h1>
+	<h1>Create an Account!</h1>
 		<?php
 		$hidden = array('roles[0]' => NULL, 'roles[1]' => NULL);
 		echo form_open('home/create_member','',$hidden);
