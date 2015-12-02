@@ -1,18 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <testsuites>
-  <testsuite name="UBsMart Test Suite" tests="11" assertions="11" failures="0" errors="0" time="0.043730">
-    <testsuite name="CITest" file="/Users/rohinmittal/Sites/ubsmart/tests/CITest.php" tests="11" assertions="11" failures="0" errors="0" time="0.043730">
-      <testcase name="testEmailExists" class="CITest" file="/Users/rohinmittal/Sites/ubsmart/tests/CITest.php" line="13" assertions="1" time="0.009189"/>
-      <testcase name="testEmailDoesntExists" class="CITest" file="/Users/rohinmittal/Sites/ubsmart/tests/CITest.php" line="23" assertions="1" time="0.004436"/>
-      <testcase name="testCorrectLoginCredentials" class="CITest" file="/Users/rohinmittal/Sites/ubsmart/tests/CITest.php" line="30" assertions="1" time="0.006859"/>
-      <testcase name="testIncorrectLoginCredentials" class="CITest" file="/Users/rohinmittal/Sites/ubsmart/tests/CITest.php" line="37" assertions="1" time="0.005604"/>
-      <testcase name="testBoughtHistory1" class="CITest" file="/Users/rohinmittal/Sites/ubsmart/tests/CITest.php" line="44" assertions="1" time="0.004438"/>
-      <testcase name="testBoughtHistory2" class="CITest" file="/Users/rohinmittal/Sites/ubsmart/tests/CITest.php" line="50" assertions="1" time="0.004124"/>
-      <testcase name="testCheckIfPositive" class="CITest" file="/Users/rohinmittal/Sites/ubsmart/tests/CITest.php" line="62" assertions="1" time="0.002259"/>
-      <testcase name="testCheckIfBlankUsrname" class="CITest" file="/Users/rohinmittal/Sites/ubsmart/tests/CITest.php" line="71" assertions="1" time="0.001539"/>
-      <testcase name="testCheckIfEmailUB" class="CITest" file="/Users/rohinmittal/Sites/ubsmart/tests/CITest.php" line="81" assertions="1" time="0.001540"/>
-      <testcase name="testCheckIfBlankTel" class="CITest" file="/Users/rohinmittal/Sites/ubsmart/tests/CITest.php" line="91" assertions="1" time="0.001509"/>
-      <testcase name="testCheckIfBlankEmail" class="CITest" file="/Users/rohinmittal/Sites/ubsmart/tests/CITest.php" line="101" assertions="1" time="0.002233"/>
+  <testsuite name="UBsMart Test Suite" tests="15" assertions="15" failures="0" errors="0" time="0.058775">
+    <testsuite name="CITest" file="/Users/rohinmittal/Sites/ubsmart/tests/CITest.php" tests="15" assertions="15" failures="0" errors="0" time="0.058775">
+      <testcase name="testEmailExists" class="CITest" file="/Users/rohinmittal/Sites/ubsmart/tests/CITest.php" line="20" assertions="1" time="0.015695"/>
+      <testcase name="testEmailDoesntExists" class="CITest" file="/Users/rohinmittal/Sites/ubsmart/tests/CITest.php" line="30" assertions="1" time="0.004071"/>
+      <testcase name="testCorrectLoginCredentials" class="CITest" file="/Users/rohinmittal/Sites/ubsmart/tests/CITest.php" line="40" assertions="1" time="0.005491"/>
+      <testcase name="testIncorrectLoginCredentials" class="CITest" file="/Users/rohinmittal/Sites/ubsmart/tests/CITest.php" line="50" assertions="1" time="0.004696"/>
+      <testcase name="testBoughtHistory1" class="CITest" file="/Users/rohinmittal/Sites/ubsmart/tests/CITest.php" line="60" assertions="1" time="0.004185"/>
+      <testcase name="testBoughtHistory2" class="CITest" file="/Users/rohinmittal/Sites/ubsmart/tests/CITest.php" line="69" assertions="1" time="0.004234"/>
+      <testcase name="testCheckIfPositive" class="CITest" file="/Users/rohinmittal/Sites/ubsmart/tests/CITest.php" line="81" assertions="1" time="0.003081"/>
+      <testcase name="testCheckIfBlankUsrname" class="CITest" file="/Users/rohinmittal/Sites/ubsmart/tests/CITest.php" line="90" assertions="1" time="0.002262"/>
+      <testcase name="testCheckIfNotBlankUsrname" class="CITest" file="/Users/rohinmittal/Sites/ubsmart/tests/CITest.php" line="100" assertions="1" time="0.001742"/>
+      <testcase name="testCheckIfNotEmailUB" class="CITest" file="/Users/rohinmittal/Sites/ubsmart/tests/CITest.php" line="110" assertions="1" time="0.002339"/>
+      <testcase name="testCheckIfEmailUB" class="CITest" file="/Users/rohinmittal/Sites/ubsmart/tests/CITest.php" line="120" assertions="1" time="0.001582"/>
+      <testcase name="testCheckIfBlankTel" class="CITest" file="/Users/rohinmittal/Sites/ubsmart/tests/CITest.php" line="130" assertions="1" time="0.002511"/>
+      <testcase name="testCheckIfNotBlankTel" class="CITest" file="/Users/rohinmittal/Sites/ubsmart/tests/CITest.php" line="140" assertions="1" time="0.002471"/>
+      <testcase name="testCheckIfBlankEmail" class="CITest" file="/Users/rohinmittal/Sites/ubsmart/tests/CITest.php" line="150" assertions="1" time="0.002259"/>
+      <testcase name="testCheckIfNotBlankEmail" class="CITest" file="/Users/rohinmittal/Sites/ubsmart/tests/CITest.php" line="160" assertions="1" time="0.002155"/>
     </testsuite>
   </testsuite>
 </testsuites>

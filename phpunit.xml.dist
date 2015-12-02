@@ -23,6 +23,7 @@ bootstrap="tests/Bootstrap.php">
             <directory suffix=".php">./application/models</directory>
             <directory suffix=".php">./application/controllers</directory>
             <directory suffix=".php">./application/views</directory>
+            <directory>./system</directory>
         </whitelist>
     </filter>
     <logging>
