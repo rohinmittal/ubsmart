@@ -30,13 +30,18 @@
 	}?>
 	</div>
 	<div class="main_bar">
-		<div id="mb_headers">
+		<div id="mb_headers" style="padding-top: 0.25%; padding-bottom: 0.25%">
 			<?php 
 			if($this->session->userdata('logintype')=='buyer')
 			{?>
 				<span class="electronics" id="categ_disp1" style="background: yellow;">Electronics</span>			    
 				<span class="furniture" id="categ_disp1" style="margin-left: 0.8%; background: red;">Furniture</span>
 			<?php 
+			}
+			else
+			{?>
+				<span style="visibility:hidden">nothing to show here!</span>
+				<?php
 			}?>
 		<div id="right">
 			<?php 
@@ -54,7 +59,6 @@
 			
 		</div>
 	</div>
-	
 	<div id="dropdowns">
 		<ul class="electronics">
 			<li><?php echo anchor('','Cellphones','style=""');?></li>
