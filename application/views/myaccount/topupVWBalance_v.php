@@ -13,7 +13,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	echo form_input('cardnumber', set_value('cardnumber', 'enter your 16 digit card number'));
 	echo form_dropdown('month', $monthOptions, '');
 	echo form_dropdown('year', $yearOptions, '');
-	echo form_input('amount', set_value('Amount', 'Enter the amount:'));
+	echo form_input('amount', set_value('Amount', 'Enter the amount in USD:'));
 	echo form_submit('submit','Submit');
 	echo anchor('myaccount','Cancel');
 

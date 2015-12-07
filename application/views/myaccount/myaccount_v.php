@@ -39,7 +39,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	<fieldset>
 		<legend style="text-align:left"><b>UB sMart Wallet</b></legend>
 		<br>
-		Current Balance: <b><?php echo $vwBalance ?> INR </b>
+		Current Balance: <b><?php echo $vwBalance ?> USD </b>
 		<br>
 		<?php echo anchor('myaccount/topupVWBalance', 'Topup?'); ?>
 		<br>
