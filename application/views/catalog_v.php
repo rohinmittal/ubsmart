@@ -1,7 +1,7 @@
 <title>Welcome to UBsMart</title>
 
 	<div id="breadcrumbs">
-	The page you are looking at is the homepage for UBsMart!!!!
+	<br>
 	</div>
 	<div id="product_related" class="clearfix" style="background: blue;">		
 		<div id="filter_related">
