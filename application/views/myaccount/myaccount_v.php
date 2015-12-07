@@ -1,15 +1,13 @@
-<?php
-defined('BASEPATH') OR exit('No direct script access allowed');
-?><!DOCTYPE html>
-<head>
-<meta charset="utf-8">
-<title>My Account - UBsMart</title>
-</head>
 
-<p id=your_acc>
+<title>My Account - UBsMart</title>
+
+<div id="breadcrumbs">
+	<br>
+</div>
+<div id="your_acc">
 	<b> Hello <?php echo $username?>! Welcome to your UB sMart Account. </b><br><br>
 	You have <?php echo $handoverCount ?> pending handovers! Click on the Handover link below to confirm your handovers!<br><br>
-</p>
+</div>
 
 
 
