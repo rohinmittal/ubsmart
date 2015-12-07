@@ -141,14 +141,14 @@ input[type=submit], form a{
 	-webkit-border-radius: 2px;
 	border-radius: 2px;
 }
-input[type=submit]:hover, form a:hover, #not_buy:hover, #buy:hover{
+input[type=submit]:hover, form a:hover, #not_buy:hover, #cannot_buy:hover, #buy:hover{
 	background: #0070b8;
 	cursor: pointer;
 }
 #prod_buycancel{	
 	text-align: center;
 }
-#not_buy, #buy{
+#not_buy, #cannot_buy, #buy{
 	font-family: Arial, Helvetica, serif;
 	border: none;
 	margin-right: 1em;

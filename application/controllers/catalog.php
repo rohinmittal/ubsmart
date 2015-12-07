@@ -80,10 +80,16 @@ class Catalog extends CI_Controller {
 	  //print_r($query['q1']);
 	  //echo nl2br("\n\n");
 	  //print_r($query['prod_details']);
-	  if($this->session->flashdata('order_not_placed')=='no')
-		{
-		$data['order_placed']='no';	
-		}	  
+	  //if($this->session->flashdata('order_not_placed1')=='no')
+	//	{
+	//	$data['order_placed1']='no';	
+	//	}	  
+	  
+	  $this->load->model('membership_model');
+	  $result = $this->membership_model->retreiveUserDetails();
+	  $data['vwBalance'] = $result->vw_balance;
+	  
+	  
 	  
 	  $this->load->view('includes/header_loggedin');
 	  $this->load->view('product_display_v',$data);
@@ -99,10 +105,10 @@ class Catalog extends CI_Controller {
 	  	$newOrder=1;
 	  	redirect('myaccount/boughtHistory/'.$newOrder);
 	  }
-	  else
+	 /* else
 	  {    
-		$this->session->set_flashdata('order_not_placed','no');
+		$this->session->set_flashdata('order_not_placed1','no');
 		redirect('catalog/product_display/'.$pid);
-	  }		
+	  }*/		
 	}
 }
