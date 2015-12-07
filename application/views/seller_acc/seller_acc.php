@@ -31,7 +31,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	<fieldset>
 	<legend style="text-align:left"><b>Settings</b></legend>
 	<br>
-	<a href="<?php echo site_url('seller_acc/update') ?>">Change Account Details</a>
+	<a href="<?php echo site_url('seller_acc/update_acc') ?>">Change Account Details</a>
 	<br>
 	<br>
 	<br>
