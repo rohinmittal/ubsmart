@@ -26,7 +26,15 @@ class Catalog_m extends CI_Model {
 		$filter_by = "'".$filter_by."'";
 		
 		//$query = $this->db->query($q);
-		$condn="is_sold = 0 AND tier IN (".$filter_by.") AND (pname LIKE '%" . $sq  ."%')";
+		if($sq=="Cellphones" || $sq=="Laptops" || $sq=="Tables" || $sq=="Chairs")
+		{
+			$condn="is_sold = 0 AND tier IN (".$filter_by.") AND (subcategory ='" . $sq  ."')";
+		}
+		else 
+		{
+			$condn="is_sold = 0 AND tier IN (".$filter_by.") AND (pname LIKE '%" . $sq  ."%')";
+		}
+		
 		if($sort_by=='tier')
 		{
 			$sort_order = ($sort_order=='desc') ? 'asc':'desc';

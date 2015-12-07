@@ -112,7 +112,7 @@
 					echo form_open('catalog/product_buy/'.$pd[0]->product_id.'/'.$pd[0]->price,"id='prod_buycancel'");
 					echo form_submit('submit','Buy', 'id="buy"');
 					?>
-					<button id="not_buy" onclick="goBack()">Cancel</button>
+					<button id="not_buy" type="button" onclick="goBack()">Cancel</button>
 					<?php
 					echo form_close();
 					}
@@ -123,9 +123,7 @@
 					<button id="not_buy" onclick="goBack()">Cancel</button>
 					</div>
 					<?php
-					}
-					
-					
+					}					
 					echo '<br>'; 
 				?>
 													
