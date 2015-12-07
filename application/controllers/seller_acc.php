@@ -626,9 +626,8 @@ class seller_acc extends CI_Controller {
 		$config['upload_path'] = './p_images/'.$this->session->userdata('username'); //Path to be stored as  ./p_images/temp_'username'/image1,2,3.... 
 		$config['allowed_types'] = 'bmp|jpg|jpeg';
 		$config['max_size']	= '1024000';
-		$config['max_width']  = '1024';
-		$config['max_height']  = '768';
-		$config['max_width']  = '1024';
+		$config['max_width']  = '2000';
+		$config['max_height']  = '2000';
 		$files = $_FILES['userfiles'];
 		
 		for ($i = 0; $i < 3; $i++)
@@ -739,12 +738,13 @@ class seller_acc extends CI_Controller {
 		if($option == "Edit Product")
 		{
 			$this->product_upload_model->edit_seller_prod();
-			echo 'Changed Details';
+//			echo "<script type='text/javascript'>alert('Your Product Description has been updated!')</script>";
 		}
 		else {
 			$this->product_upload_model->del_seller_prod();
-			echo 'Product deleted';
+//			echo "<script type='text/javascript'>alert('Your Product has been deleted!')</script>";
 		}
+		redirect('seller_acc');
 			
 		
 	}
