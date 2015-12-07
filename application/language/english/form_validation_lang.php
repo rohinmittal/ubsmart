@@ -85,6 +85,9 @@ $lang['check_if_f_type_set']		= 'Select Type of Furniture';
 $lang['check_if_serial_set']		= 'Enter Serial Number';
 $lang['check_if_imei_set']		= 'Enter IMEI Number';
 $lang['check_if_blank_desc']		= 'Description cannot be left blank';
-
+$lang['check_if_blank_anum']		= 'Account Number cannot be left blank';
+$lang['check_if_blank_aname']		= 'Account Name cannot be left blank';
+$lang['check_if_blank_amount']		= 'Amount cannot be left blank';
+$lang['check_if_amount_invalid']	= 'Amount cannot be more than current wallet balance';
 
 

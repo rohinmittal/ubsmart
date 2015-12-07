@@ -26,7 +26,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	//echo "there";
 	//echo $sure;
 	//echo $allProducts->num_rows();
-	foreach ($allProducts->result() as $row) { ?>
+	foreach ($allProducts->result() as $row) { 
+               $match =FALSE;?>
 	<tr>
 		<td>
 			<?php echo $row->product_id; ?>
@@ -46,22 +47,26 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		<td>
 			<?php echo $row->is_sold; ?>
 		</td>
-		
 			<?php 
 			
 				foreach($orders->result() as $row2)
 				{
 					if($row2->product_id==$row->product_id)
 					{
+						$match = TRUE;
+						$match_row = $row2 ;
+					}
+				}
+			  if($match){	
 							?>
 							<td>
-							<?php echo $row2->order_id; ?>
+							<?php echo $match_row->order_id; ?>
 							</td>	
 							<td>
-							<?php echo $row2->buyer_name; ?>
+							<?php echo $match_row->buyer_name; ?>
 							</td>
 							<td>
-							<?php if($row2->buyer_conf == 1) {
+							<?php if($match_row->buyer_conf == 1) {
 							echo "Confirmed";
 							}
 							else {
@@ -71,10 +76,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 							</td>
 							<td>
 							<?php
-							if($row2->seller_conf==0)
+							if($match_row->seller_conf==0)
 							{
 								echo form_open('seller_acc/seller_handover');
-								echo form_hidden('orderID', $row2->order_id);
+								echo form_hidden('orderID', $match_row->order_id);
 								echo form_submit('submit','Click to Confirm'); 
 								echo form_close();
 							}
@@ -84,7 +89,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 							?>
 							</td>
 							<?php
-							break;
+						
 					}
 					
 					else { ?>
@@ -102,7 +107,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 				<td>
 					<?php echo "NA" ;
 						
-					break;
+					
 					?>
 				</td>
 				
@@ -114,7 +119,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 			}
 			
 					
-				}
+	
 				?>
 			
 		
