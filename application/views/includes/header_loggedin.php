@@ -35,8 +35,8 @@
 			<?php 
 			if($this->session->userdata('logintype')=='buyer')
 			{?>
-				<span class="electronics" id="categ_disp1" style="background: yellow;">Electronics</span>			    
-				<span class="furniture" id="categ_disp1" style="margin-left: 0.8%; background: red;">Furniture</span>
+				<span class="electronics" id="categ_disp1" style="display: inline-block">Electronics&nbsp;</span><!--
+			 --><span class="furniture" id="categ_disp1" style="display: inline-block">Furniture</span>
 			<?php 
 			}
 			else

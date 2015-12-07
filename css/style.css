@@ -19,6 +19,12 @@ body{
 #dropdowns{
 	position: relative;
 	z-index: 1000;
+}
+#categ_disp1{
+	color: #0000EE;
+}
+#categ_disp1:hover{
+	cursor:pointer;
 }	
 #dropdowns ul{
 	position: absolute;
@@ -35,10 +41,10 @@ body{
 	background: #AAC4C5;
 }
 #dropdowns ul.electronics{
-	left:1.5%; /* because mb_headers has left margin of 1.5% */
+/*	left:1.5%; */
 }
 #dropdowns ul.furniture{
-	left:9.5%;
+	/*left:9.5%;*/
 }
 #logo{
     display: block;

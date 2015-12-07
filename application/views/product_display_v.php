@@ -2,7 +2,7 @@
 	<div id="breadcrumbs">
 	Product details page!
 	</div>
-	<div id="parentdiv" class="clearfix">
+	<div id="parentdiv" class="clearfix" style="background: blue">
 		<div id="product_details" class="clearfix">		
 			<div class="gallerycontainer" style="">
 				<?php
