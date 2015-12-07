@@ -27,7 +27,7 @@ class myaccount extends CI_Controller {
 		$this->load->view('includes/header_loggedin');
 		
 		if ($data['query_result']->num_rows() > 0) {
-			if($newOrder = 1) {
+			if($newOrder == 1) {
 				$data['newOrder'] = 1;
 			}
 			$this->load->view('myaccount/boughtHistory_v', $data);

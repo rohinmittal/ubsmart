@@ -17,6 +17,10 @@ function goBack()
 	{
 		window.history.back();
 	}
+function no_bal()
+	{
+		alert("Sorry, your order could not be placed. Please increase your virtual wallet balance.");
+	}
 function updateImage(id)
     {
     	var src=document.getElementById(id).src;

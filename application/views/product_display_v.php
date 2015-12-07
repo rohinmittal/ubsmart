@@ -107,26 +107,28 @@
 					echo '</fieldset>';			
 														
 					echo '</p>';
+					if($vwBalance >= $pd[0]->price)
+					{
 					echo form_open('catalog/product_buy/'.$pd[0]->product_id.'/'.$pd[0]->price,"id='prod_buycancel'");
 					echo form_submit('submit','Buy', 'id="buy"');
-				?>
+					?>
 					<button id="not_buy" onclick="goBack()">Cancel</button>
-				<?php 
+					<?php
 					echo form_close();
+					}
+					else {
+					?>
+					<div id="prod_buycancel">
+					<button id="cannot_buy" onclick="no_bal()">Buy</button>
+					<button id="not_buy" onclick="goBack()">Cancel</button>
+					</div>
+					<?php
+					}
+					
+					
 					echo '<br>'; 
 				?>
 													
 			</div>					
 		</div>
 	</div>
-	
-<?php
-if(isset($order_placed))
-{
-	if($order_placed=='no')
-	{
-		$msg='Sorry, your order could not be placed. Please check your virtual wallet balance.';
-		echo '<script type="text/javascript">alert("'.$msg.'"); </script>';
-	}
-}
-?>
