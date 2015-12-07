@@ -23,7 +23,7 @@ class product_upload_model extends CI_Model {
 		 //echo "here here here";
 		 //echo $is_owner;
 		 //echo $p_condition;
-		$smart_price = $this->input->post('p_smart_price');//calculation of the updated smart price
+		$smart_price = 0;//$this->input->post('p_smart_price');//calculation of the updated smart price
 		$data = array($sellername,NULL,$askprice,$productname,0,$category,$sub_cat,$condition,$tier,$smart_price);
 		$sql = "INSERT INTO products(seller,price,pname,is_sold,category,subcategory,p_condition,is_sowner,tier,smart_price,p_desc) VALUES ('".$sellername."','".$askprice."','".$productname."','0','".$category."','".$sub_cat."','".$p_condition."','".$is_owner."','".$tier."','".$smart_price."','".$p_desc."')";
 		//$this->db->insert('products',$data); 	
@@ -172,6 +172,8 @@ class product_upload_model extends CI_Model {
 	if($orderQuery->row()->buyer_conf == 1 && $orderQuery->row()->seller_conf == 1) {
 			
 			// since both buyer and seller have confirmed, update is_sold in product table to 2.
+			//also add the product price to the sellers vw_account.. 
+			
 			$this->db->where('product_id', $orderQuery->row()->product_id);
 			$data = array(
 				'is_sold' => 2 
@@ -204,6 +206,27 @@ class product_upload_model extends CI_Model {
 			);
 			
 			$this->db->update('products', $data);
+			
+			
+			$this->db->select('vw_balance');
+ 			$this->db->where('username',$this->session->userdata('username'));
+			$query = $this->db->get('users');
+			foreach($query->result() as $row){
+			$current_bal = $row->vw_balance;
+			}
+			//get product price...... 
+			$this->db->select('price');
+			$this->db->where('product_id', $orderQuery->row()->product_id);
+			$productQuery = $this->db->get('products');
+			
+			$price = $productQuery->row()->price;
+			
+			$updated_amt = $current_bal+$price;
+		
+			$sql = "UPDATE `users` SET `vw_balance`= '".$updated_amt."' WHERE username = '".$this->session->userdata('username')."' ";
+			
+			$query = $this->db->query($sql);
+			
 		}
 	
 	}
@@ -223,4 +246,26 @@ class product_upload_model extends CI_Model {
 		$sql = "DELETE FROM `products` WHERE `product_id` = ".$pid." ";
 		$query = $this->db->query($sql);
 	}
+	
+	function update_virtual_wallet()
+	{
+		$this->db->select('vw_balance');
+ 		$this->db->where('username',$this->session->userdata('username'));
+		$query = $this->db->get('users');
+		foreach($query->result() as $row){
+		$current_bal = $row->vw_balance;
+		}
+		$encash_amt = $this->input->post('amount');
+		
+		$updated_amt = $current_bal-$encash_amt;
+		
+		$sql = "UPDATE `users` SET `vw_balance`= '".$updated_amt."' WHERE username = '".$this->session->userdata('username')."' ";
+			
+		$query = $this->db->query($sql);
+		
+	}
+	
+	
+	
+	
 } 

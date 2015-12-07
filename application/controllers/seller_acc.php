@@ -50,6 +50,32 @@ class seller_acc extends CI_Controller {
 		//load update view   $this->load->view('seller_acc',$data);
 		$this->load->view('includes/footer');
 	}
+	public function encash_vw()
+	{
+		$this->load->view('includes/header_loggedin');
+		$this->load->view('seller_acc/encash_vw');
+		$this->load->view('includes/footer');
+	}
+	
+	public function encash_form()
+	{
+		$this->load->library('form_validation');	
+		$this->form_validation->set_rules('acc_number', 'Account Number', 'trim|required|integer|callback_check_if_blank_anum');
+		$this->form_validation->set_rules('acc_name', 'Account Name', 'trim|required|callback_check_if_blank_aname');
+		$this->form_validation->set_rules('amount', 'Amount', 'trim|required|integer|callback_check_if_blank_amount|callback_check_if_amount_invalid');
+		if($this->form_validation->run()==FALSE){
+			$this->load->view('includes/header_loggedin');
+			$this->load->view('seller_acc/encash_vw');
+			$this->load->view('includes/footer');
+		}
+		else{
+			$this->load->model('product_upload_model');
+			$val =  $this->product_upload_model->update_virtual_wallet();
+	
+			redirect('seller_acc');
+		}
+    }
+	
 		public function upload_form()
 	{
 		$this->load->view('includes/header_loggedin');
@@ -555,7 +581,9 @@ class seller_acc extends CI_Controller {
 		$this->load->library('form_validation'); // to be implemented
 		$this->load->model('product_upload_model');
 		$result =  $this->product_upload_model->evaluate_smart_price($data);
+		
 		$data['p_smart_price'] = $result['current_smart_price'];
+		
 		$data['max_price'] = $result['max_price'];
 		$data['min_price'] = $result['min_price'];
 		$this->load->view('includes/header_loggedin');
@@ -824,5 +852,57 @@ function check_if_chair_mat_set($mat_type)
 		}
         return $desc_entered;
 	}
+	function check_if_blank_anum($anum)
+    {
+    	$tcomp=strcmp($anum,"Enter your account number");
+		$desc_entered=TRUE;
+        if($tcomp==0)
+		{
+			$desc_entered=FALSE;
+		}
+        return $desc_entered;
+	}
+	function check_if_blank_aname($acc_name)
+    {
+    	$tcomp=strcmp($acc_name,"Enter account holders name");
+		$desc_entered=TRUE;
+        if($tcomp==0)
+		{
+			$desc_entered=FALSE;
+		}
+        return $desc_entered;
+	}
+	function check_if_blank_amount($amount)
+    {
+    	$tcomp=strcmp($amount,"Enter the amount"); 
+		$desc_entered=TRUE;
+        if($tcomp==0)
+		{
+			$desc_entered=FALSE;
+		}
+        return $desc_entered;
+	}
+	function check_if_amount_invalid($amount)
+    {
+    	$this->db->select('vw_balance');
+ 		$this->db->where('username',$this->session->userdata('username'));
+		$query = $this->db->get('users');
+		foreach($query->result() as $row){
+		$current_bal = $row->vw_balance;
+		}
+		if($amount>$current_bal)
+		{
+			return FALSE;
+		}
+        return TRUE;
+	}
+	
+	
+	
+	
+	
+	
+	
+	
 	}
 ?>

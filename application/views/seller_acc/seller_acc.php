@@ -36,8 +36,7 @@
 	<fieldset>
 		<legend style="text-align:left"><b>UB sMart Wallet</b></legend>
 		<br>
-		Check Wallet Balance <br>
-		Add money to wallet <br>
+		<a href="<?php echo site_url('seller_acc/encash_vw') ?>">Encash from UBsMart virtual wallet</a>
 		<br>
 		<br>
 		<br>
