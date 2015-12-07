@@ -1,12 +1,4 @@
-<?php
-defined('BASEPATH') OR exit('No direct script access allowed');
-?><!DOCTYPE html>
-<head>
-<meta charset="utf-8">
-<title>My Account</title>
-</head>
-
-<p id=your_acc>
+<p id="your_acc">
 	<b> Your Account </b>
 </p>
 

@@ -84,6 +84,7 @@ $(document).ready(function() {
         
         
         //for conditional visibilty of filters/sorting options
+        if (typeof searchval !== 'undefined') {
         if(searchval=="no_search_query")
         {
 			document.getElementById("filter_related").style.display= "none";
@@ -96,6 +97,7 @@ $(document).ready(function() {
 			document.getElementById("product_grid").style.width= "78.4%";
 			document.getElementById("product_grid").style.marginLeft="1%";
 			//document.getElementById("product_grid").style.float= "left";
+        }
         }
         //alert(sort_by);        
         //alert(sort_order);
