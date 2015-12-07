@@ -88,8 +88,7 @@ class Catalog extends CI_Controller {
 	  $this->load->model('membership_model');
 	  $result = $this->membership_model->retreiveUserDetails();
 	  $data['vwBalance'] = $result->vw_balance;
-	  
-	  
+	  	  
 	  
 	  $this->load->view('includes/header_loggedin');
 	  $this->load->view('product_display_v',$data);

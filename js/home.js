@@ -1,3 +1,9 @@
+function simsearch(subcat)
+    {
+    	document.getElementById("search_bar").value=subcat;
+    	document.getElementById("searchform").submit();
+    	//alert(subcat);
+    }
 function updatefilter()
     {
        	var new_filter_val='';

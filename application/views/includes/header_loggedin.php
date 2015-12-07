@@ -10,7 +10,8 @@
 	<?php
 	if($this->session->userdata('logintype')=='buyer')
 	{
-		echo form_open('catalog/execute_search');
+		$attri = array('id' => 'searchform');	
+		echo form_open('catalog/execute_search',$attri);
 		//echo form_label('Age: '.form_input('userAge',""),'age');
 		?>
 		
@@ -23,14 +24,14 @@
 		<?php echo form_input('search_query', 'Search', 'id="search_bar" style="margin: 0 0 0 0; 
 		border: none; height: 1px;width:30%; display: inline; margin-left:33%;"');
 		?>
-		<button type="submit" style="display: inline; margin-left: -0.5%;" id="search_submit"><img id="MG"src="<?php echo base_url("/images/MG.png"); ?>"/></button>				
+		<button type="submit" style="display: inline; margin-left: -0.5%;" id="search_submit"><img id="MG" src="<?php echo base_url("/images/MG.png"); ?>"/></button>				
 		</div>
 		<?php
 		echo form_close();
 	}?>
 	</div>
 	<div class="main_bar">
-		<div id="mb_headers" style="padding-top: 0.25%; padding-bottom: 0.25%">
+		<div id="mb_headers" style="padding-top: 0.25%; padding-bottom: 0%">
 			<?php 
 			if($this->session->userdata('logintype')=='buyer')
 			{?>
@@ -61,12 +62,12 @@
 	</div>
 	<div id="dropdowns">
 		<ul class="electronics">
-			<li><?php echo anchor('','Cellphones','style=""');?></li>
-			<li><?php echo anchor('','Laptops','style=""');?></li>
+			<li><a href="#" onclick="simsearch('Cellphones')">Cellphones</a></li>
+			<li><a href="#" onclick="simsearch('Laptops')">Laptops</a></li>
 		</ul>
 		<ul class="furniture">
-			<li><?php echo anchor('','Table','style=""');?></li>
-			<li><?php echo anchor('','Chair','style=""');?></li>
+			<li><a href="#" onclick="simsearch('Tables')">Tables</a></li>
+			<li><a href="#" onclick="simsearch('Chairs')">Chairs</a></li>
 		</ul>
 	</div>
 </div>
