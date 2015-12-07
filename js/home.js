@@ -191,9 +191,13 @@ $(document).ready(function() {
 	$('#mb_headers span').mouseenter(function() { 
 		var elem_class = $(this).attr('class');
 		var elem_width = $(this).css('width');
+		var elec_width=$('ul.electronics').css('width');
+		//alert($('ul.electronics').css('width'));
 		var matching_ul = $('ul.' + elem_class);
 		matching_ul.css('visibility','visible');
 		matching_ul.css('min-width', elem_width);
+		$('ul.electronics').css('left', '1.5%');  /* because mb_headers has left margin of 1.5% */
+		$('ul.furniture').css('left', '1.5%').css('left', '+='+elec_width);
 	}).mouseleave(function() {
 		 var elem_class =$(this).attr('class');
 		 $('ul.' + elem_class).css('visibility','hidden'); 
