@@ -70,6 +70,7 @@ class Catalog extends CI_Controller {
 	
 	public function product_display($id)
 	{
+	echo "rohin";
 	  $this->load->model('catalog_m');
 	  $query=$this->catalog_m->fetch_prod_details($id);
 	  $data['prod_details']=$query['prod_details'];
